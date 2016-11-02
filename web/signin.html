@@ -66,6 +66,22 @@
             border-top-right-radius: 0;
         }
     </style>
+    <script type="text/javascript">
+        function fun1(){
+            var d1 = document.getElementById("exampleInputEmail1").value;
+            var d2 = document.getElementById("exampleInputPassword1").value;
+
+            if(d1 == "") {
+                alert("账号不能为空");
+                return;
+            }
+            if(d2==""){
+                alert("密码不能为空");
+                return;
+            }
+
+        }
+    </script>
 </head>
 
 
@@ -85,7 +101,7 @@
                 <input value="remember-me" type="checkbox">记住密码
             </label>
         </div>
-        <button class="btn btn-lg btn-default btn-block" type="submit">登 录</button>
+        <button class="btn btn-lg btn-default btn-block" type="submit" onclick="fun1()">登 录</button>
     </form>
 
     <div class="container-fluid">
