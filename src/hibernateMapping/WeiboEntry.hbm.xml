@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-4 15:29:32 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="hibernateMapping.WeiboEntry" table="weibo_entry" catalog="db" optimistic-lock="version">
+        <composite-id name="id" class="hibernateMapping.WeiboEntryId">
+            <key-property name="entryId" type="int">
+                <column name="entryID" />
+            </key-property>
+            <key-property name="publishedTime" type="timestamp">
+                <column name="publishedTime" length="19" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="weiboUrl" class="hibernateMapping.WeiboUrl" fetch="select">
+            <column name="weiboID" not-null="true" />
+        </many-to-one>
+        <property name="contentHolder" type="string">
+            <column name="contentHolder" length="45" />
+        </property>
+        <property name="hasRead" type="boolean">
+            <column name="hasRead" not-null="true" />
+        </property>
+        <property name="classHolder" type="string">
+            <column name="classHolder" length="45" />
+        </property>
+        <property name="weiboEntriescol" type="string">
+            <column name="weibo_entriescol" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

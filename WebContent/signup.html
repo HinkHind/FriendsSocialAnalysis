@@ -67,36 +67,52 @@
     </style>
     <script type="text/javascript">
 
-        function fun1(){
+        function validate(){
             var d1 = document.getElementById("zh").value;
             var d2 = document.getElementById("p1").value;
             var d3 = document.getElementById("p2").value;
             if(d1 == "") {
                 alert("账号不能为空");
-                return;
+                return false;
             }
+            
             if(d2=="" && d3==""){
                 alert("密码不能为空");
-                return;
+                return false;
             }
+            
             if(d2!= d3){
                 alert("两次密码不一样");
-                return;
+                return false;
             }
 
+			if(d2.length < 10 || d2.length > 24){
+				alert("密码过长或过短");
+				return false;
+			}
+			return true;
+            
         }
+
+		function submitForm(){
+			if(validate()){
+				document.getElementById("signUpForm").submit();
+			}
+		}
+
+        
     </script>
 </head>
 <body>
 
 <div class="container box">
-    <form class="form-signin" role="form">
+    <form class="form-signin" role="form" id = "signUpForm" action = "signUp">
         <h2 class="form-signin-heading text-center">欢迎注册</h2>
         <div class="form-group"><input class="form-control" id="zh" type="text" placeholder="请输入账号" /></div>
         <div class="form-group"><input class="form-control" id="p1" type="password" placeholder="请输入密码" /></div>
         <div class="form-group"><input class="form-control" id="p2" type="password" placeholder="重复上一密码" /></div>
         <div class="action">
-            <button class="btn btn-lg btn-default btn-block" onclick="fun1()" >注册</button>
+            <button class="btn btn-lg btn-default btn-block" onclick="submitForm()" >注册</button>
         </div>
     </form>
 
