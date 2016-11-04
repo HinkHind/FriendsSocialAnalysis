@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-4 15:29:32 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="hibernateMapping.WeiboUrl" table="weibo_url" catalog="db" optimistic-lock="version">
+        <id name="weiboId" type="java.lang.Integer">
+            <column name="weiboID" />
+            <generator class="identity" />
+        </id>
+        <property name="weiboUrl" type="string">
+            <column name="weiboUrl" length="45" />
+        </property>
+        <property name="count" type="int">
+            <column name="count" not-null="true" />
+        </property>
+        <property name="placeHolder" type="string">
+            <column name="placeHolder" length="45" />
+        </property>
+        <set name="weiboEntries" table="weibo_entry" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="weiboID" not-null="true" />
+            </key>
+            <one-to-many class="hibernateMapping.WeiboEntry" />
+        </set>
+        <set name="friends" table="friend" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="weiboID" />
+            </key>
+            <one-to-many class="hibernateMapping.Friend" />
+        </set>
+    </class>
+</hibernate-mapping>
