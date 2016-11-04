@@ -7,19 +7,27 @@
 
 
     <package name="controller" namespace="/" extends="struts-default">
-
-        
-
         <action name="signUp" class = "controller.SignUp" method = "signUp">
             <result >
-                signup.html
+                signUp.jsp
+            </result>
+        </action>
+        
+        <action name="signIn" class = "controller.SignIn" method = "signIn">
+            <result name = "login">
+                index.jsp
+            </result>
+            <result name = "error">
+            	signUp.jsp
+            </result>
+        </action>
+        
+        <action name="addFriend" class = "controller.AddFriend" method = "addFriend">
+            <result type = "redirect">
+                index.action
             </result>
         </action>
         
     </package>
-
-    <include file="example.xml"/>
-
-    <!-- Add packages here -->
 
 </struts>
