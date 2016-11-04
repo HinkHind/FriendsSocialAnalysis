@@ -8,12 +8,12 @@
   <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db</property>
   <property name="hibernate.connection.username">root</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
-  <mapping resource="hibernateMapping/CsdnUrls.hbm.xml"/>
-  <mapping resource="hibernateMapping/Friends.hbm.xml"/>
-  <mapping resource="hibernateMapping/Users.hbm.xml"/>
-  <mapping resource="hibernateMapping/WeiboEntries.hbm.xml"/>
-  <mapping resource="hibernateMapping/WeiboUrls.hbm.xml"/>
-  <mapping resource="hibernateMapping/ZhihuUrls.hbm.xml"/>
+  <mapping resource="hibernateMapping/CsdnUrl.hbm.xml"/>
+  <mapping resource="hibernateMapping/Friend.hbm.xml"/>
+  <mapping resource="hibernateMapping/User.hbm.xml"/>
+  <mapping resource="hibernateMapping/WeiboEntry.hbm.xml"/>
+  <mapping resource="hibernateMapping/WeiboUrl.hbm.xml"/>
+  <mapping resource="hibernateMapping/ZhihuUrl.hbm.xml"/>
   <!--<property name="hbm2ddl.auto">update</property>  -->
  </session-factory>
 </hibernate-configuration>

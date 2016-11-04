@@ -10,11 +10,12 @@
 
         
 
-        <action name="signUp">
-            <result type="redirectAction">
-                
+        <action name="signUp" class = "controller.SignUp" method = "signUp">
+            <result >
+                signup.html
             </result>
         </action>
+        
     </package>
 
     <include file="example.xml"/>

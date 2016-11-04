@@ -75,6 +75,9 @@
                 alert("账号不能为空");
                 return false;
             }
+
+			if()
+			
             
             if(d2=="" && d3==""){
                 alert("密码不能为空");
@@ -87,18 +90,14 @@
             }
 
 			if(d2.length < 10 || d2.length > 24){
-				alert("密码过长或过短");
+				alert("密码过长或过短,密码大于等于10位，小于等于24位");
 				return false;
 			}
 			return true;
             
         }
 
-		function submitForm(){
-			if(validate()){
-				document.getElementById("signUpForm").submit();
-			}
-		}
+		
 
         
     </script>
@@ -106,13 +105,13 @@
 <body>
 
 <div class="container box">
-    <form class="form-signin" role="form" id = "signUpForm" action = "signUp">
+    <form class="form-signin" role="form" id = "signUpForm" onsubmit = "return validate();" action = "signUp" method = "POST">
         <h2 class="form-signin-heading text-center">欢迎注册</h2>
-        <div class="form-group"><input class="form-control" id="zh" type="text" placeholder="请输入账号" /></div>
-        <div class="form-group"><input class="form-control" id="p1" type="password" placeholder="请输入密码" /></div>
+        <div class="form-group"><input class="form-control" name = "userName" id="zh" type="text" placeholder="请输入账号" /></div>
+        <div class="form-group"><input class="form-control" name = "password" id="p1" type="password" placeholder="请输入密码" /></div>
         <div class="form-group"><input class="form-control" id="p2" type="password" placeholder="重复上一密码" /></div>
         <div class="action">
-            <button class="btn btn-lg btn-default btn-block" onclick="submitForm()" >注册</button>
+            <button class="btn btn-lg btn-default btn-block">注册</button>
         </div>
     </form>
 
