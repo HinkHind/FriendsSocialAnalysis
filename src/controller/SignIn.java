@@ -1,19 +1,14 @@
 package controller;
 
-import java.util.Date;
+import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import hibernateDao.Dao;
 import hibernateMapping.User;
 
-public class SignUp extends ActionSupport{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class SignIn extends ActionSupport{
 	
 	private String userName;
 	private String password;
@@ -43,16 +38,22 @@ public class SignUp extends ActionSupport{
 	}
 
 
+	
+	
 
-	public String signUp() {
+	public String signIn() {
 		
-		User user = new User(userName, password, "1", new Date());
-		System.out.println(userName+" "+password);
-		Dao.saveUser(user);
-		return SUCCESS;
+		User signInUser = Dao.isValidLogin(userName, password);
+		if (signInUser == null){
+			return ERROR;
+		} else {
+			ActionContext context = ActionContext.getContext();
+			Map sess = context.getSession();
+			sess.put("userID", signInUser.getUserId().intValue());
+			
+			return LOGIN;
+		}
+		
 	}
-	
-	
-	
 	
 }
