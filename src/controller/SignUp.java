@@ -48,7 +48,7 @@ public class SignUp extends ActionSupport{
 		
 		User user = new User(userName, password, "1", new Date());
 		System.out.println(userName+" "+password);
-		Dao.addUser(user);
+		Dao.saveUser(user);
 		return SUCCESS;
 	}
 	

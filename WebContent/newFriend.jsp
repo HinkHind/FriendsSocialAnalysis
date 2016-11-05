@@ -127,26 +127,26 @@
     </div>
     <div class="panel-body">
 
-        <form class="form-horizontal inline-input" id="form1" role="form">
+        <form class="form-horizontal inline-input" id="form1" role="form" action = "addFriend">
 
             <div class="form-group field-box">
                 <label for="inputText1" class="col-sm-2  control-label">Name</label>
                 <div class="col-sm-8 col-lg-8">
-                    <input type="text" class="form-control" id="inputText1" placeholder="关注的用户名称">
+                    <input type="text" class="form-control" name = "friendName" id="inputText1" placeholder="关注的用户名称">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="inputText2" class="col-sm-2 control-label">Weibo</label>
                 <div class="col-sm-8 col-lg-8">
-                    <input type="text" class="form-control" id="inputText2" placeholder="请输入微博主页地址">
+                    <input type="text" class="form-control" name = "weiboUrl" id="inputText2" placeholder="请输入微博主页地址">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="inputText3" class="col-sm-2 control-label">CSDN</label>
                 <div class="col-sm-8 col-lg-8">
-                    <input type="text" class="form-control" id="inputText3" placeholder="请输入CSDN主页地址">
+                    <input type="text" class="form-control" name = "csdnUrl" id="inputText3" placeholder="请输入CSDN主页地址">
                 </div>
             </div>
 

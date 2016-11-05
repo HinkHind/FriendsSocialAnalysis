@@ -87,7 +87,9 @@
     <a href="#" class="list-group-item disabled">
         全部动态
     </a>
-    <a href="control.html" class="list-group-item"><span class="badge">1</span>韩 寒</a>
+    
+    <s:iterator value="friends">
+    <!--  <a href="control.html" class="list-group-item"><span class="badge">1</span>韩 寒</a>
     <a href="#" class="list-group-item"><span class="badge">5</span>关注用户1</a>
     <a href="#" class="list-group-item"><span class="badge">3</span>关注用户1</a>
     <a href="#" class="list-group-item"><span class="badge">0</span>关注用户1</a>
@@ -95,12 +97,31 @@
     <a href="#" class="list-group-item"><span class="badge">5</span>关注用户1</a>
     <a href="#" class="list-group-item"><span class="badge">3</span>关注用户1</a>
     <a href="#" class="list-group-item"><span class="badge">0</span>关注用户1</a>
+   <a href='<s:url action="QueryByTitle"><s:param name="title" value="title" /></s:url>'>
+                   
+                   		<s:property value="title" />
+                   </a>
+                   -->
+    	<a href = '<s:url action="enterIndexWithSelectedFriend"><s:param name="friendId" value="friendId" /></s:url>'
+    	class="list-group-item"><span class="badge">5</span>
+    	<s:property value="friendName" />
+    	</a>
+    </s:iterator>
 </div>
 
 <!-- 4:3 aspect ratio 右侧动态 -->
 
 <div class="embed-responsive embed-responsive-4by3">
-    <iframe class="embed-responsive-item" src="content.html"></iframe>
+    <!--<iframe class="embed-responsive-item" src="content.jsp"></iframe>  -->
+    <h1>最新更新</h1>
+
+	<s:iterator value="weiboEntrys">
+		<div class="panel panel-default">
+	    	<div class="panel-body">
+				<s:property value="contentHolder" />
+	    	</div>
+		</div>
+	</s:iterator>
 </div>
 <!--
 <ul class="nav nav-tabs" role="tablist" id="main">
