@@ -20,7 +20,7 @@
         <property name="lastActivity" type="timestamp">
             <column name="lastActivity" length="19" not-null="true" />
         </property>
-        <set name="friends" table="friend" inverse="true" lazy="true" fetch="select">
+        <set name="friends" table="friend" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="users_userID" not-null="true" />
             </key>

@@ -22,7 +22,7 @@
             </result>
         </action>
         
-        <action name="addFriend" class = "controller.AddFriend" method = "addFriend">
+        <action name="addFriend" class = "controller.ManageFriend" method = "addFriend">
             <result type = "redirect">
                 index.action
             </result>

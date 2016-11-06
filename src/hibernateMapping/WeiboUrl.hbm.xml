@@ -17,13 +17,13 @@
         <property name="placeHolder" type="string">
             <column name="placeHolder" length="45" />
         </property>
-        <set name="weiboEntries" table="weibo_entry" inverse="true" lazy="true" fetch="select">
+        <set name="weiboEntries" table="weibo_entry" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="weiboID" not-null="true" />
             </key>
             <one-to-many class="hibernateMapping.WeiboEntry" />
         </set>
-        <set name="friends" table="friend" inverse="true" lazy="true" fetch="select">
+        <set name="friends" table="friend" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="weiboID" />
             </key>

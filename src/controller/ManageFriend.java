@@ -8,7 +8,7 @@ import hibernateMapping.Friend;
 import hibernateMapping.User;
 import hibernateMapping.WeiboUrl;
 
-public class AddFriend extends ActionSupport{
+public class ManageFriend extends ActionSupport{
 	
 	private String friendName;
 	private String weiboUrl;
@@ -37,6 +37,7 @@ public class AddFriend extends ActionSupport{
 	public void setCsdnUrl(String csdnUrl) {
 		this.csdnUrl = csdnUrl;
 	}
+	
 	
 	public String addFriend() {
 		Friend friend = new Friend();

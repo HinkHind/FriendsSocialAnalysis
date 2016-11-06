@@ -115,7 +115,7 @@
     <!--<iframe class="embed-responsive-item" src="content.jsp"></iframe>  -->
     <h1>最新更新</h1>
 
-	<s:iterator value="weiboEntrys">
+	<s:iterator value="weiboEntries">
 		<div class="panel panel-default">
 	    	<div class="panel-body">
 				<s:property value="contentHolder" />

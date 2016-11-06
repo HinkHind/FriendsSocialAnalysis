@@ -1,7 +1,2 @@
-/hibernateUtil/
-/dao/
 /controller/
-/hibernate.cfg.xml
 /hibernateMapping/
-/hibernate.reveng.xml
-/hibernateDao/

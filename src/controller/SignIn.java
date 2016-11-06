@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import hibernateDao.Dao;
 import hibernateMapping.User;
+import hibernateUtil.*;
 
 public class SignIn extends ActionSupport{
 	
