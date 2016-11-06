@@ -1,5 +1,5 @@
 package hibernateMapping;
-// Generated 2016-11-6 16:05:19 by Hibernate Tools 5.2.0.Beta1
+// Generated 2016-11-6 18:04:40 by Hibernate Tools 5.2.0.Beta1
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import java.util.Date;
 public class ZhihuEntry implements java.io.Serializable {
 
 	private Integer entryId;
-	private int zhihuId;
+	private ZhihuUrl zhihuUrl;
 	private String contentHolder;
 	private Date publishedTime;
 	private boolean hasRead;
@@ -18,14 +18,15 @@ public class ZhihuEntry implements java.io.Serializable {
 	public ZhihuEntry() {
 	}
 
-	public ZhihuEntry(int zhihuId, Date publishedTime, boolean hasRead) {
-		this.zhihuId = zhihuId;
+	public ZhihuEntry(ZhihuUrl zhihuUrl, Date publishedTime, boolean hasRead) {
+		this.zhihuUrl = zhihuUrl;
 		this.publishedTime = publishedTime;
 		this.hasRead = hasRead;
 	}
 
-	public ZhihuEntry(int zhihuId, String contentHolder, Date publishedTime, boolean hasRead, String classHolder) {
-		this.zhihuId = zhihuId;
+	public ZhihuEntry(ZhihuUrl zhihuUrl, String contentHolder, Date publishedTime, boolean hasRead,
+			String classHolder) {
+		this.zhihuUrl = zhihuUrl;
 		this.contentHolder = contentHolder;
 		this.publishedTime = publishedTime;
 		this.hasRead = hasRead;
@@ -40,12 +41,12 @@ public class ZhihuEntry implements java.io.Serializable {
 		this.entryId = entryId;
 	}
 
-	public int getZhihuId() {
-		return this.zhihuId;
+	public ZhihuUrl getZhihuUrl() {
+		return this.zhihuUrl;
 	}
 
-	public void setZhihuId(int zhihuId) {
-		this.zhihuId = zhihuId;
+	public void setZhihuUrl(ZhihuUrl zhihuUrl) {
+		this.zhihuUrl = zhihuUrl;
 	}
 
 	public String getContentHolder() {

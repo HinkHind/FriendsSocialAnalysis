@@ -50,7 +50,7 @@ public class SignIn extends ActionSupport{
 		} else {
 			ActionContext context = ActionContext.getContext();
 			Map sess = context.getSession();
-			sess.put("userID", signInUser.getUserId().intValue());
+			sess.put("userId", signInUser.getUserId().intValue());
 			
 			return LOGIN;
 		}

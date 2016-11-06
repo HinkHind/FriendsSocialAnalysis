@@ -11,6 +11,6 @@
 	<table-filter match-catalog="db" match-name="weibo_url"
 		exclude="true" />
 	<table-filter match-catalog="db" match-name="zhihu_url"/>
-	<table-filter match-name="csdn_entry" match-catalog="db" exclude="true"></table-filter>
-	<table-filter match-name="zhihu_entry" match-catalog="db" exclude="true"></table-filter>
+	<table-filter match-name="csdn_entry" match-catalog="db"></table-filter>
+	<table-filter match-name="zhihu_entry" match-catalog="db"></table-filter>
 </hibernate-reverse-engineering>

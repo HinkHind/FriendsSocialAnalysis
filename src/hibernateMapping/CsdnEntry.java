@@ -1,5 +1,5 @@
 package hibernateMapping;
-// Generated 2016-11-6 16:05:19 by Hibernate Tools 5.2.0.Beta1
+// Generated 2016-11-6 18:04:40 by Hibernate Tools 5.2.0.Beta1
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import java.util.Date;
 public class CsdnEntry implements java.io.Serializable {
 
 	private Integer entryId;
-	private int csdnId;
+	private CsdnUrl csdnUrl;
 	private String contentHolder;
 	private Date publishedTime;
 	private boolean hasRead;
@@ -18,14 +18,14 @@ public class CsdnEntry implements java.io.Serializable {
 	public CsdnEntry() {
 	}
 
-	public CsdnEntry(int csdnId, Date publishedTime, boolean hasRead) {
-		this.csdnId = csdnId;
+	public CsdnEntry(CsdnUrl csdnUrl, Date publishedTime, boolean hasRead) {
+		this.csdnUrl = csdnUrl;
 		this.publishedTime = publishedTime;
 		this.hasRead = hasRead;
 	}
 
-	public CsdnEntry(int csdnId, String contentHolder, Date publishedTime, boolean hasRead, String classHolder) {
-		this.csdnId = csdnId;
+	public CsdnEntry(CsdnUrl csdnUrl, String contentHolder, Date publishedTime, boolean hasRead, String classHolder) {
+		this.csdnUrl = csdnUrl;
 		this.contentHolder = contentHolder;
 		this.publishedTime = publishedTime;
 		this.hasRead = hasRead;
@@ -40,12 +40,12 @@ public class CsdnEntry implements java.io.Serializable {
 		this.entryId = entryId;
 	}
 
-	public int getCsdnId() {
-		return this.csdnId;
+	public CsdnUrl getCsdnUrl() {
+		return this.csdnUrl;
 	}
 
-	public void setCsdnId(int csdnId) {
-		this.csdnId = csdnId;
+	public void setCsdnUrl(CsdnUrl csdnUrl) {
+		this.csdnUrl = csdnUrl;
 	}
 
 	public String getContentHolder() {

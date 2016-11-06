@@ -114,8 +114,20 @@
 <div class="embed-responsive embed-responsive-4by3">
     <!--<iframe class="embed-responsive-item" src="content.jsp"></iframe>  -->
     <h1>最新更新</h1>
-
-	<s:iterator value="weiboEntries">
+	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'zhihu'" /></s:url>'
+    	>
+    	zhihu
+    	</a>
+	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'weibo'" /></s:url>'
+    	>
+    	weibo
+    	</a>
+    	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'csdn'" /></s:url>'
+    	>
+    	csdn
+    	</a>
+    	<br/>
+	<s:iterator value="selectedEntries">
 		<div class="panel panel-default">
 	    	<div class="panel-body">
 				<s:property value="contentHolder" />

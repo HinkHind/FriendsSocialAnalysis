@@ -15,26 +15,32 @@
         
         <action name="signIn" class = "controller.SignIn" method = "signIn">
             <result name = "login" type = "redirect">
-                enterIndex.action
+                enterIndexInitially.action
             </result>
             <result name = "error">
-            	signUp.jsp
+            	signIn.jsp
             </result>
         </action>
         
-        <action name="addFriend" class = "controller.ManageFriend" method = "addFriend">
+        <!-- <action name="addFriend" class = "controller.ManageFriend" method = "addFriend">
             <result type = "redirect">
                 index.action
             </result>
-        </action>
+        </action> -->
         
-        <action name = "enterIndex" class = "controller.EnterIndex" method = "enterIndex">
+        <action name = "enterIndexInitially" class = "controller.EnterIndex" method = "enterIndexInitially">
         	<result>
         		index.jsp
         	</result>
         </action>
         
         <action name = "enterIndexWithSelectedFriend" class = "controller.EnterIndex" method = "enterIndexWithSelectedFriend">
+        	<result>
+        		index.jsp
+        	</result>
+        </action>
+        
+        <action name = "enterIndexWithSelectedPlatform" class = "controller.EnterIndex" method = "enterIndexWithSelectedPlatform">
         	<result>
         		index.jsp
         	</result>

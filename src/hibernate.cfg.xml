@@ -14,6 +14,8 @@
   <mapping resource="hibernateMapping/WeiboEntry.hbm.xml"/>
   <mapping resource="hibernateMapping/WeiboUrl.hbm.xml"/>
   <mapping resource="hibernateMapping/ZhihuUrl.hbm.xml"/>
+  <mapping resource="hibernateMapping/CsdnEntry.hbm.xml"/>
+  <mapping resource="hibernateMapping/ZhihuEntry.hbm.xml"/>
   <!--<property name="hbm2ddl.auto">update</property>  -->
  </session-factory>
 </hibernate-configuration>
