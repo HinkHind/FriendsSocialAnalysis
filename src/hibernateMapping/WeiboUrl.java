@@ -1,5 +1,5 @@
 package hibernateMapping;
-// Generated 2016-11-7 15:03:58 by Hibernate Tools 5.2.0.Beta1
+// Generated 2016-11-7 22:10:10 by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,9 +12,7 @@ public class WeiboUrl implements java.io.Serializable {
 	private Integer weiboId;
 	private String weiboUrl;
 	private int count;
-	private String placeHolder;
 	private Set weiboEntries = new HashSet(0);
-	private Set friends = new HashSet(0);
 
 	public WeiboUrl() {
 	}
@@ -23,12 +21,10 @@ public class WeiboUrl implements java.io.Serializable {
 		this.count = count;
 	}
 
-	public WeiboUrl(String weiboUrl, int count, String placeHolder, Set weiboEntries, Set friends) {
+	public WeiboUrl(String weiboUrl, int count, Set weiboEntries) {
 		this.weiboUrl = weiboUrl;
 		this.count = count;
-		this.placeHolder = placeHolder;
 		this.weiboEntries = weiboEntries;
-		this.friends = friends;
 	}
 
 	public Integer getWeiboId() {
@@ -55,28 +51,12 @@ public class WeiboUrl implements java.io.Serializable {
 		this.count = count;
 	}
 
-	public String getPlaceHolder() {
-		return this.placeHolder;
-	}
-
-	public void setPlaceHolder(String placeHolder) {
-		this.placeHolder = placeHolder;
-	}
-
 	public Set getWeiboEntries() {
 		return this.weiboEntries;
 	}
 
 	public void setWeiboEntries(Set weiboEntries) {
 		this.weiboEntries = weiboEntries;
-	}
-
-	public Set getFriends() {
-		return this.friends;
-	}
-
-	public void setFriends(Set friends) {
-		this.friends = friends;
 	}
 
 }
