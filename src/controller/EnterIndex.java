@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder.Case;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.type.StandardBasicTypes;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -137,14 +138,29 @@ public class EnterIndex extends ActionSupport{
 		Transaction transaction = session.beginTransaction();
 		User user = (User) session.get(User.class, userId);
 		
-		Iterator iterator = user.getFriends().iterator();
-		if (iterator.hasNext()) {
-			Friend friend = (Friend) iterator.next();
-			context.getSession().put("friendId", friend.getFriendId().intValue());
-			
-		} else {
+		String sqlQuery = "select * from friend where users_userID = :userId limit 1";
+		List qList = session.createSQLQuery(sqlQuery)
+				.addScalar("friendID", StandardBasicTypes.INTEGER)
+				.setInteger("userId", new Integer(userId))
+				.list();
+		System.out.println(qList);	
+		
+		
+		if (qList.isEmpty()) {
 			context.getSession().put("friendId", 0);
+		} else {
+			Integer friendIDInteger = (Integer) qList.get(0);
+			context.getSession().put("friendId", friendIDInteger.intValue());
 		}
+		
+//		Iterator iterator = user.getFriends().iterator();
+//		if (iterator.hasNext()) {
+//			Friend friend = (Friend) iterator.next();
+//			context.getSession().put("friendId", friend.getFriendId().intValue());
+//			
+//		} else {
+//			context.getSession().put("friendId", 0);
+//		}
 		
 		transaction.commit();
 		HibernateUtil.closeSession();
@@ -175,13 +191,26 @@ public class EnterIndex extends ActionSupport{
 			switch (selectedPlat) {
 			case "weibo":
 				//TODO: need thinking about hasWeibo = false condition.
-				setSelectedEntries(friend.getWeiboUrl().getWeiboEntries());
+				if (friend.isHasWeibo()) {
+					setSelectedEntries(friend.getWeiboUrl().getWeiboEntries());
+				} else {
+					setSelectedEntries(new HashSet(0));
+				}
 				break;
 			case "zhihu":
-				setSelectedEntries(friend.getZhihuUrl().getZhihuEntries());
+				if (friend.isHasZhihu()) {
+					setSelectedEntries(friend.getZhihuUrl().getZhihuEntries());
+				} else {
+					setSelectedEntries(new HashSet(0));
+				}
+				
 				break;
 			case "csdn":
-				setSelectedEntries(friend.getCsdnUrl().getCsdnEntries());
+				if (friend.isHasCsdn()) {
+					setSelectedEntries(friend.getCsdnUrl().getCsdnEntries());
+				} else {
+					setSelectedEntries(new HashSet(0));
+				}
 				break;
 			default:
 				break;
@@ -212,6 +241,7 @@ public class EnterIndex extends ActionSupport{
 //		HibernateUtil.closeSession();
 //		return SUCCESS;
 //	}
+	
 	public String enterIndexWithSelectedFriend() {
 		ActionContext context = ActionContext.getContext();
 		context.getSession().put("friendId", friendId.intValue());

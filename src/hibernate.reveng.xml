@@ -3,14 +3,12 @@
 
 <hibernate-reverse-engineering>
 
-	<table-filter match-catalog="db" match-name="csdn_url"/>
-	<table-filter match-catalog="db" match-name="friend" exclude="true" />
-	<table-filter match-catalog="db" match-name="user" exclude="true" />
-	<table-filter match-catalog="db" match-name="weibo_entry"
-		exclude="true" />
-	<table-filter match-catalog="db" match-name="weibo_url"
-		exclude="true" />
-	<table-filter match-catalog="db" match-name="zhihu_url"/>
-	<table-filter match-name="csdn_entry" match-catalog="db"></table-filter>
-	<table-filter match-name="zhihu_entry" match-catalog="db"></table-filter>
+	<table-filter match-catalog="db" match-name="csdn_url" exclude="true"/>
+	<table-filter match-catalog="db" match-name="friend" exclude="true"/>
+	<table-filter match-catalog="db" match-name="user" exclude="true"/>
+	<table-filter match-catalog="db" match-name="weibo_entry"/>
+	<table-filter match-catalog="db" match-name="weibo_url" exclude="true"/>
+	<table-filter match-catalog="db" match-name="zhihu_url" exclude="true"/>
+	<table-filter match-name="csdn_entry" match-catalog="db" exclude="true"></table-filter>
+	<table-filter match-name="zhihu_entry" match-catalog="db" exclude="true"></table-filter>
 </hibernate-reverse-engineering>

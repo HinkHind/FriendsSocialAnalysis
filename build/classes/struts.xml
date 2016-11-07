@@ -22,11 +22,35 @@
             </result>
         </action>
         
-        <!-- <action name="addFriend" class = "controller.ManageFriend" method = "addFriend">
-            <result type = "redirect">
-                index.action
+        <action name = "enterIndex" class = "controller.EnterIndex" method = "enterIndex">
+        	<result>
+        		index.jsp
+        	</result>
+        </action>
+        <action name = "enterControl" class = "controller.ManageFriend" method = "loadControlData">
+        	<result>
+        		control.jsp
+        	</result>
+        
+        </action>
+        
+        <action name = "addWeiboUrl" class = "controller.ManageFriend" method = "addWeiboUrl">
+        	<result type = "redirectAction">
+            	<param name="actionName">enterControl</param>
             </result>
-        </action> -->
+        </action>
+        
+        <action name = "removeWeiboUrl" class = "controller.ManageFriend" method = "removeWeiboUrl">
+        	<result type = "redirectAction">
+            	<param name="actionName">enterControl</param>
+            </result>
+        </action>
+        
+        <action name="addFriend" class = "controller.ManageFriend" method = "addFriend">
+            <result type = "redirectAction">
+            	<param name="actionName">enterControl</param>
+            </result>
+        </action>
         
         <action name = "enterIndexInitially" class = "controller.EnterIndex" method = "enterIndexInitially">
         	<result>

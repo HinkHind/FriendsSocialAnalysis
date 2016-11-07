@@ -1,5 +1,5 @@
 package hibernateMapping;
-// Generated 2016-11-6 18:04:40 by Hibernate Tools 5.2.0.Beta1
+// Generated 2016-11-7 15:03:58 by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,6 +13,7 @@ public class CsdnUrl implements java.io.Serializable {
 	private String csdnUrl;
 	private int count;
 	private String attributeHolder;
+	private Set friends = new HashSet(0);
 	private Set csdnEntries = new HashSet(0);
 
 	public CsdnUrl() {
@@ -22,10 +23,11 @@ public class CsdnUrl implements java.io.Serializable {
 		this.count = count;
 	}
 
-	public CsdnUrl(String csdnUrl, int count, String attributeHolder, Set csdnEntries) {
+	public CsdnUrl(String csdnUrl, int count, String attributeHolder, Set friends, Set csdnEntries) {
 		this.csdnUrl = csdnUrl;
 		this.count = count;
 		this.attributeHolder = attributeHolder;
+		this.friends = friends;
 		this.csdnEntries = csdnEntries;
 	}
 
@@ -59,6 +61,14 @@ public class CsdnUrl implements java.io.Serializable {
 
 	public void setAttributeHolder(String attributeHolder) {
 		this.attributeHolder = attributeHolder;
+	}
+
+	public Set getFriends() {
+		return this.friends;
+	}
+
+	public void setFriends(Set friends) {
+		this.friends = friends;
 	}
 
 	public Set getCsdnEntries() {

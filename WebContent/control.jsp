@@ -4,13 +4,12 @@
 
 <%@taglib prefix="s" uri="/struts-tags" %>
 
-
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>好友社交分析系统</title>
+    <title>控制面板</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -18,6 +17,11 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
+        #form1{
+            margin-top: 20px;
+            margin-left: 0;
+            margin-right: auto;
+        }
         .embed-responsive{
             background-color: silver;
             float:right;
@@ -25,8 +29,7 @@
             height:60%;
             margin:5px;
         }
-        .list-group{
-            background-color: silver;
+        .panel-default{
             float:left;
             width:15%;
             height:60%;
@@ -39,7 +42,7 @@
             var mymessage=confirm("确定退出？");
             if(mymessage==true)
             {
-                window.location.href='signIn.jsp';
+                window.location.href='signin.html';
             }
         }
     </script>
@@ -61,8 +64,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href='<s:url action="enterIndex"></s:url>'>个人主页<span class="sr-only">(current)</span></a></li>
-                <li><a href='<s:url action="enterControl"></s:url>'>控制面板</a></li>
+                <li><a href='<s:url action="enterIndex"></s:url>'>个人主页</a></li>
+                <li class="active"><a href="#">控制面板<span class="sr-only">(current)</span></a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其它功能 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -83,67 +86,75 @@
     </div><!-- /.container-fluid -->
 </nav>
 <!--左侧菜单-->
-<div class="list-group">
-    <a href="#" class="list-group-item disabled">
-        全部动态
-    </a>
-    
-    <s:iterator value="friends">
-    <!--  <a href="control.html" class="list-group-item"><span class="badge">1</span>韩 寒</a>
-    <a href="#" class="list-group-item"><span class="badge">5</span>关注用户1</a>
-    <a href="#" class="list-group-item"><span class="badge">3</span>关注用户1</a>
-    <a href="#" class="list-group-item"><span class="badge">0</span>关注用户1</a>
-    <a href="#" class="list-group-item"><span class="badge">1</span>关注用户1</a>
-    <a href="#" class="list-group-item"><span class="badge">5</span>关注用户1</a>
-    <a href="#" class="list-group-item"><span class="badge">3</span>关注用户1</a>
-    <a href="#" class="list-group-item"><span class="badge">0</span>关注用户1</a>
-   <a href='<s:url action="QueryByTitle"><s:param name="title" value="title" /></s:url>'>
-                   
-                   		<s:property value="title" />
-                   </a>
-                   -->
-    	<a href = '<s:url action="enterIndexWithSelectedFriend"><s:param name="friendId" value="friendId" /></s:url>'
-    	class="list-group-item"><span class="badge">5</span>
-    	<s:property value="friendName" />
-    	</a>
-    </s:iterator>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-user">当前关注</span></h3>
+    </div>
+    <div class="panel-body">
+        韩寒：CSDN Weibo
+
+        <form class="form-horizontal" id="form1" role="form">
+            <div class="form-group">
+                <label for="inputText2" class="col-sm-3  control-label">Weibo</label>
+                <div class="col-sm-10 col-lg-12">
+                    <input type="text" class="form-control" id="inputText2" placeholder="Text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputText3" class="col-sm-3 control-label">CSDN</label>
+                <div class="col-sm-10 col-lg-12">
+                    <input type="password" class="form-control" id="inputText3" placeholder="Text">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-10" id="button1">
+                    <button type="submit" class="btn btn-default">保存</button>
+                    <button type="submit" class="btn btn-default col-sm-offset-2">删除</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 
 <!-- 4:3 aspect ratio 右侧动态 -->
 
 <div class="embed-responsive embed-responsive-4by3">
-    <!--<iframe class="embed-responsive-item" src="content.jsp"></iframe>  -->
-    <h1>最新更新</h1>
-	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'zhihu'" /></s:url>'>
-    	zhihu
-    	</a>
-	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'weibo'" /></s:url>'>
-    	weibo
-    	</a>
-    	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'csdn'" /></s:url>'>
-    	csdn
-    	</a>
-    	<br/>
-    	<s:debug></s:debug>
-	<s:iterator value="selectedEntries">
+    <!--<iframe class="embed-responsive-item" src="content.html"></iframe>-->
+
+    <s:debug></s:debug>
+    <s:iterator value = "friends">
 		<div class="panel panel-default">
 	    	<div class="panel-body">
-				<s:property value="contentHolder" />
+				<s:property value="friendName" />
+				<form action = "addWeiboUrl">
+					<input type = "text" name = "weiboUrlStr" placeholder = "weiboUrl">
+					<input type="hidden" name="friendId" value='<s:property value = "friendId"/>'> 
+					<input type = "submit">
+				</form>
+				
+				<a href='<s:url action="removeWeiboUrl"><s:param name="friendId" value="friendId" /></s:url>'>
+                                remove Weibo Url
+                            </a>
+				
 	    	</div>
-		</div>
+		</div> 
 	</s:iterator>
+
+	<form action = "addFriend">
+		<input type = "text" name = "friendName" placeholder = "friendName">
+		<input type = "submit">
+	</form>
 </div>
-<!--
-<ul class="nav nav-tabs" role="tablist" id="main">
-    <li role="presentation" class="active"><a href="#">Home</a></li>
-    <li role="presentation"><a href="#">Profile</a></li>
-    <li role="presentation"><a href="#">Messages</a></li>
-</ul>
--->
+
+	
+	
+	
+
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>

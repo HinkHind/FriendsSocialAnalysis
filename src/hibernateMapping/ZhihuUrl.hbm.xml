@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-11-6 18:04:40 by Hibernate Tools 5.2.0.Beta1 -->
+<!-- Generated 2016-11-7 15:03:58 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
     <class name="hibernateMapping.ZhihuUrl" table="zhihu_url" catalog="db" optimistic-lock="version">
         <id name="zhihuId" type="java.lang.Integer">
@@ -14,6 +14,12 @@
         <property name="count" type="int">
             <column name="count" not-null="true" />
         </property>
+        <set name="friends" table="friend" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="zhihuID" />
+            </key>
+            <one-to-many class="hibernateMapping.Friend" />
+        </set>
         <set name="zhihuEntries" table="zhihu_entry" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="zhihuID" not-null="true" />

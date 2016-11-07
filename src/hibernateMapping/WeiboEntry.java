@@ -1,5 +1,5 @@
 package hibernateMapping;
-// Generated 2016-11-5 19:39:13 by Hibernate Tools 5.2.0.Beta1
+// Generated 2016-11-7 21:51:51 by Hibernate Tools 5.2.0.Beta1
 
 import java.util.Date;
 
@@ -9,30 +9,52 @@ import java.util.Date;
 public class WeiboEntry implements java.io.Serializable {
 
 	private Integer entryId;
-	private WeiboUrl weiboUrl;
+	private int weiboId;
 	private String contentHolder;
 	private Date publishedTime;
 	private boolean hasRead;
 	private String classHolder;
-	private String weiboEntriescol;
+	private String entryUrl;
+	private String text;
+	private Integer likeNumber;
+	private Integer shareNumber;
+	private Integer commentNumber;
+	private String sourceDevice;
+	private Boolean isShared;
+	private Integer originLikeNumber;
+	private Integer originShareNumber;
+	private String originText;
+	private Integer originCommentNumber;
 
 	public WeiboEntry() {
 	}
 
-	public WeiboEntry(WeiboUrl weiboUrl, Date publishedTime, boolean hasRead) {
-		this.weiboUrl = weiboUrl;
+	public WeiboEntry(int weiboId, Date publishedTime, boolean hasRead) {
+		this.weiboId = weiboId;
 		this.publishedTime = publishedTime;
 		this.hasRead = hasRead;
 	}
 
-	public WeiboEntry(WeiboUrl weiboUrl, String contentHolder, Date publishedTime, boolean hasRead, String classHolder,
-			String weiboEntriescol) {
-		this.weiboUrl = weiboUrl;
+	public WeiboEntry(int weiboId, String contentHolder, Date publishedTime, boolean hasRead, String classHolder,
+			String entryUrl, String text, Integer likeNumber, Integer shareNumber, Integer commentNumber,
+			String sourceDevice, Boolean isShared, Integer originLikeNumber, Integer originShareNumber,
+			String originText, Integer originCommentNumber) {
+		this.weiboId = weiboId;
 		this.contentHolder = contentHolder;
 		this.publishedTime = publishedTime;
 		this.hasRead = hasRead;
 		this.classHolder = classHolder;
-		this.weiboEntriescol = weiboEntriescol;
+		this.entryUrl = entryUrl;
+		this.text = text;
+		this.likeNumber = likeNumber;
+		this.shareNumber = shareNumber;
+		this.commentNumber = commentNumber;
+		this.sourceDevice = sourceDevice;
+		this.isShared = isShared;
+		this.originLikeNumber = originLikeNumber;
+		this.originShareNumber = originShareNumber;
+		this.originText = originText;
+		this.originCommentNumber = originCommentNumber;
 	}
 
 	public Integer getEntryId() {
@@ -43,12 +65,12 @@ public class WeiboEntry implements java.io.Serializable {
 		this.entryId = entryId;
 	}
 
-	public WeiboUrl getWeiboUrl() {
-		return this.weiboUrl;
+	public int getWeiboId() {
+		return this.weiboId;
 	}
 
-	public void setWeiboUrl(WeiboUrl weiboUrl) {
-		this.weiboUrl = weiboUrl;
+	public void setWeiboId(int weiboId) {
+		this.weiboId = weiboId;
 	}
 
 	public String getContentHolder() {
@@ -83,12 +105,92 @@ public class WeiboEntry implements java.io.Serializable {
 		this.classHolder = classHolder;
 	}
 
-	public String getWeiboEntriescol() {
-		return this.weiboEntriescol;
+	public String getEntryUrl() {
+		return this.entryUrl;
 	}
 
-	public void setWeiboEntriescol(String weiboEntriescol) {
-		this.weiboEntriescol = weiboEntriescol;
+	public void setEntryUrl(String entryUrl) {
+		this.entryUrl = entryUrl;
+	}
+
+	public String getText() {
+		return this.text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public Integer getLikeNumber() {
+		return this.likeNumber;
+	}
+
+	public void setLikeNumber(Integer likeNumber) {
+		this.likeNumber = likeNumber;
+	}
+
+	public Integer getShareNumber() {
+		return this.shareNumber;
+	}
+
+	public void setShareNumber(Integer shareNumber) {
+		this.shareNumber = shareNumber;
+	}
+
+	public Integer getCommentNumber() {
+		return this.commentNumber;
+	}
+
+	public void setCommentNumber(Integer commentNumber) {
+		this.commentNumber = commentNumber;
+	}
+
+	public String getSourceDevice() {
+		return this.sourceDevice;
+	}
+
+	public void setSourceDevice(String sourceDevice) {
+		this.sourceDevice = sourceDevice;
+	}
+
+	public Boolean getIsShared() {
+		return this.isShared;
+	}
+
+	public void setIsShared(Boolean isShared) {
+		this.isShared = isShared;
+	}
+
+	public Integer getOriginLikeNumber() {
+		return this.originLikeNumber;
+	}
+
+	public void setOriginLikeNumber(Integer originLikeNumber) {
+		this.originLikeNumber = originLikeNumber;
+	}
+
+	public Integer getOriginShareNumber() {
+		return this.originShareNumber;
+	}
+
+	public void setOriginShareNumber(Integer originShareNumber) {
+		this.originShareNumber = originShareNumber;
+	}
+
+	public String getOriginText() {
+		return this.originText;
+	}
+
+	public void setOriginText(String originText) {
+		this.originText = originText;
+	}
+
+	public Integer getOriginCommentNumber() {
+		return this.originCommentNumber;
+	}
+
+	public void setOriginCommentNumber(Integer originCommentNumber) {
+		this.originCommentNumber = originCommentNumber;
 	}
 
 }
