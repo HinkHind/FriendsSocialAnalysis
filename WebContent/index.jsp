@@ -128,7 +128,12 @@
 	<s:iterator value="selectedEntries">
 		<div class="panel panel-default">
 	    	<div class="panel-body">
+	    		<s:if test = "#session.selectedPlatform == \"weibo\"">
+	    			<s:property value="text" />
+	    		</s:if>
+	    		<s:else>
 				<s:property value="contentHolder" />
+	    		</s:else>
 	    	</div>
 		</div>
 	</s:iterator>

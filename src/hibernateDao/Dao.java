@@ -92,34 +92,34 @@ public class Dao {
 		HibernateUtil.closeSession();
 	}
 	
-	public static WeiboUrl saveWeiboUrlToFriend(String weiboUrl) {
-		Session session = HibernateUtil.currentSession();
-		Transaction transaction = session.beginTransaction();
-		String sqlString = "select * from weibo_url where weiboUrl = :weiboUrl";
-		List queryList = session.createSQLQuery(sqlString).addEntity(WeiboUrl.class)
-				.setString("weiboUrl", weiboUrl)
-				.list();
-		
-		WeiboUrl weiboUrl2 = null,weiboUrl3 = null;
-		if (queryList.isEmpty()) {
-			weiboUrl2 = new WeiboUrl(weiboUrl, 1, "t", new HashSet<>(), new HashSet<>());
-			session.save(weiboUrl2);
-		} else {
-			weiboUrl3 = (WeiboUrl) queryList.get(0);
-			weiboUrl3.setCount(weiboUrl3.getCount() + 1);
-		}
-		
-		
-		transaction.commit();
-		HibernateUtil.closeSession();
-		
-		if (queryList.isEmpty()) {
-			return weiboUrl2;
-		} else {
-			return weiboUrl3;
-		}
-		
-	}
+//	public static WeiboUrl saveWeiboUrlToFriend(String weiboUrl) {
+//		Session session = HibernateUtil.currentSession();
+//		Transaction transaction = session.beginTransaction();
+//		String sqlString = "select * from weibo_url where weiboUrl = :weiboUrl";
+//		List queryList = session.createSQLQuery(sqlString).addEntity(WeiboUrl.class)
+//				.setString("weiboUrl", weiboUrl)
+//				.list();
+//		
+//		WeiboUrl weiboUrl2 = null,weiboUrl3 = null;
+//		if (queryList.isEmpty()) {
+//			weiboUrl2 = new WeiboUrl(weiboUrl, 1, "t", new HashSet<>(), new HashSet<>());
+//			session.save(weiboUrl2);
+//		} else {
+//			weiboUrl3 = (WeiboUrl) queryList.get(0);
+//			weiboUrl3.setCount(weiboUrl3.getCount() + 1);
+//		}
+//		
+//		
+//		transaction.commit();
+//		HibernateUtil.closeSession();
+//		
+//		if (queryList.isEmpty()) {
+//			return weiboUrl2;
+//		} else {
+//			return weiboUrl3;
+//		}
+//		
+//	}
 	
 	
 	

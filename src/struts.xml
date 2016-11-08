@@ -34,7 +34,7 @@
         
         </action>
         
-        <action name = "addWeiboUrl" class = "controller.ManageFriend" method = "addWeiboUrl">
+        <action name = "updateWeiboUrl" class = "controller.ManageFriend" method = "addWeiboUrl">
         	<result type = "redirectAction">
             	<param name="actionName">enterControl</param>
             </result>

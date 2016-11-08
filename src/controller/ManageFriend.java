@@ -152,30 +152,66 @@ public class ManageFriend extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	
+	/**
+	 * suppose that the friend does not have weiboUrl (hasWeiboUrl = false;)
+	 * @return
+	 */
 	public String addWeiboUrl() {
-		
-		
-		//ActionContext context = ActionContext.getContext();
-		//int userID = (int) context.getSession().get("userID");
-		//User user = Dao.getUser(userID);
-		//System.out.println(friendId);
+		int userId = Util.getUserIdFromSession();
 		Session session = HibernateUtil.currentSession();
 		Transaction transaction = session.beginTransaction();
-		Friend friend = (Friend) session.get(Friend.class, friendId);
 		
-		String sqlQuery = "select * from weibo_url where weiboUrl = :weiboUrl limit 1";
-		
-		List queryList = session.createSQLQuery(sqlQuery)
+		String sqlString = "select * from weibo_url where weiboUrl = :weiboUrlStr limit 1";
+		List qList = session.createSQLQuery(sqlString)
 				.addEntity(WeiboUrl.class)
-				.setString("weiboUrl", weiboUrlStr)
+				.setString("weiboUrlStr",getWeiboUrlStr())
 				.list();
 		
+		Friend friend = (Friend) session.get(Friend.class, getFriendId());
+		
+		WeiboUrl weiboUrl = null;
+		if (qList.isEmpty()) {
+			weiboUrl = new WeiboUrl();
+			weiboUrl.setCount(1);
+			weiboUrl.setWeiboUrl(getWeiboUrlStr());
+			session.save(weiboUrl);
+		} else {
+			weiboUrl = (WeiboUrl) qList.get(0);
+			weiboUrl.setCount(weiboUrl.getCount() + 1);
+			session.save(weiboUrl);
+		}
 		
 		friend.setHasWeibo(true);
-		WeiboUrl weiboUrlObj = Dao.saveWeiboUrl(weiboUrl);
-		friend.setWeiboUrl(weiboUrlObj);
+		friend.setWeiboUrl(weiboUrl);
+		session.save(friend);
 		
+		transaction.commit();
+		HibernateUtil.closeSession();
 		return SUCCESS;
 	}
+	
+	public String updateWeiboUrl() {
+		
+		Session session = HibernateUtil.currentSession();
+		Transaction transaction = session.beginTransaction();
+		
+		Friend friend = (Friend)session.get(Friend.class, friendId);
+		
+		transaction.commit();
+		HibernateUtil.closeSession();
+		
+		
+		if (getWeiboUrlStr() == friend.getWeiboUrl().getWeiboUrl()) {
+			return SUCCESS;
+		} else {
+			if (friend.isHasWeibo()) {
+				removeWeiboUrl();
+			}
+			addWeiboUrl();
+			return SUCCESS;
+		}
+	}
+	
 }
+
+
