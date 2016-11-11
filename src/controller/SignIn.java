@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import hibernateDao.Dao;
 import hibernateMapping.User;
+import hibernateUtil.*;
 
 public class SignIn extends ActionSupport{
 	
@@ -49,7 +50,7 @@ public class SignIn extends ActionSupport{
 		} else {
 			ActionContext context = ActionContext.getContext();
 			Map sess = context.getSession();
-			sess.put("userID", signInUser.getUserId().intValue());
+			sess.put("userId", signInUser.getUserId().intValue());
 			
 			return LOGIN;
 		}

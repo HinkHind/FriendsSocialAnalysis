@@ -39,7 +39,7 @@
             var mymessage=confirm("确定退出？");
             if(mymessage==true)
             {
-                window.location.href='signin.html';
+                window.location.href='signIn.jsp';
             }
         }
     </script>
@@ -61,8 +61,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">个人主页<span class="sr-only">(current)</span></a></li>
-                <li><a href="control.html">控制面板</a></li>
+                <li class="active"><a href='<s:url action="enterIndex"></s:url>'>个人主页<span class="sr-only">(current)</span></a></li>
+                <li><a href='<s:url action="enterControl"></s:url>'>控制面板</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其它功能 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -114,14 +114,38 @@
 <div class="embed-responsive embed-responsive-4by3">
     <!--<iframe class="embed-responsive-item" src="content.jsp"></iframe>  -->
     <h1>最新更新</h1>
-
-	<s:iterator value="weiboEntrys">
+	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'zhihu'" /></s:url>'>
+    	zhihu
+    	</a>
+	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'weibo'" /></s:url>'>
+    	weibo
+    	</a>
+    	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'csdn'" /></s:url>'>
+    	csdn
+    	</a>
+    	<br/>
+    	<s:debug></s:debug>
+	<s:iterator value="selectedEntries">
 		<div class="panel panel-default">
 	    	<div class="panel-body">
+	    		<s:if test = "#session.selectedPlatform == \"weibo\"">
+	    			<s:property value="text" />
+	    		</s:if>
+	    		<s:else>
 				<s:property value="contentHolder" />
+	    		</s:else>
 	    	</div>
 		</div>
 	</s:iterator>
+	
+	<h3>下面的表单是为了测试用来加条目的，只支持微博，zhihu</h3>
+    <form action = "addEntry">
+		<input type = "text" name = "entryStr" >
+		<input type="hidden" name="selectedPlat" value='<s:property value="#session.selectedPlatform" />'> 
+		<input type = "submit">
+	</form>
+	
+	
 </div>
 <!--
 <ul class="nav nav-tabs" role="tablist" id="main">

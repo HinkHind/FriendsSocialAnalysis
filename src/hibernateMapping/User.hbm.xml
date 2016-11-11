@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-11-5 19:39:13 by Hibernate Tools 5.2.0.Beta1 -->
+<!-- Generated 2016-11-10 23:45:35 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
     <class name="hibernateMapping.User" table="user" catalog="db" optimistic-lock="version">
         <id name="userId" type="java.lang.Integer">
@@ -14,15 +14,9 @@
         <property name="password" type="string">
             <column name="password" length="30" not-null="true" />
         </property>
-        <property name="imgUrl" type="string">
-            <column name="imgUrl" length="128" not-null="true" />
-        </property>
-        <property name="lastActivity" type="timestamp">
-            <column name="lastActivity" length="19" not-null="true" />
-        </property>
-        <set name="friends" table="friend" inverse="true" lazy="true" fetch="select">
+        <set name="friends" table="friend" order-by = "friendID asc" inverse="true" lazy="false" fetch="select">
             <key>
-                <column name="users_userID" not-null="true" />
+                <column name="userID" not-null="true" />
             </key>
             <one-to-many class="hibernateMapping.Friend" />
         </set>

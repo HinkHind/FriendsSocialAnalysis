@@ -1,5 +1,5 @@
 package hibernateMapping;
-// Generated 2016-11-5 19:39:13 by Hibernate Tools 5.2.0.Beta1
+// Generated 2016-11-10 23:45:35 by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,6 +13,7 @@ public class ZhihuUrl implements java.io.Serializable {
 	private String zhihuUrl;
 	private int count;
 	private Set friends = new HashSet(0);
+	private Set zhihuEntries = new HashSet(0);
 
 	public ZhihuUrl() {
 	}
@@ -21,10 +22,11 @@ public class ZhihuUrl implements java.io.Serializable {
 		this.count = count;
 	}
 
-	public ZhihuUrl(String zhihuUrl, int count, Set friends) {
+	public ZhihuUrl(String zhihuUrl, int count, Set friends, Set zhihuEntries) {
 		this.zhihuUrl = zhihuUrl;
 		this.count = count;
 		this.friends = friends;
+		this.zhihuEntries = zhihuEntries;
 	}
 
 	public Integer getZhihuId() {
@@ -57,6 +59,14 @@ public class ZhihuUrl implements java.io.Serializable {
 
 	public void setFriends(Set friends) {
 		this.friends = friends;
+	}
+
+	public Set getZhihuEntries() {
+		return this.zhihuEntries;
+	}
+
+	public void setZhihuEntries(Set zhihuEntries) {
+		this.zhihuEntries = zhihuEntries;
 	}
 
 }

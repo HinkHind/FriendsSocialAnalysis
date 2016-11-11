@@ -1,7 +1,6 @@
 package hibernateMapping;
-// Generated 2016-11-5 19:39:13 by Hibernate Tools 5.2.0.Beta1
+// Generated 2016-11-10 23:45:35 by Hibernate Tools 5.2.0.Beta1
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,25 +12,19 @@ public class User implements java.io.Serializable {
 	private Integer userId;
 	private String userName;
 	private String password;
-	private String imgUrl;
-	private Date lastActivity;
 	private Set friends = new HashSet(0);
 
 	public User() {
 	}
 
-	public User(String userName, String password, String imgUrl, Date lastActivity) {
+	public User(String userName, String password) {
 		this.userName = userName;
 		this.password = password;
-		this.imgUrl = imgUrl;
-		this.lastActivity = lastActivity;
 	}
 
-	public User(String userName, String password, String imgUrl, Date lastActivity, Set friends) {
+	public User(String userName, String password, Set friends) {
 		this.userName = userName;
 		this.password = password;
-		this.imgUrl = imgUrl;
-		this.lastActivity = lastActivity;
 		this.friends = friends;
 	}
 
@@ -57,22 +50,6 @@ public class User implements java.io.Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getImgUrl() {
-		return this.imgUrl;
-	}
-
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
-	}
-
-	public Date getLastActivity() {
-		return this.lastActivity;
-	}
-
-	public void setLastActivity(Date lastActivity) {
-		this.lastActivity = lastActivity;
 	}
 
 	public Set getFriends() {

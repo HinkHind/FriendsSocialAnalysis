@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-10 23:45:35 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="hibernateMapping.Friend" table="friend" catalog="db" optimistic-lock="version">
+        <id name="friendId" type="java.lang.Integer">
+            <column name="friendID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="csdnUrl" class="hibernateMapping.CsdnUrl" fetch="select">
+            <column name="csdnID" />
+        </many-to-one>
+        <many-to-one name="user" class="hibernateMapping.User" fetch="select">
+            <column name="userID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="weiboUrl" class="hibernateMapping.WeiboUrl" fetch="select">
+            <column name="weiboID" />
+        </many-to-one>
+        <many-to-one name="zhihuUrl" class="hibernateMapping.ZhihuUrl" fetch="select">
+            <column name="zhihuID" />
+        </many-to-one>
+        <property name="friendName" type="string">
+            <column name="friendName" length="20" not-null="true" />
+        </property>
+        <property name="hasCsdn" type="boolean">
+            <column name="hasCsdn" not-null="true" />
+        </property>
+        <property name="hasWeibo" type="boolean">
+            <column name="hasWeibo" not-null="true" />
+        </property>
+        <property name="hasZhihu" type="boolean">
+            <column name="hasZhihu" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

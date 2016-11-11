@@ -3,6 +3,10 @@
                                          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
  <session-factory name="">
+  
+  <!-- <property name="hibernate.show_sql">true</property> -->
+  
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
   <property name="hibernate.connection.password">123456789</property>
   <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db</property>
@@ -14,6 +18,8 @@
   <mapping resource="hibernateMapping/WeiboEntry.hbm.xml"/>
   <mapping resource="hibernateMapping/WeiboUrl.hbm.xml"/>
   <mapping resource="hibernateMapping/ZhihuUrl.hbm.xml"/>
+  <mapping resource="hibernateMapping/CsdnEntry.hbm.xml"/>
+  <mapping resource="hibernateMapping/ZhihuEntry.hbm.xml"/>
   <!--<property name="hbm2ddl.auto">update</property>  -->
  </session-factory>
 </hibernate-configuration>
