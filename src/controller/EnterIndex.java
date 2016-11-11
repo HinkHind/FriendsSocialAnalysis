@@ -22,20 +22,7 @@ public class EnterIndex extends ActionSupport{
 	
 	private Set friends;
 	 
-	private Set weiboEntries;
-	private Set zhihuEntries;
-	private Set csdnEntries;
 	private Set selectedEntries;
-	
-	public Set getSelectedEntries() {
-		return selectedEntries;
-	}
-
-
-	public void setSelectedEntries(Set selectedEntries) {
-		this.selectedEntries = selectedEntries;
-	}
-
 	private Integer friendId;
 	private String selectedPlatform;
 	
@@ -43,45 +30,10 @@ public class EnterIndex extends ActionSupport{
 		return selectedPlatform;
 	}
 
-
 	public void setSelectedPlatform(String selectedPlatform) {
 		this.selectedPlatform = selectedPlatform;
 	}
-
-
-	public Set getWeiboEntries() {
-		return weiboEntries;
-	}
-
-
-	public void setWeiboEntries(Set weiboEntries) {
-		this.weiboEntries = weiboEntries;
-	}
-
-
-	public Set getZhihuEntries() {
-		return zhihuEntries;
-	}
-
-
-	public void setZhihuEntries(Set zhihuEntries) {
-		this.zhihuEntries = zhihuEntries;
-	}
-
-
-	public Set getCsdnEntries() {
-		return csdnEntries;
-	}
-
-
-	public void setCsdnEntries(Set csdnEntries) {
-		this.csdnEntries = csdnEntries;
-	}
-
 	
-	
-	
-
 	public Integer getFriendId() {
 		return friendId;
 	}
@@ -90,46 +42,26 @@ public class EnterIndex extends ActionSupport{
 	public void setFriendId(Integer friendId) {
 		this.friendId = friendId;
 	}
+	
+	
 
 
 	public Set getFriends() {
 		return friends;
 	}
 
-
 	public void setFriends(Set friends) {
 		this.friends = friends;
 	}
 
+	public Set getSelectedEntries() {
+		return selectedEntries;
+	}
 
+	public void setSelectedEntries(Set selectedEntries) {
+		this.selectedEntries = selectedEntries;
+	}
 
-
-
-
-//	public String enterIndex() {
-//		ActionContext context = ActionContext.getContext();
-//		int userID = (int) context.getSession().get("userID");
-//		Session session = HibernateUtil.currentSession();
-//		Transaction tx = session.beginTransaction();
-//		User user = (User) session.get(User.class, userID);
-//		setFriends(user.getFriends());
-//		
-//		Iterator iterator = friends.iterator();
-//		if (iterator.hasNext()) {
-//			Friend friend = (Friend) iterator.next();
-//			WeiboUrl weiboUrl = friend.getWeiboUrl();
-//			setSelectedEntries(weiboUrl.getWeiboEntries());
-//			//System.out.println(weiboEntries);
-//		} else {
-//			setSelectedEntries(new HashSet(0));
-//		}
-//		
-//		tx.commit();
-//		HibernateUtil.closeSession();
-//		
-//		return SUCCESS;
-//	}
-	
 	public String enterIndexInitially() {
 		ActionContext context = ActionContext.getContext();
 		int userId = (int) context.getSession().get("userId");
@@ -138,12 +70,12 @@ public class EnterIndex extends ActionSupport{
 		Transaction transaction = session.beginTransaction();
 		User user = (User) session.get(User.class, userId);
 		
-		String sqlQuery = "select * from friend where users_userID = :userId limit 1";
+		String sqlQuery = "select * from friend where userID = :userId limit 1";
 		List qList = session.createSQLQuery(sqlQuery)
 				.addScalar("friendID", StandardBasicTypes.INTEGER)
 				.setInteger("userId", new Integer(userId))
 				.list();
-		System.out.println(qList);	
+		//System.out.println(qList);	
 		
 		
 		if (qList.isEmpty()) {
@@ -153,18 +85,9 @@ public class EnterIndex extends ActionSupport{
 			context.getSession().put("friendId", friendIDInteger.intValue());
 		}
 		
-//		Iterator iterator = user.getFriends().iterator();
-//		if (iterator.hasNext()) {
-//			Friend friend = (Friend) iterator.next();
-//			context.getSession().put("friendId", friend.getFriendId().intValue());
-//			
-//		} else {
-//			context.getSession().put("friendId", 0);
-//		}
-		
 		transaction.commit();
 		HibernateUtil.closeSession();
-		loadIndexData();
+		//loadIndexData();
 		return SUCCESS;
 	}
 	
@@ -178,7 +101,10 @@ public class EnterIndex extends ActionSupport{
 		User user = (User) session.get(User.class, userId);
 		
 		//set friends;
+		
 		setFriends(user.getFriends());
+		
+		
 		
 		int friendId = (int) context.getSession().get("friendId");
 		
@@ -245,14 +171,14 @@ public class EnterIndex extends ActionSupport{
 	public String enterIndexWithSelectedFriend() {
 		ActionContext context = ActionContext.getContext();
 		context.getSession().put("friendId", friendId.intValue());
-		loadIndexData();
+		//loadIndexData();
 		return SUCCESS;
 	}
 	
 	public String enterIndexWithSelectedPlatform() {
 		ActionContext context = ActionContext.getContext();
 		context.getSession().put("selectedPlatform", selectedPlatform);
-		loadIndexData();
+		//loadIndexData();
 		return SUCCESS;
 	}
 	

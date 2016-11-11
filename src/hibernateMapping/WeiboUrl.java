@@ -1,5 +1,5 @@
 package hibernateMapping;
-// Generated 2016-11-7 22:10:10 by Hibernate Tools 5.2.0.Beta1
+// Generated 2016-11-10 23:45:35 by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,6 +13,7 @@ public class WeiboUrl implements java.io.Serializable {
 	private String weiboUrl;
 	private int count;
 	private Set weiboEntries = new HashSet(0);
+	private Set friends = new HashSet(0);
 
 	public WeiboUrl() {
 	}
@@ -21,10 +22,11 @@ public class WeiboUrl implements java.io.Serializable {
 		this.count = count;
 	}
 
-	public WeiboUrl(String weiboUrl, int count, Set weiboEntries) {
+	public WeiboUrl(String weiboUrl, int count, Set weiboEntries, Set friends) {
 		this.weiboUrl = weiboUrl;
 		this.count = count;
 		this.weiboEntries = weiboEntries;
+		this.friends = friends;
 	}
 
 	public Integer getWeiboId() {
@@ -57,6 +59,14 @@ public class WeiboUrl implements java.io.Serializable {
 
 	public void setWeiboEntries(Set weiboEntries) {
 		this.weiboEntries = weiboEntries;
+	}
+
+	public Set getFriends() {
+		return this.friends;
+	}
+
+	public void setFriends(Set friends) {
+		this.friends = friends;
 	}
 
 }

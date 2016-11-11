@@ -1,7 +1,9 @@
 package controller;
 
 import java.util.Date;
+import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
@@ -46,9 +48,13 @@ public class SignUp extends ActionSupport{
 
 	public String signUp() {
 		
-		User user = new User(userName, password, "1", new Date());
+		User user = new User(userName, password);
 		System.out.println(userName+" "+password);
 		Dao.saveUser(user);
+		ActionContext context = ActionContext.getContext();
+		Map sess = context.getSession();
+		sess.put("userId", user.getUserId().intValue());
+		
 		return SUCCESS;
 	}
 	

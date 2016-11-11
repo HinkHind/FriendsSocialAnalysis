@@ -1,5 +1,5 @@
 package hibernateMapping;
-// Generated 2016-11-7 15:03:58 by Hibernate Tools 5.2.0.Beta1
+// Generated 2016-11-10 23:45:35 by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-11-7 15:03:58 by Hibernate Tools 5.2.0.Beta1 -->
+<!-- Generated 2016-11-10 23:45:35 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
     <class name="hibernateMapping.ZhihuEntry" table="zhihu_entry" catalog="db" optimistic-lock="version">
         <id name="entryId" type="java.lang.Integer">

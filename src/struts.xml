@@ -7,9 +7,10 @@
 
 
     <package name="controller" namespace="/" extends="struts-default">
+        
         <action name="signUp" class = "controller.SignUp" method = "signUp">
-            <result >
-                newFriend.jsp
+            <result type = "redirectAction">
+            	<param name="actionName">enterControl</param>
             </result>
         </action>
         
@@ -22,11 +23,32 @@
             </result>
         </action>
         
+        
         <action name = "enterIndex" class = "controller.EnterIndex" method = "enterIndex">
         	<result>
         		index.jsp
         	</result>
         </action>
+        
+        <action name = "enterIndexInitially" class = "controller.EnterIndex" method = "enterIndexInitially">
+        	<result type = "redirectAction">
+            	<param name="actionName">enterIndex</param>
+            </result>
+        </action>
+        
+        <action name = "enterIndexWithSelectedFriend" class = "controller.EnterIndex" method = "enterIndexWithSelectedFriend">
+        	<result type = "redirectAction">
+            	<param name="actionName">enterIndex</param>
+            </result>
+        </action>
+        
+        <action name = "enterIndexWithSelectedPlatform" class = "controller.EnterIndex" method = "enterIndexWithSelectedPlatform">
+        	<result type = "redirectAction">
+            	<param name="actionName">enterIndex</param>
+            </result>
+        </action>
+        
+        
         <action name = "enterControl" class = "controller.ManageFriend" method = "loadControlData">
         	<result>
         		control.jsp
@@ -34,13 +56,13 @@
         
         </action>
         
-        <action name = "updateWeiboUrl" class = "controller.ManageFriend" method = "addWeiboUrl">
+        <action name = "update*Url" class = "controller.ManageFriend" method = "add{1}Url">
         	<result type = "redirectAction">
             	<param name="actionName">enterControl</param>
             </result>
         </action>
         
-        <action name = "removeWeiboUrl" class = "controller.ManageFriend" method = "removeWeiboUrl">
+        <action name = "remove*Url" class = "controller.ManageFriend" method = "remove{1}Url">
         	<result type = "redirectAction">
             	<param name="actionName">enterControl</param>
             </result>
@@ -52,23 +74,23 @@
             </result>
         </action>
         
-        <action name = "enterIndexInitially" class = "controller.EnterIndex" method = "enterIndexInitially">
+        <action name="removeFriend" class = "controller.ManageFriend" method = "removeFriend">
+            <result type = "redirectAction">
+            	<param name="actionName">enterControl</param>
+            </result>
+        </action>
+        <!-- <action name = "displayUrl" class = "controller.ManageFriend" method = "displayUrl">
         	<result>
-        		index.jsp
+        		displayUrl.jsp
         	</result>
+        </action> -->
+        
+        <action name="addEntry" class = "controller.Test" method = "addEntry">
+            <result type = "redirectAction">
+            	<param name="actionName">enterIndex</param>
+            </result>
         </action>
         
-        <action name = "enterIndexWithSelectedFriend" class = "controller.EnterIndex" method = "enterIndexWithSelectedFriend">
-        	<result>
-        		index.jsp
-        	</result>
-        </action>
-        
-        <action name = "enterIndexWithSelectedPlatform" class = "controller.EnterIndex" method = "enterIndexWithSelectedPlatform">
-        	<result>
-        		index.jsp
-        	</result>
-        </action>
         
     </package>
 

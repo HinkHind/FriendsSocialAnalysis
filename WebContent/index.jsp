@@ -137,6 +137,15 @@
 	    	</div>
 		</div>
 	</s:iterator>
+	
+	<h3>下面的表单是为了测试用来加条目的，只支持微博，zhihu</h3>
+    <form action = "addEntry">
+		<input type = "text" name = "entryStr" >
+		<input type="hidden" name="selectedPlat" value='<s:property value="#session.selectedPlatform" />'> 
+		<input type = "submit">
+	</form>
+	
+	
 </div>
 <!--
 <ul class="nav nav-tabs" role="tablist" id="main">

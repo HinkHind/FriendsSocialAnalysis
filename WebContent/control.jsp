@@ -122,15 +122,23 @@
     <!--<iframe class="embed-responsive-item" src="content.html"></iframe>-->
 
     <s:debug></s:debug>
-    <s:iterator value = "friends">
+    <s:iterator value = "friendsWithData">
 		<div class="panel panel-default">
 	    	<div class="panel-body">
-				<s:property value="friendName" />
+				<!--<s:action name = "displayUrl" executeResult = "true">
+				            		<s:param name = "friendId" value = "friendId"></s:param>
+				            		<s:param name = "selectedPlat" value = "'weibo'"></s:param>
+				            		
+				            	</s:action>	
 				
-				
-				<h2>创建模态框（Modal）</h2>
+				<s:property value = "weiboUrl"/>-->
+				<s:property value="friend.friendName" />
+				<!-- 
 				<!-- 按钮触发模态框 -->
-				<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">weibo</button>
+				<!-- <a href='<s:url action="loadModalData"><s:param name="selectedPlat" value="'weibo'" /></s:url>' data-toggle="modal" data-target="#myModal">
+                                weibo
+                            </a> -->
+				<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" >weibo</button>
 				<!-- 模态框（Modal） -->
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				    <div class="modal-dialog">
@@ -139,40 +147,79 @@
 				                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				                <h4 class="modal-title" id="myModalLabel">Update Weibo</h4>
 				            </div>
-				            <div class="modal-body">在这里添加一些文本</div>
+				            <div class="modal-body">在这里添加一些文本
+				            	<!--<s:action name = "displayUrl" executeResult = "true">
+				            		<s:param name = "friendId" value = "friendId"></s:param>
+				            		<s:param name = "selectedPlat" value = "'weibo'"></s:param>
+				  
+				            	</s:action>	-->
+				            	<form action = "updateWeiboUrl">
+									<input type = "text" name = "weiboUrlStr" placeholder = '<s:property value = "weiboUrl"/>'>
+									<input type="hidden" name="friendId" value='<s:property value = "friend.friendId"/>'> 
+									<input type = "submit">
+								</form>
+				            
+				            </div>
 				            <div class="modal-footer">
 				                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 				                <button type="button" class="btn btn-primary">提交更改</button>
 				            </div>
 				        </div><!-- /.modal-content -->
 				    </div><!-- /.modal -->
-				</div>
+				</div> 
 				
-				
-				
+				<h3>Weibo</h3>
 				<form action = "updateWeiboUrl">
-					<input type = "text" name = "weiboUrlStr" placeholder = "weiboUrl">
-					<input type="hidden" name="friendId" value='<s:property value = "friendId"/>'> 
+					<input type = "text" name = "weiboUrlStr" value = '<s:property value = "weiboUrl"/>'>
+					<input type="hidden" name="friendId" value='<s:property value = "friend.friendId"/>'> 
 					<input type = "submit">
 				</form>
 				
-				<s:if test="hasWeibo == true">
+				
+				<a href='<s:url action="removeWeiboUrl"> <s:param name="friendId" value="friend.friendId" /></s:url>' >
+                                remove weiboUrl
+                            </a>
+                <s:if test="friend.hasWeibo == true">
 					has weiboUrl
-					<s:property value = "weiboUrl.weiboId"/>
+					<s:property value = "weiboUrl"/>
 				</s:if>
 				<s:else>
 					not have weiboUrl
+				</s:else> 
+                 
+                <h3>Zhihu</h3>
+                <form action = "updateZhihuUrl">
+					<input type = "text" name = "zhihuUrlStr" value = '<s:property value = "zhihuUrl"/>'>
+					<input type="hidden" name="friendId" value='<s:property value = "friend.friendId"/>'> 
+					<input type = "submit">
+				</form>
+				
+				
+				<a href='<s:url action="removeZhihuUrl"> <s:param name="friendId" value="friend.friendId" /></s:url>' >
+                                remove zhihuUrl
+                            </a>            
+                
+                <s:if test="friend.hasZhihu == true">
+					has ZhihuUrl
+					<s:property value = "zhihuUrl"/>
+				</s:if>
+				<s:else>
+					not have zhihuUrl
 				</s:else>
-				<a href='<s:url action="removeWeiboUrl"><s:param name="friendId" value="friendId" /></s:url>'>
-                                remove Weibo Url
+                
+				<a href='<s:url action="removeFriend"><s:param name="friendId" value="friend.friendId" /></s:url>' >
+                                remove friend
                             </a>
+				
+				
+				
+				
 				
 	    	</div>
 		</div> 
 	</s:iterator>
 	
-	<s:action name="enterIndex" executeResult = "true"/>
-
+	
 
 	<form action = "addFriend">
 		<input type = "text" name = "friendName" placeholder = "friendName">
