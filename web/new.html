@@ -8,7 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="css/zsq.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -24,6 +24,7 @@
             box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             background: rgba(255, 255, 255, 0.65);
+            border-color: #6699ff;
         }
         .inline-input input[type="text"],
         .inline-input input[type="password"],
@@ -90,7 +91,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">社交好友分析</a>
+            <a class="navbar-brand" style="color: #FFFFFF" href="#">社交好友分析</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -99,7 +100,7 @@
                 <!--<li class="active"><a href="index.html">个人主页<span class="sr-only">(current)</span></a></li>-->
                 <li><a href="index.html">个人主页</a></li>
                 <li><a href="control.html">控制面板</a></li>
-                <li class="dropdown active">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其它功能<span class="sr-only">(current)</span> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="new.html">新增关注</a></li>
@@ -113,19 +114,19 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <input type="button" class="btn btn-default navbar-btn" onclick="fun1()" value="退出"/>
+                <input type="button" class="btn btn-link navbar-btn" style="color: #FFFFFF" onclick="fun1()" value="退出"/>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 <!--新增-->
 <div class="panel panel-default box">
-    <div class="panel-heading">
-        <h1 class="panel-title text-center"><span class="glyphicon glyphicon-heart"></span>偷偷的关注TA！</h1>
+    <div class="panel-heading" style="color: #FFFFFF; background-color: #3399ff">
+        <h1 class="panel-title text-center" ><span class="glyphicon glyphicon-heart"></span>偷偷的关注TA！</h1>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" >
 
-        <form class="form-horizontal inline-input" id="form1" role="form">
+        <form class="form-horizontal inline-input" id="form1" role="form" >
 
             <div class="form-group field-box">
                 <label for="inputText1" class="col-sm-2  control-label">Name</label>

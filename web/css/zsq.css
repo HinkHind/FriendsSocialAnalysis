@@ -1,0 +1,69 @@
+body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;  }
+.navbar{
+    margin-bottom: 20px;
+    border-radius: 0px;
+    background: #3399FF;
+}
+
+.navbar .nav > li > a{
+    color: #FFFFFF;
+    background-color: #3399FF;
+}
+.navbar .nav > li:active :hover {
+    color: black;
+    background-color: #ffffff;
+}
+.navbar .nav > li:active :visited {
+    color: black;
+    background-color: #ffffff;
+}
+
+.navbar .nav > li > a:hover {
+    color: #FFFFFF;
+    background-color: #3399FF;
+}
+.navbar .nav >li >a:active{
+    color: #FFFFFF;
+    background-color: #3399FF;
+}
+.navbar .nav >li >a:visited{
+    color: #FFFFFF;
+    background-color: #3399FF;
+}
+.navbar .nav >li :visited{
+    color:black;
+    background-color: #3399FF;
+}
+.navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: #555;
+    background-color:  #3399FF;
+}
+
+
+.navbar .nav > li .dropdown:active {
+    color: #FFFFFF;
+    background-color: #3198FD;
+}
+
+.navbar .nav > li .dropdown-menu {
+    margin: 0;
+}
+.navbar .nav > li:hover .dropdown-menu {
+    display: block;
+}
+
+.navbar-nav>.active>a:hover{
+    color: #FFFFFF;
+    background-color: #3198FD;}
+
+.navbar-right{
+    margin-right: 5px;
+}
+.nav .navbar-nav .navbar-right >li >a:hover {
+    color: #FFFFFF;
+    background-color:  #3198FD;
+}
+.nav .navbar-nav .navbar-right >li >a:hover {
+    color: #FFFFFF;
+    background-color:  #3198FD;
+}
