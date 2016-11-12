@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-10 23:45:35 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="hibernateMapping.WeiboEntry" table="weibo_entry" catalog="db" optimistic-lock="version">
+        <id name="entryId" type="java.lang.Integer">
+            <column name="entryID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="weiboUrl" class="hibernateMapping.WeiboUrl" fetch="select">
+            <column name="weiboID" not-null="true" />
+        </many-to-one>
+        <property name="entryUrl" type="string">
+            <column name="entryUrl" length="60" not-null="true" />
+        </property>
+        <property name="text" type="string">
+            <column name="text" length="65535" not-null="true" />
+        </property>
+        <property name="likeNumber" type="int">
+            <column name="likeNumber" not-null="true" />
+        </property>
+        <property name="shareNumber" type="int">
+            <column name="shareNumber" not-null="true" />
+        </property>
+        <property name="commentNumber" type="int">
+            <column name="commentNumber" not-null="true" />
+        </property>
+        <property name="sourceDevice" type="string">
+            <column name="sourceDevice" length="40" />
+        </property>
+        <property name="isShared" type="boolean">
+            <column name="isShared" not-null="true" />
+        </property>
+        <property name="originLikeNumber" type="java.lang.Integer">
+            <column name="originLikeNumber" />
+        </property>
+        <property name="originShareNumber" type="java.lang.Integer">
+            <column name="originShareNumber" />
+        </property>
+        <property name="originText" type="string">
+            <column name="originText" length="65535" />
+        </property>
+        <property name="originCommentNumber" type="java.lang.Integer">
+            <column name="originCommentNumber" />
+        </property>
+        <property name="publishedTime" type="timestamp">
+            <column name="publishedTime" length="19" not-null="true" />
+        </property>
+        <property name="hasRead" type="boolean">
+            <column name="hasRead" not-null="true" />
+        </property>
+        <property name="classHolder" type="string">
+            <column name="classHolder" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
