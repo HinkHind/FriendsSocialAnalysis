@@ -4,7 +4,19 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
+	
+	 <!-- <interceptors>  
+            <interceptor name="loginInteceptor" class="inteceptor.LoginInteceptor" />  
+            <interceptor-stack name="loginStack">  
+                   <interceptor-ref name="loginInteceptor">  
+                       <param name="excludeMethods">signIn,isValidLogin</param>  
+                   </interceptor-ref>  
+                   <interceptor-ref name="defaultStack"></interceptor-ref>  
+            </interceptor-stack>  
+	</interceptors>  
+      
+	<default-interceptor-ref name="loginStack" />   -->
+	
 
     <package name="controller" namespace="/" extends="struts-default">
         
@@ -15,14 +27,19 @@
         </action>
         
         <action name="signIn" class = "controller.SignIn" method = "signIn">
-            <result name = "login" type = "redirect">
-                enterIndexInitially.action
+            <result name = "login" type = "redirectAction">
+            	<param name="actionName">enterIndex</param>
             </result>
             <result name = "error">
             	signIn.jsp
             </result>
         </action>
         
+        <action name="logOut" class = "controller.LogOut" method = "logOut">
+            <result>
+            	signIn.jsp
+            </result>
+        </action>
         
         <action name = "enterIndex" class = "controller.EnterIndex" method = "enterIndex">
         	<result>

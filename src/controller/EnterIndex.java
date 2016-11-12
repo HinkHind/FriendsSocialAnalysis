@@ -62,7 +62,7 @@ public class EnterIndex extends ActionSupport{
 		this.selectedEntries = selectedEntries;
 	}
 
-	public String enterIndexInitially() {
+	public static String enterIndexInitially() {
 		ActionContext context = ActionContext.getContext();
 		int userId = (int) context.getSession().get("userId");
 		context.getSession().put("selectedPlatform", "weibo");

@@ -51,7 +51,7 @@ public class SignIn extends ActionSupport{
 			ActionContext context = ActionContext.getContext();
 			Map sess = context.getSession();
 			sess.put("userId", signInUser.getUserId().intValue());
-			
+			EnterIndex.enterIndexInitially();
 			return LOGIN;
 		}
 		

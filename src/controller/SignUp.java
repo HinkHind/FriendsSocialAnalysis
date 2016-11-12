@@ -54,6 +54,7 @@ public class SignUp extends ActionSupport{
 		ActionContext context = ActionContext.getContext();
 		Map sess = context.getSession();
 		sess.put("userId", user.getUserId().intValue());
+		EnterIndex.enterIndexInitially();
 		
 		return SUCCESS;
 	}
