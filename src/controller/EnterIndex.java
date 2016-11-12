@@ -13,6 +13,7 @@ import org.hibernate.type.StandardBasicTypes;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.sipder.sina.articleList;
 
 import hibernateDao.Dao;
 import hibernateMapping.*;
@@ -94,7 +95,10 @@ public class EnterIndex extends ActionSupport{
 	public String loadIndexData() {
 		ActionContext context = ActionContext.getContext();
 		int userId = (int) context.getSession().get("userId");
-		
+		System.out.println("before art");
+		articleList art = new articleList();
+		art.Spidermain();
+		System.out.println("after art");
 		Session session = HibernateUtil.currentSession();
 		Transaction transaction = session.beginTransaction();
 		
@@ -118,6 +122,7 @@ public class EnterIndex extends ActionSupport{
 			case "weibo":
 				//TODO: need thinking about hasWeibo = false condition.
 				if (friend.isHasWeibo()) {
+					
 					setSelectedEntries(friend.getWeiboUrl().getWeiboEntries());
 				} else {
 					setSelectedEntries(new HashSet(0));

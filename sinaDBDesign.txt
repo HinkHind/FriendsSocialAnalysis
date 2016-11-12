@@ -1,0 +1,48 @@
+weibo_entry Database:
+
+contentHolder部分替换成如下内容：
+
+entryUrl			//条目的url，我好像找到了一种办法
+text				//博主自己说的话，非转发微博中是博主自己说的话，转发微博中是转发理由
+likeNumber			//本条微博赞数
+shareNumber			//本条微博转发数
+commentNumber		//评论数
+sourceDevice		//来源设备（小米手机啦之类的）
+
+isShared			//bool变量，是否是转发微博
+//本条待定 shareSourceUrl		//转发的微博的发布者（如范冰冰工作室）
+originLikeNumber	//转发的微博原本的赞数
+originShareNumber	//转发的微博的被转发数
+originText			//转发的微博的内容
+originCommentNumber	//转发的微博的评论数
+
+
+仍需考虑的问题
+
+@谁谁谁
+#什么主题#
+text的字数
+
+
+weibo_comment Database:
+被转发的微博不存评论
+commentID			//评论ID，逻辑主键
+entryID				//评论对应的微博条目
+评论的次序确定
+contentHolder
+
+
+
+weibo_pic Database:
+
+picID
+isSharedPic			//图片是否是被转发微博里的
+图片的次序确定
+entryID
+contentHolder
+
+
+
+
+
+
