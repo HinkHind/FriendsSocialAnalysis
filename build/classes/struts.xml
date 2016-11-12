@@ -41,9 +41,15 @@
             </result>
         </action>
         
-        <action name = "enterIndex" class = "controller.EnterIndex" method = "enterIndex">
+        <action name = "enterIndex" class = "controller.EnterIndex" method = "loadIndexData">
         	<result>
         		index.jsp
+        	</result>
+        </action>
+        
+        <action name = "enterContent" class = "controller.EnterIndex" method = "loadIndexData">
+        	<result>
+        		content.jsp
         	</result>
         </action>
         
@@ -55,13 +61,13 @@
         
         <action name = "enterIndexWithSelectedFriend" class = "controller.EnterIndex" method = "enterIndexWithSelectedFriend">
         	<result type = "redirectAction">
-            	<param name="actionName">enterIndex</param>
+            	<param name="actionName">enterContent</param>
             </result>
         </action>
         
         <action name = "enterIndexWithSelectedPlatform" class = "controller.EnterIndex" method = "enterIndexWithSelectedPlatform">
         	<result type = "redirectAction">
-            	<param name="actionName">enterIndex</param>
+            	<param name="actionName">enterContent</param>
             </result>
         </action>
         

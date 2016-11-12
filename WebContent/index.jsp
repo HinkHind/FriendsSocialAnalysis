@@ -112,8 +112,9 @@
 <!-- 4:3 aspect ratio 右侧动态 -->
 
 <div class="embed-responsive embed-responsive-4by3">
-    <!--<iframe class="embed-responsive-item" src="content.jsp"></iframe>  -->
-    <h1>最新更新</h1>
+    <iframe class="embed-responsive-item" src="messageContent.jsp"></iframe>  
+    
+    <!-- <h1>最新更新</h1>
 	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'zhihu'" /></s:url>'>
     	zhihu
     	</a>
@@ -144,7 +145,7 @@
 		<input type="hidden" name="selectedPlat" value='<s:property value="#session.selectedPlatform" />'> 
 		<input type = "submit">
 	</form>
-	
+	 -->
 	
 </div>
 <!--
