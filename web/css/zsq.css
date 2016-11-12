@@ -67,3 +67,16 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Micro
     color: #FFFFFF;
     background-color:  #3198FD;
 }
+.nav-tabs{
+    margin: 10px;
+    border-bottom: #3399ff;
+    border-bottom-style: groove;
+}
+#footer .copy-right {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+}
+.mainpart{
+    min-height: 680px;
+}
