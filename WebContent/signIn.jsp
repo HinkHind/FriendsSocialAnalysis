@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib prefix="s" uri="/struts-tags" %>
+
 <html lang="en"><head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -111,9 +113,10 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
                 <footer class="text-center">
-                    <a href="signup.html"><i class="fa fa-external-link"></i> 没有账号？立即注册一个！</a>
+                    <a href="signUp.jsp"><i class="fa fa-external-link"></i> 没有账号？立即注册一个！</a>
                 </footer>
             </div>
+            <s:debug></s:debug>
             <div class="col-md-1"></div>
         </div>
     </div>

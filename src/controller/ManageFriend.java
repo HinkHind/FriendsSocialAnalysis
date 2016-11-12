@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.jws.soap.SOAPBinding.Use;
 
 import org.hibernate.Transaction;
+import org.hibernate.type.StandardBasicTypes;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
 
@@ -116,10 +117,7 @@ public class ManageFriend extends ActionSupport{
 		Friend friend = new Friend();
 		ActionContext context = ActionContext.getContext();
 		int userId = (int) context.getSession().get("userId");
-//		User user = Dao.getUser(userID);
-//		friend.setUser(user);
-//		friend.setFriendName(friendName);
-//		Dao.saveFriend(friend);
+		
 		Session session = HibernateUtil.currentSession();
 		Transaction transaction = session.beginTransaction();
 		
@@ -130,18 +128,24 @@ public class ManageFriend extends ActionSupport{
 		
 		//setFriends(user.getFriends());
 		transaction.commit();
+		HibernateUtil.closeSession();
+		System.out.println("friendId = " + friend.getFriendId());
 		
+		int friendId = (int) context.getSession().get("friendId");
+		if (friendId == 0) {
+			context.getSession().put("friendId", friend.getFriendId().intValue());
+		}
 		//System.out.println(getFriends());
-		HibernateUtil.closeSession();
-		
-		Session session2 = HibernateUtil.currentSession();
-		Transaction transaction2 = session2.beginTransaction();
-		
-		user = (User)session2.get(User.class, userId);
-		setFriends(user.getFriends());
-		transaction2.commit();
-		HibernateUtil.closeSession();
-		
+//		HibernateUtil.closeSession();
+//		
+//		Session session2 = HibernateUtil.currentSession();
+//		Transaction transaction2 = session2.beginTransaction();
+//		
+//		user = (User)session2.get(User.class, userId);
+//		setFriends(user.getFriends());
+//		transaction2.commit();
+//		HibernateUtil.closeSession();
+//		
 		
 		//enterControl();
 		return SUCCESS;
@@ -155,6 +159,8 @@ public class ManageFriend extends ActionSupport{
 		
 		User user = (User) session.get(User.class, userId);
 		setFriends(user.getFriends());
+		System.out.println(new Exception().getStackTrace()[0].getMethodName() + " " + getFriends());
+		
 		for (Iterator iterator = getFriends().iterator(); iterator.hasNext();) {
 			Friend friend = (Friend) iterator.next();
 //			FriendWithData f = new FriendWithData(friend,
@@ -164,7 +170,7 @@ public class ManageFriend extends ActionSupport{
 			
 			
 			FriendWithData f = new FriendWithData(friend);
-			System.out.println(f.getFriend().getFriendId());
+			//System.out.println(f.getFriend().getFriendId());
 			friendsWithData.add(f);
 		}
 		
@@ -411,11 +417,43 @@ public class ManageFriend extends ActionSupport{
 			session.save(friend);
 		}
 		//TODO: the same for zhihu, csdn;
-
 		session.delete(friend);
+		
+		
+		
+		
+		System.out.println("remove friendId = " + friend.getFriendId().intValue());
 		transaction.commit();
 		HibernateUtil.closeSession();
 		
+		Session session2 = HibernateUtil.currentSession();
+		Transaction transaction2 = session2.beginTransaction();
+		
+		ActionContext context = ActionContext.getContext();
+		int userId = (int) context.getSession().get("userId");
+		int friendId = (int)context.getSession().get("friendId");
+		if (friend.getFriendId().intValue() == friendId) {
+			String sqlQuery = "select * from friend where userID = :userId limit 1";
+			List qList = session2.createSQLQuery(sqlQuery)
+					.addScalar("friendID", StandardBasicTypes.INTEGER)
+					.setInteger("userId", new Integer(userId))
+					.list();
+			//System.out.println(qList);	
+			
+			
+			if (qList.isEmpty()) {
+				context.getSession().put("friendId", 0);
+				System.out.println("empty");
+			} else {
+				Integer friendIDInteger = (Integer) qList.get(0);
+				context.getSession().put("friendId", friendIDInteger.intValue());
+				System.out.println("remove friend change session friendId = "+friendIDInteger );
+			}
+		}
+		
+		
+		transaction2.commit();
+		HibernateUtil.closeSession();
 		
 		return SUCCESS;
 	}
