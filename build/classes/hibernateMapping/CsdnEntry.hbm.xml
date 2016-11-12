@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-10 23:45:35 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="hibernateMapping.CsdnEntry" table="csdn_entry" catalog="db" optimistic-lock="version">
+        <id name="entryId" type="java.lang.Integer">
+            <column name="entryID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="csdnUrl" class="hibernateMapping.CsdnUrl" fetch="select">
+            <column name="csdnID" not-null="true" />
+        </many-to-one>
+        <property name="contentHolder" type="string">
+            <column name="contentHolder" length="45" />
+        </property>
+        <property name="publishedTime" type="timestamp">
+            <column name="publishedTime" length="19" not-null="true" />
+        </property>
+        <property name="hasRead" type="boolean">
+            <column name="hasRead" not-null="true" />
+        </property>
+        <property name="classHolder" type="string">
+            <column name="classHolder" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
