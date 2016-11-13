@@ -3,7 +3,6 @@ package com.sina.spider;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -20,15 +19,10 @@ import com.sina.spider.utils.Utils;
 
 @PipelineName("SaveArticlePipeline")
 public class SaveArticlePipeline implements Pipeline<articleList>{
-	
+	String userId = null;
 	@Override
 	public void process(articleList articlelist) {
-		HttpRequest currRequest = articlelist.getRequest();
-		
-		System.out.println(getTotalNum(articlelist.getWeiboNum()));
-		System.out.println(articlelist.getFollowing());
-		System.out.println(getUserID(articlelist.getFollowing()));
-		
+		HttpRequest currRequest = articlelist.getRequest();	
 		Document contentDoc = Jsoup.parseBodyFragment(articlelist.getContent());
 		List<Element> weiboItems = getGoalContent(contentDoc); //得到没篇微博的结点
 		
@@ -38,9 +32,9 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
 			System.out.println("微博数量过多，暂不拿取");
 		}
 		
-//		if(weiboItems != null && weiboItems.size() > 0){
-//			createFile(weiboItems);
-//		}
+		if(weiboItems != null && weiboItems.size() > 0){
+			createFile(weiboItems);
+		}
 		Element pageEl = contentDoc.getElementById("pagelist");
 		
 		if(pageEl != null){
@@ -58,69 +52,73 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
 		
 	}
 
-//	// 将抓取的微博信息保存至本地文件
-// 	public static void createFile(List<Element> weiboItems) {
-//		//String userID = Utils.getUserIdFromUrl(urlPath);
-// 		for(Element el: weiboItems){				
-//			Weibo weibo = parse(el);
-//			System.out.println(weibo.toString());
-// 		}
-//
-//	}
+	// 将抓取的微博信息保存至本地文件
+ 	public static void createFile(List<Element> weiboItems) {
+		//String userID = Utils.getUserIdFromUrl(urlPath);
+ 		for(Element el: weiboItems){				
+			Weibo weibo = parse(el);
+			System.out.println(weibo.toString());
+ 		}
 
-// // 解析微博的HTML DIV结构，提取微博ID、内容等信息，创建Weibo对象
-// 	public static Weibo parse(Element weiboEl){
-// 		Weibo weibo = new Weibo();
-// 		List<Element> subDivs =  weiboEl.children();
-// 		
-// 		try {
-// 			int subDivsSize = subDivs.size();
-// 			weibo.setId(weiboEl.attr("id").substring(2));
-// 			//weibo.setPoster(poster);
-// 			weibo.setPostTime(Utils.parseDate(weiboEl.getElementsByClass("ct").get(0).text().split("来自")[0]));
-// 			
-// 			if(subDivsSize == 1){
-// 				// 原创发布无附件微博
-// 				weibo.setRepost(false);
-// 				weibo.setHasPic(false);
-// 				weibo.setContent(weiboEl.getElementsByClass("ctt").get(0).text());
-// 			}
-// 			else if(subDivsSize == 2){
-// 				if(subDivs.get(0).toString().contains("<span class=\"cmt\">原文转发")){
-// 					// 转发无附件微博
-// 					weibo.setRepost(true);
-// 					weibo.setHasPic(false);
-// 					weibo.setContent(getRepostReason(subDivs.get(1)));
-// 				}
-// 				else{
-// 					// 原创发布带附件微博
-// 					weibo.setRepost(false);
-// 					weibo.setHasPic(true);
-// 					weibo.setContent(weiboEl.getElementsByClass("ctt").get(0).text());
-// 				}
-// 			}
-// 			else if(subDivsSize == 3){
-// 				// 转发带附件的微博
-// 				weibo.setRepost(true);
-// 				weibo.setHasPic(true);
-// 				weibo.setContent(getRepostReason(subDivs.get(2)));
-// 			}
-// 			else{
-// 				throw new Exception();
-// 			}
-// 		}
-// 		catch(Exception e){
-// 			weibo = null;
-// 			//Log.error(e);
-// 			//.error("Not a valid weibo item: " + weiboEl);
-// 			System.out.println(e);
-// 			System.out.println("Not a valid weibo item: " + weiboEl);
-// 		}
-// 		
-// 		return weibo;
-// 	}
+	}
 
- // 从子div中获取转发原因
+ // 解析微博的HTML DIV结构，提取微博ID、内容等信息，创建Weibo对象
+ 	public static Weibo parse(Element weiboEl){
+ 		Weibo weibo = new Weibo();
+ 		List<Element> subDivs =  weiboEl.children();
+ 		
+ 		try {
+ 			int subDivsSize = subDivs.size();
+ 			weibo.setId(weiboEl.attr("id").substring(2));
+ 			//weibo.setPoster(poster);
+ 			weibo.setPublishTime(Utils.parseDate(weiboEl.getElementsByClass("ct").get(0).text().split("来自")[0]));
+ 			
+ 			if(subDivsSize == 1){
+ 				// 原创发布无附件微博
+ 				weibo.setShared(false);
+ 				//weibo.setHasPic(false);
+ 				weibo.setText(weiboEl.getElementsByClass("ctt").get(0).text());
+ 			}
+ 			else if(subDivsSize == 2){
+ 				if(subDivs.get(0).toString().contains("<span class=\"cmt\">原文转发")){
+ 					// 转发无附件微博
+ 					weibo.setShared(true);
+ 					//weibo.setHasPic(false);
+ 					weibo.setText(getRepostReason(subDivs.get(1)));
+ 				}
+ 				else{
+ 					// 原创发布带附件微博
+ 					weibo.setShared(false);
+ 					//weibo.setHasPic(true);
+ 					weibo.setText(weiboEl.getElementsByClass("ctt").get(0).text());
+ 				}
+ 			}
+ 			else if(subDivsSize == 3){
+ 				// 转发带附件的微博
+ 				weibo.setShared(true);
+ 				//weibo.setHasPic(true);
+ 				weibo.setText(getRepostReason(subDivs.get(2)));
+ 			}
+ 			else{
+ 				throw new Exception();
+ 			}
+ 		}
+ 		catch(Exception e){
+ 			weibo = null;
+ 			//Log.error(e);
+ 			//.error("Not a valid weibo item: " + weiboEl);
+ 			System.out.println(e);
+ 			System.out.println("Not a valid weibo item: " + weiboEl);
+ 		}
+ 		
+ 		return weibo;
+ 	}
+
+ 	/**
+ 	 * 从子div中获取转发原因
+ 	 * @param processEl
+ 	 * @return
+ 	 */
  	private static String getRepostReason(Element processEl){
  		StringBuilder repostReason = new StringBuilder();
  		int endIndex = processEl.childNodes().size() - 9;

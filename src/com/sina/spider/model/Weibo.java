@@ -1,7 +1,5 @@
 package com.sina.spider.model;
 
-import com.geccocrawler.gecco.annotation.Text;
-
 public class Weibo {
 //	private String id = null;
 //	private String poster = null;
@@ -9,20 +7,23 @@ public class Weibo {
 //	private String postTime = null;
 //	private boolean hasPic = false;
 //	private boolean isRepost = false;
-//	@Override
-//	public String toString(){
-//		StringBuilder sb = new StringBuilder();
-//		
-//		sb.append("id:\t\t").append(id).append("\n")
-//		  .append("poster:\t\t").append(poster).append("\n")
-//		  .append("content:\t").append(content).append("\n")
-//		  .append("hasPic:\t\t").append(hasPic).append("\n")
-//		  .append("isRepost:\t").append(isRepost).append("\n");
-//		
-//		return sb.toString();
-//	}
+
 	
 	private String id = null; //微博id
+	private String entryUrl = null; //微博对应的url
+	private String text = null; //博主自己说的话，非转发微博中是博主自己说的话，转发微博中是转发理由
+	private int likeNum = 0; //赞数
+	private int shareNum = 0; //转发数
+	private int commentNum = 0; //评论数
+	private String sourceDevice  = null; //设备来源
+	private boolean isShared = false; //是否转发，默认false
+	private String  publishTime; //发微博时间
+	public String getPublishTime() {
+		return publishTime;
+	}
+	public void setPublishTime(String publishTime) {
+		this.publishTime = publishTime;
+	}
 	public String getId() {
 		return id;
 	}
@@ -71,14 +72,24 @@ public class Weibo {
 	public void setShared(boolean isShared) {
 		this.isShared = isShared;
 	}
-	private String entryUrl = null; //微博对应的url
-	private String text = null; //博主自己说的话，非转发微博中是博主自己说的话，转发微博中是转发理由
-	private int likeNum = 0; //赞数
-	private int shareNum = 0; //转发数
-	private int commentNum = 0; //评论数
-	private String sourceDevice  = null; //设备来源
-	private boolean isShared = false; //是否转发，默认false
+
 	
+	
+	@Override
+	public String toString(){
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("id:\t\t").append(id).append("\n")
+		  .append("entryUrl:\t\t").append(entryUrl).append("\n")
+		  .append("text:\t\t\t").append(text).append("\n")
+		  .append("publishTime:\t\t").append(publishTime).append("\n")
+		  .append("likeNum:\t\t").append(likeNum).append("\n")
+		  .append("shareNum:\t\t").append(shareNum).append("\n")
+		  .append("commentNum:\t\t").append(commentNum).append("\n")
+		  .append("sourceDevice:\t\t").append(sourceDevice).append("\n")
+		  .append("isShared:\t\t").append(isShared).append("\n");
+		return sb.toString();
+	}
 	
 	
 	
