@@ -47,9 +47,16 @@
         	</result>
         </action>
         
-        <action name = "enterContent" class = "controller.EnterIndex" method = "loadIndexData">
+        <action name = "displayMessage" class = "controller.EnterIndex" method = "loadMessageData">
         	<result>
-        		content.jsp
+        		messageContent.jsp
+        	</result>
+        </action>
+        
+        <!-- reload MessageContentData -->
+        <action name = "enterMessageContent" class = "controller.EnterIndex" method = "loadMessageData">
+        	<result>
+        		messageContent.jsp
         	</result>
         </action>
         
@@ -61,13 +68,13 @@
         
         <action name = "enterIndexWithSelectedFriend" class = "controller.EnterIndex" method = "enterIndexWithSelectedFriend">
         	<result type = "redirectAction">
-            	<param name="actionName">enterContent</param>
+            	<param name="actionName">enterIndex</param>
             </result>
         </action>
         
         <action name = "enterIndexWithSelectedPlatform" class = "controller.EnterIndex" method = "enterIndexWithSelectedPlatform">
         	<result type = "redirectAction">
-            	<param name="actionName">enterContent</param>
+            	<param name="actionName">enterMessageContent</param>
             </result>
         </action>
         
@@ -78,6 +85,13 @@
         	</result>
         
         </action>
+        <!--  <action name = "enterControlModal" class = "controller.ManageFriend" method = "enterControlModal">
+        	<result>
+            	control.jsp
+            </result>
+        
+        </action> -->
+        
         
         <action name = "update*Url" class = "controller.ManageFriend" method = "add{1}Url">
         	<result type = "redirectAction">
@@ -110,7 +124,7 @@
         
         <action name="addEntry" class = "controller.Test" method = "addEntry">
             <result type = "redirectAction">
-            	<param name="actionName">enterIndex</param>
+            	<param name="actionName">enterMessageContent</param>
             </result>
         </action>
         

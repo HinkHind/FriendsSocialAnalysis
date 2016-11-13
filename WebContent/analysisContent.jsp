@@ -235,7 +235,7 @@
 </head>
 <body>
 <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" ><a href="content1.html">最新动态</a></li>
+    <li role="presentation" ><a href="analysisContent.jsp">最新动态</a></li>
     <li role="presentation" class="active"><a href="#">兴趣分析</a></li>
 </ul>
 <div class="row">

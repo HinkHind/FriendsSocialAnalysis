@@ -26,20 +26,45 @@
     <![endif]-->
 </head>
 <body>
+
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#">最新动态</a></li>
     <li role="presentation"><a href="analysisContent.jsp">兴趣分析</a></li>
 </ul>
 <div class="bianju">
 
-<div class="panel panel-default">
-    <div class="panel-body">
-        韩寒
-        11月4日 09:31
-        #乘风破浪# 欢迎你，@彭于晏
-    </div>
+<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'zhihu'" /></s:url>'>
+    	zhihu
+    	</a>
+	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'weibo'" /></s:url>'>
+    	weibo
+    	</a>
+    	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'csdn'" /></s:url>'>
+    	csdn
+    	</a>
+    	<br/>
+    	<s:debug></s:debug>
+	<s:iterator value="selectedEntries">
+		<div class="panel panel-default">
+	    	<div class="panel-body">
+	    		<s:if test = "#session.selectedPlatform == \"weibo\"">
+	    			<s:property value="text" />
+	    		</s:if>
+	    		<s:else>
+				<s:property value="contentHolder" />
+	    		</s:else>
+	    	</div>
+		</div>
+	</s:iterator>
+	
+	<h3>下面的表单是为了测试用来加条目的，只支持微博，zhihu,注意一定再Control页面加入了对应的微博url，zhihuurl之后再来这里加条目看显示效果。。不然会出错</h3>
+    <form action = "addEntry">
+		<input type = "text" name = "entryStr" >
+		<input type="hidden" name="selectedPlat" value='<s:property value="#session.selectedPlatform" />'> 
+		<input type = "submit">
+	</form>
 </div>
-</div>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

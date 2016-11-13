@@ -24,8 +24,26 @@ public class EnterIndex extends ActionSupport{
 	 
 	private Set selectedEntries;
 	private Integer friendId;
+	private int friendIdForControl;
+	private String urlForControl;
 	private String selectedPlatform;
 	
+	public int getFriendIdForControl() {
+		return friendIdForControl;
+	}
+
+	public void setFriendIdForControl(int friendIdForControl) {
+		this.friendIdForControl = friendIdForControl;
+	}
+
+	public String getUrlForControl() {
+		return urlForControl;
+	}
+
+	public void setUrlForControl(String urlForControl) {
+		this.urlForControl = urlForControl;
+	}
+
 	public String getSelectedPlatform() {
 		return selectedPlatform;
 	}
@@ -106,8 +124,55 @@ public class EnterIndex extends ActionSupport{
 		
 		
 		
+//		int friendId = (int) context.getSession().get("friendId");
+//		
+//		//set selectedEntries;
+//		if (friendId == 0) {
+//			setSelectedEntries(new HashSet(0));
+//		} else {
+//			Friend friend = (Friend) session.get(Friend.class, friendId);
+//			String selectedPlat = (String)context.getSession().get("selectedPlatform");
+//			switch (selectedPlat) {
+//			case "weibo":
+//				//TODO: need thinking about hasWeibo = false condition.
+//				if (friend.isHasWeibo()) {
+//					setSelectedEntries(friend.getWeiboUrl().getWeiboEntries());
+//				} else {
+//					setSelectedEntries(new HashSet(0));
+//				}
+//				break;
+//			case "zhihu":
+//				if (friend.isHasZhihu()) {
+//					setSelectedEntries(friend.getZhihuUrl().getZhihuEntries());
+//				} else {
+//					setSelectedEntries(new HashSet(0));
+//				}
+//				
+//				break;
+//			case "csdn":
+//				if (friend.isHasCsdn()) {
+//					setSelectedEntries(friend.getCsdnUrl().getCsdnEntries());
+//				} else {
+//					setSelectedEntries(new HashSet(0));
+//				}
+//				break;
+//			default:
+//				break;
+//			}
+//			
+//		}
+		transaction.commit();
+		HibernateUtil.closeSession();
+		return SUCCESS;
+	}
+	
+	public String loadMessageData() {
+		ActionContext context = ActionContext.getContext();
+		
 		int friendId = (int) context.getSession().get("friendId");
 		
+		Session session = HibernateUtil.currentSession();
+		Transaction transaction = session.beginTransaction();
 		//set selectedEntries;
 		if (friendId == 0) {
 			setSelectedEntries(new HashSet(0));
@@ -143,10 +208,12 @@ public class EnterIndex extends ActionSupport{
 			}
 			
 		}
+
 		transaction.commit();
 		HibernateUtil.closeSession();
 		return SUCCESS;
 	}
+	
 	
 //	public String enterIndexWithSelectedFriend() {
 //		//System.out.println(friendId);
@@ -186,4 +253,7 @@ public class EnterIndex extends ActionSupport{
 		loadIndexData();
 		return SUCCESS;
 	}
+	
+	
+	
 }

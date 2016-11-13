@@ -458,7 +458,9 @@ public class ManageFriend extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	
+//	public String enterControlModal() {
+//		return SUCCESS;
+//	}
 	
 	
 }

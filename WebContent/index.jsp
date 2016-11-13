@@ -107,14 +107,21 @@
     	<s:property value="friendName" />
     	</a>
     </s:iterator>
+    
 </div>
 
 <!-- 4:3 aspect ratio 右侧动态 -->
 
 <div class="embed-responsive embed-responsive-4by3">
-    <iframe class="embed-responsive-item" src="messageContent.jsp"></iframe>  
+<!--<s:action name = "displayUrl" executeResult = "true">
+				            		<s:param name = "friendId" value = "friendId"></s:param>
+				            		<s:param name = "selectedPlat" value = "'weibo'"></s:param>
+				            		
+				            	</s:action>	-->
+	<!--<s:action name="enterContent"  executeResult = "true"></s:action>-->
+    <iframe class="embed-responsive-item" src="displayMessage.action"></iframe>  
     
-    <!-- <h1>最新更新</h1>
+   <!--   <h1>最新更新</h1>
 	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'zhihu'" /></s:url>'>
     	zhihu
     	</a>
@@ -145,9 +152,9 @@
 		<input type="hidden" name="selectedPlat" value='<s:property value="#session.selectedPlatform" />'> 
 		<input type = "submit">
 	</form>
-	 -->
 	
-</div>
+	
+</div> -->
 <!--
 <ul class="nav nav-tabs" role="tablist" id="main">
     <li role="presentation" class="active"><a href="#">Home</a></li>
