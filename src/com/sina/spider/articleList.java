@@ -11,7 +11,7 @@ import com.geccocrawler.gecco.request.HttpGetRequest;
 import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spider.HtmlBean;
 
-@Gecco(matchUrl="http://weibo.cn/{userID}", pipelines = {"consolePipeline", "SaveArticlePipeline"})
+@Gecco(matchUrl="http://weibo.cn/{userID}", pipelines = "SaveArticlePipeline")
 public class articleList implements HtmlBean{
 
 	private static final long serialVersionUID = -8062180093723754955L;

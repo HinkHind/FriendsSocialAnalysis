@@ -62,9 +62,9 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  		for(Element el: weiboItems){				
 			Weibo weibo = parse(el);
 			weibo.setEntryUrl(getWeiboUrl(userID,weibo.getId()));
-			Upload upload =  new Upload();
-			upload.setWeibo(weibo);
-			//System.out.println(weibo.toString());
+//			Upload upload =  new Upload(); 数据存储到数据库
+//			upload.setWeibo(weibo);
+			System.out.println(weibo.toString());
  		}
 
 	}
@@ -83,10 +83,9 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  				// 原创发布无附件微博
  				weibo.setShared(false);
  				//weibo.setHasPic(false);
-//				weibo.setLikeNum(getLikeNum(subDivs.get(0)));
-//				System.out.println(subDivs.get(0).text());
-//				weibo.setShareNum(getShareNum(subDivs.get(0)));
-//				weibo.setCommentNum(getCommentNum(subDivs.get(0)));
+				weibo.setLikeNum(getNum(subDivs.get(0).text()));
+				weibo.setShareNum(getShareNum(subDivs.get(0).text()));
+				weibo.setCommentNum(getCommentNum(subDivs.get(0).text()));
  				weibo.setText(weiboEl.getElementsByClass("ctt").get(0).text());
  				
  				
@@ -96,19 +95,17 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  					// 转发无附件微博
  					weibo.setShared(true);
  					//weibo.setHasPic(false);
-// 					weibo.setLikeNum(getLikeNum(subDivs.get(1)));
-// 					System.out.println(subDivs.get(1).text());
-//					weibo.setShareNum(getShareNum(subDivs.get(1)));
-//					weibo.setCommentNum(getCommentNum(subDivs.get(1)));
+ 					weibo.setLikeNum(getNum(subDivs.get(1).text()));
+					weibo.setShareNum(getShareNum(subDivs.get(1).text()));
+					weibo.setCommentNum(getCommentNum(subDivs.get(1).text()));
  					weibo.setText(getRepostReason(subDivs.get(1)));
  				}
  				else{
  					// 原创发布带附件微博
  					weibo.setShared(false);
-// 					weibo.setLikeNum(getLikeNum(subDivs.get(1)));
-// 					System.out.println(subDivs.get(1).text());
-//					weibo.setShareNum(getShareNum(subDivs.get(1)));
-// 					weibo.setCommentNum(getCommentNum(subDivs.get(1)));
+ 					weibo.setLikeNum(getNum(subDivs.get(1).text()));
+					weibo.setShareNum(getShareNum(subDivs.get(1).text()));
+ 					weibo.setCommentNum(getCommentNum(subDivs.get(1).text()));
  					//weibo.setHasPic(true);
  					weibo.setText(weiboEl.getElementsByClass("ctt").get(0).text());
  				}
@@ -117,10 +114,9 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  				// 转发带附件的微博
  				weibo.setShared(true);
  				//weibo.setHasPic(true);
-// 				weibo.setLikeNum(getLikeNum(subDivs.get(2)));
-// 				System.out.println(subDivs.get(2).text());
-//				weibo.setShareNum(getShareNum(subDivs.get(2)));
-//				weibo.setCommentNum(getCommentNum(subDivs.get(2)));
+				weibo.setLikeNum(getNum(subDivs.get(2).text()));
+				weibo.setShareNum(getShareNum(subDivs.get(2).text()));
+				weibo.setCommentNum(getCommentNum(subDivs.get(2).text()));
  				weibo.setText(getRepostReason(subDivs.get(2)));
  			}
  			else{
@@ -138,27 +134,30 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  		return weibo;
  	}
 
- 	private static int getShareNum(Element el) {
- 		String temp =  el.toString();
-		int startIndex  = temp.indexOf(">转发[");
-		int lastIndex = temp.indexOf("]<");
-		int ShareNum = Integer.parseInt(temp.substring(startIndex+4, lastIndex ));
+ 	private static int getShareNum(String temp) {
+ 		
+		int startIndex  = temp.indexOf("转发[");
+		int lastIndex = temp.indexOf("]  评");
+		int ShareNum = Integer.parseInt(temp.substring(startIndex+3, lastIndex));
  		return ShareNum;
 }
 
-	private static int getCommentNum(Element el) {
-		String temp =  el.toString();
-		int startIndex  = temp.indexOf(">评论[");
-		int lastIndex = temp.indexOf("]<");
-		int CommentNum = Integer.parseInt(temp.substring(startIndex+4, lastIndex ));
+	private static int getCommentNum(String temp) {
+		
+		int startIndex  = temp.indexOf("评论[");
+		int lastIndex = temp.indexOf("]  收");
+		int CommentNum = Integer.parseInt(temp.substring(startIndex+3, lastIndex));
  		return CommentNum;
 }
 
-	public static int getLikeNum(Element el){
-		String temp =  el.toString();
-		int startIndex  = temp.indexOf(">赞[");
-		int lastIndex = temp.indexOf("]<");
-		int likeNum = Integer.parseInt(temp.substring(startIndex+3, lastIndex ));
+	public static int getNum(String temp){
+		
+		
+		int likeNum = 0;
+		int startIndex  = temp.indexOf("赞[");
+		int lastIndex = temp.indexOf("]  转发");
+		if(startIndex==-1 || lastIndex == -1) ;
+		else likeNum = Integer.parseInt(temp.substring(startIndex+2, lastIndex));
  		return likeNum;
  	}
  	/**
