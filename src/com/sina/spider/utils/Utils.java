@@ -1,17 +1,7 @@
 package com.sina.spider.utils;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
-
-
 
 
 public class Utils {
@@ -88,49 +78,7 @@ public class Utils {
 		return null;
 	}
 	
-	/**
-	 * 根据logType将日志写入相应的文件
-	 * @param logType
-	 * @param logStr
-	 */
-	/*
-	public static void writeLog(int logType, String logStr){
-		// 选取log类型
-		String filePath = null;
-		switch(logType){
-			case LogType.SWITCH_ACCOUNT_LOG:
-				filePath = Constants.SWITCH_ACCOUNT_LOG_PATH;
-				break;
-			case LogType.COMMENT_LOG:
-				filePath = Constants.COMMENT_LOG_PATH;
-				break;
-			case LogType.REPOST_LOG:
-				filePath = Constants.REPOST_LOG_PATH;
-				break;
-			case LogType.WEIBO_LOG:
-				filePath = Constants.ABNORMAL_WEIBO_PATH;
-				break;
-			default:
-				return;
-		}
-		
-		// 写入日志
-		try {
-			FileWriter fileWriter = new FileWriter(filePath, true);
-			if(logType == LogType.WEIBO_LOG){
-				fileWriter.write(logStr + "\r\n");
-			}
-			else{
-				fileWriter.write((new Date()).toString() + ": " + logStr + "\r\n");
-			}
-	        fileWriter.flush();
-			fileWriter.close();
-		} 
-		catch (IOException e) {
-			Log.error(e);
-		}
-	}
-*/
+	
 	/**
 	 * 将异常账号写入文件
 	 * @param account
@@ -144,32 +92,8 @@ public class Utils {
 		fileWriter.close();
 	}
 */
-	// 从url中解析出当前用户的ID
-	public static String getUserIdFromUrl(String url) {
-		int startIndex = url.lastIndexOf("/");
-		int endIndex = url.indexOf("?");
-		
-		if(endIndex == -1){
-			return url.substring(startIndex + 1); 
-		}
-		return url.substring(startIndex + 1,  endIndex);
-	}
-	
-	// 从follow url中解析出当前用户的ID
-	public static String getUserIdFromFollowUrl(String url) {
-		int startIndex = 16;
-		int endIndex = url.indexOf("/follow");
 
-		return url.substring(startIndex,  endIndex);
-	}
 	
-	// http://tp2.sinaimg.cn/2826608265/50/5667697175/1
-	public static String getUserIdFromImgUrl(String url) {
-		int startIndex = url.indexOf("sinaimg.cn/") + "sinaimg.cn/".length();
-		String subStr = url.substring(startIndex);
-
-		return subStr.substring(0, subStr.indexOf("/"));
-	}
 	
 }
 	

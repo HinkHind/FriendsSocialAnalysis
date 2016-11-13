@@ -15,7 +15,7 @@ import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.scheduler.SchedulerContext;
 import com.geccocrawler.gecco.spider.render.RequestFieldRender;
 import com.sina.spider.model.Weibo;
-import com.sina.spider.utils.Upload;
+import com.sina.spider.utils.UploadSQL;
 import com.sina.spider.utils.Utils;
 
 
