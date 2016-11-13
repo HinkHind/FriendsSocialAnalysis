@@ -3,6 +3,7 @@ package com.sipder.sina;
 
 import com.geccocrawler.gecco.GeccoEngine;
 import com.geccocrawler.gecco.annotation.Gecco;
+import com.geccocrawler.gecco.annotation.Href;
 import com.geccocrawler.gecco.annotation.HtmlField;
 import com.geccocrawler.gecco.annotation.Request;
 import com.geccocrawler.gecco.annotation.RequestParameter;
@@ -23,9 +24,31 @@ public class articleList implements HtmlBean{
 	
 	@HtmlField(cssPath="body")
 	private String content;
+	@HtmlField(cssPath="span.tc")
+	private String weiboNum;
+	
+	@Href
+	@HtmlField(cssPath="div.tip2:nth-child(2) > a:nth-child(2)")
+	private String following;
 	
 
 
+	public String getFollowing() {
+		return following;
+	}
+
+	public void setFollowing(String following) {
+		this.following = following;
+	}
+
+	public String getWeiboNum() {
+		return weiboNum;
+	}
+
+	public void setWeiboNum(String weiboNum) {
+		this.weiboNum = weiboNum;
+	}
+	
 	public HttpRequest getRequest() {
 		return request;
 	}
@@ -53,7 +76,6 @@ public class articleList implements HtmlBean{
 	public  void Spidermain() {
 		System.out.println("invoke spider program");
 		HttpGetRequest start = new HttpGetRequest("http://weibo.cn/fbb0916");
-		//start.addCookie("SUV", "1460541527037365");
 		start.addCookie("SCF", "Ap_YjAYZCLPj9tUybsLDEICX2T8pgKDzgowDX1aQQW20lCUUA6BCX645WHRwC_CQ5OMKwbqLq96QT-t5baFa8WY.");
 		start.addCookie("ALF", "1510486488");
 		start.addCookie("tgc", "TGT-NjA0MDg4OTMxMw==-1478950488-xd-5294D78EC92CDD43A63A2AFD9C28B7A5");
@@ -72,7 +94,7 @@ public class articleList implements HtmlBean{
 		start.addHeader("Connection", "keep-alive");
 		start.addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36");
 		GeccoEngine.create()
-		.classpath("com.sina.spider")
+		.classpath("com.spider.sina")
 		.start(start)
 		.interval(5000)
 		.run();

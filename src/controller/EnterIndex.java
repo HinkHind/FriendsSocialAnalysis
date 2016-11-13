@@ -97,7 +97,7 @@ public class EnterIndex extends ActionSupport{
 		int userId = (int) context.getSession().get("userId");
 		System.out.println("before art");
 		articleList art = new articleList();
-		art.Spidermain();
+		//art.Spidermain();
 		System.out.println("after art");
 		Session session = HibernateUtil.currentSession();
 		Transaction transaction = session.beginTransaction();
