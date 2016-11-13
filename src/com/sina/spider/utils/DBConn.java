@@ -4,9 +4,9 @@ import java.sql.DriverManager;
 
 
 public class DBConn {	
-	public static String CONN_URL = "jdbc:mysql://localhost:3306/sina_weibo?characterEncoding=utf-8";
+	public static String CONN_URL = "jdbc:mysql://localhost:3306/db?characterEncoding=utf-8";
 	public static String USERNAME = "root";
-	public static String PASSWORD = "123456";
+	public static String PASSWORD = "123456789";
 	
 	private DBConn() {
 		
