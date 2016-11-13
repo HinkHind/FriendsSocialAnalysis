@@ -13,7 +13,9 @@ import com.geccocrawler.gecco.annotation.PipelineName;
 import com.geccocrawler.gecco.pipeline.Pipeline;
 import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.scheduler.SchedulerContext;
+import com.geccocrawler.gecco.spider.render.RequestFieldRender;
 import com.sina.spider.model.Weibo;
+import com.sina.spider.utils.Upload;
 import com.sina.spider.utils.Utils;
 
 
@@ -33,7 +35,8 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
 		}
 		
 		if(weiboItems != null && weiboItems.size() > 0){
-			createFile(weiboItems);
+			userId = getUserID(articlelist.getFollowing());
+			createFile(weiboItems, userId);
 		}
 		Element pageEl = contentDoc.getElementById("pagelist");
 		
@@ -53,11 +56,15 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
 	}
 
 	// 将抓取的微博信息保存至本地文件
- 	public static void createFile(List<Element> weiboItems) {
+ 	public static void createFile(List<Element> weiboItems, String userID) {
 		//String userID = Utils.getUserIdFromUrl(urlPath);
+ 		
  		for(Element el: weiboItems){				
 			Weibo weibo = parse(el);
-			System.out.println(weibo.toString());
+			weibo.setEntryUrl(getWeiboUrl(userID,weibo.getId()));
+			Upload upload =  new Upload();
+			upload.setWeibo(weibo);
+			//System.out.println(weibo.toString());
  		}
 
 	}
@@ -72,23 +79,36 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  			weibo.setId(weiboEl.attr("id").substring(2));
  			//weibo.setPoster(poster);
  			weibo.setPublishTime(Utils.parseDate(weiboEl.getElementsByClass("ct").get(0).text().split("来自")[0]));
- 			
  			if(subDivsSize == 1){
  				// 原创发布无附件微博
  				weibo.setShared(false);
  				//weibo.setHasPic(false);
+//				weibo.setLikeNum(getLikeNum(subDivs.get(0)));
+//				System.out.println(subDivs.get(0).text());
+//				weibo.setShareNum(getShareNum(subDivs.get(0)));
+//				weibo.setCommentNum(getCommentNum(subDivs.get(0)));
  				weibo.setText(weiboEl.getElementsByClass("ctt").get(0).text());
+ 				
+ 				
  			}
  			else if(subDivsSize == 2){
  				if(subDivs.get(0).toString().contains("<span class=\"cmt\">原文转发")){
  					// 转发无附件微博
  					weibo.setShared(true);
  					//weibo.setHasPic(false);
+// 					weibo.setLikeNum(getLikeNum(subDivs.get(1)));
+// 					System.out.println(subDivs.get(1).text());
+//					weibo.setShareNum(getShareNum(subDivs.get(1)));
+//					weibo.setCommentNum(getCommentNum(subDivs.get(1)));
  					weibo.setText(getRepostReason(subDivs.get(1)));
  				}
  				else{
  					// 原创发布带附件微博
  					weibo.setShared(false);
+// 					weibo.setLikeNum(getLikeNum(subDivs.get(1)));
+// 					System.out.println(subDivs.get(1).text());
+//					weibo.setShareNum(getShareNum(subDivs.get(1)));
+// 					weibo.setCommentNum(getCommentNum(subDivs.get(1)));
  					//weibo.setHasPic(true);
  					weibo.setText(weiboEl.getElementsByClass("ctt").get(0).text());
  				}
@@ -97,6 +117,10 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  				// 转发带附件的微博
  				weibo.setShared(true);
  				//weibo.setHasPic(true);
+// 				weibo.setLikeNum(getLikeNum(subDivs.get(2)));
+// 				System.out.println(subDivs.get(2).text());
+//				weibo.setShareNum(getShareNum(subDivs.get(2)));
+//				weibo.setCommentNum(getCommentNum(subDivs.get(2)));
  				weibo.setText(getRepostReason(subDivs.get(2)));
  			}
  			else{
@@ -108,12 +132,35 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  			//Log.error(e);
  			//.error("Not a valid weibo item: " + weiboEl);
  			System.out.println(e);
- 			System.out.println("Not a valid weibo item: " + weiboEl);
+ 			System.out.println("Not a valid weibo item: " + weibo.getEntryUrl());
  		}
  		
  		return weibo;
  	}
 
+ 	private static int getShareNum(Element el) {
+ 		String temp =  el.toString();
+		int startIndex  = temp.indexOf(">转发[");
+		int lastIndex = temp.indexOf("]<");
+		int ShareNum = Integer.parseInt(temp.substring(startIndex+4, lastIndex ));
+ 		return ShareNum;
+}
+
+	private static int getCommentNum(Element el) {
+		String temp =  el.toString();
+		int startIndex  = temp.indexOf(">评论[");
+		int lastIndex = temp.indexOf("]<");
+		int CommentNum = Integer.parseInt(temp.substring(startIndex+4, lastIndex ));
+ 		return CommentNum;
+}
+
+	public static int getLikeNum(Element el){
+		String temp =  el.toString();
+		int startIndex  = temp.indexOf(">赞[");
+		int lastIndex = temp.indexOf("]<");
+		int likeNum = Integer.parseInt(temp.substring(startIndex+3, lastIndex ));
+ 		return likeNum;
+ 	}
  	/**
  	 * 从子div中获取转发原因
  	 * @param processEl
@@ -130,6 +177,10 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  		return repostReason.toString();
  	}
  	
+ 	private static String getWeiboUrl(String userID, String weiboID) {
+ 		String weiboUrl = "http://weibo.com/" +userID+ "/" + weiboID ;
+ 		return weiboUrl;
+ 	}
  	/**
  	 * 获取某人微博总数量
  	 * @param articlelist.getWeiboNum

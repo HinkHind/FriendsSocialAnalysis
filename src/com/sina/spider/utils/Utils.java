@@ -16,7 +16,7 @@ import java.util.Calendar;
 
 public class Utils {
 	private static SimpleDateFormat simpleDateTimeFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-	public static Connection conn = DBConn.getConnection();
+	//public static Connection conn = DBConn.getConnection();
 	
 	/**
 	 * 检测字符串是否为null，或空字符串

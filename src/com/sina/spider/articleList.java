@@ -74,7 +74,7 @@ public class articleList implements HtmlBean{
 		this.content = content;
 	}
 
-	public  void tmain() {
+	public void Spidermain(String args[]) {
 		HttpGetRequest start = new HttpGetRequest("http://weibo.cn/fbb0916");
 		//start.addCookie("SUV", "1460541527037365");
 		start.addCookie("SCF", "Ap_YjAYZCLPj9tUybsLDEICX2T8pgKDzgowDX1aQQW20lCUUA6BCX645WHRwC_CQ5OMKwbqLq96QT-t5baFa8WY.");

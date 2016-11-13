@@ -79,7 +79,7 @@ public class Weibo {
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("id:\t\t").append(id).append("\n")
+		sb.append("id:\t\t\t").append(id).append("\n")
 		  .append("entryUrl:\t\t").append(entryUrl).append("\n")
 		  .append("text:\t\t\t").append(text).append("\n")
 		  .append("publishTime:\t\t").append(publishTime).append("\n")
