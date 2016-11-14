@@ -15,6 +15,8 @@ import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.scheduler.SchedulerContext;
 import com.geccocrawler.gecco.spider.render.RequestFieldRender;
 import com.sina.spider.model.Weibo;
+import com.sina.spider.model.WeiboUrl;
+import com.sina.spider.utils.DownloadSQL;
 import com.sina.spider.utils.UploadSQL;
 import com.sina.spider.utils.Utils;
 
@@ -33,14 +35,17 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
 			//contentDoc = new Document("");
 			System.out.println("微博数量过多，暂不拿取");
 		}
+		DownloadSQL down = new DownloadSQL();
+		WeiboUrl wburl= down.getOneNewWbUrl();
 		
 		if(weiboItems != null && weiboItems.size() > 0){
 			userId = getUserID(articlelist.getFollowing());
-			createFile(weiboItems, userId);
+			createFile(weiboItems, userId , wburl);
 		}
 		Element pageEl = contentDoc.getElementById("pagelist");
 		
 		if(pageEl != null){
+			
 			List<Element> hrefEls = pageEl.getElementsByTag("a");
 			for(Element el: hrefEls){
 				if(el.toString().contains("下页")){
@@ -51,19 +56,20 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
 				}
 			}
 			System.out.println(">> progress of current user: " + pageEl.text());
+			
 		}
 		
 	}
 
 	// 将抓取的微博信息保存至本地文件
- 	public static void createFile(List<Element> weiboItems, String userID) {
+ 	public static void createFile(List<Element> weiboItems, String userID, WeiboUrl wbUrl) {
 		//String userID = Utils.getUserIdFromUrl(urlPath);
  		
  		for(Element el: weiboItems){				
 			Weibo weibo = parse(el);
 			weibo.setEntryUrl(getWeiboUrl(userID,weibo.getId()));
 			UploadSQL upload =  new UploadSQL(); //数据存储到数据库
-			upload.setWeibo(weibo);
+			upload.setWeibo(weibo, wbUrl);
 			System.out.println(weibo.toString());
  		}
 
@@ -81,7 +87,7 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  			weibo.setPublishTime(Utils.parseDate(weiboEl.getElementsByClass("ct").get(0).text().split("来自")[0]));
  			if(subDivsSize == 1){
  				// 原创发布无附件微博
- 				weibo.setShared(false);
+ 				weibo.setIsShared(0);
  				//weibo.setHasPic(false);
 				weibo.setLikeNum(getNum(subDivs.get(0).text()));
 				weibo.setShareNum(getShareNum(subDivs.get(0).text()));
@@ -93,7 +99,7 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  			else if(subDivsSize == 2){
  				if(subDivs.get(0).toString().contains("<span class=\"cmt\">原文转发")){
  					// 转发无附件微博
- 					weibo.setShared(true);
+ 					weibo.setIsShared(1);
  					//weibo.setHasPic(false);
  					weibo.setLikeNum(getNum(subDivs.get(1).text()));
 					weibo.setShareNum(getShareNum(subDivs.get(1).text()));
@@ -102,7 +108,7 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  				}
  				else{
  					// 原创发布带附件微博
- 					weibo.setShared(false);
+ 					weibo.setIsShared(0);
  					weibo.setLikeNum(getNum(subDivs.get(1).text()));
 					weibo.setShareNum(getShareNum(subDivs.get(1).text()));
  					weibo.setCommentNum(getCommentNum(subDivs.get(1).text()));
@@ -112,7 +118,7 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  			}
  			else if(subDivsSize == 3){
  				// 转发带附件的微博
- 				weibo.setShared(true);
+ 				weibo.setIsShared(1);
  				//weibo.setHasPic(true);
 				weibo.setLikeNum(getNum(subDivs.get(2).text()));
 				weibo.setShareNum(getShareNum(subDivs.get(2).text()));

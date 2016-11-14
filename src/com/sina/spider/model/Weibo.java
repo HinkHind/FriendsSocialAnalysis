@@ -16,7 +16,7 @@ public class Weibo {
 	private int shareNum = 0; //转发数
 	private int commentNum = 0; //评论数
 	private String sourceDevice  = null; //设备来源
-	private boolean isShared = false; //是否转发，默认false
+	private int isShared = 0; //是否转发，默认0 ,0:原创 1：转发
 	private String  publishTime; //发微博时间
 	public String getPublishTime() {
 		return publishTime;
@@ -66,15 +66,13 @@ public class Weibo {
 	public void setSourceDevice(String sourceDevice) {
 		this.sourceDevice = sourceDevice;
 	}
-	public boolean isShared() {
+	
+	public int getIsShared() {
 		return isShared;
 	}
-	public void setShared(boolean isShared) {
+	public void setIsShared(int isShared) {
 		this.isShared = isShared;
 	}
-
-	
-	
 	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder();

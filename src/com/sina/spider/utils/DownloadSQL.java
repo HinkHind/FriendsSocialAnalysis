@@ -5,16 +5,40 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.sina.spider.model.weiboUrl;
+import com.sina.spider.model.WeiboUrl;
 
 
 public class DownloadSQL implements Download {
 	static DataBaseConnector connection = new DataBaseConnector();
 	
 
+	public WeiboUrl getOneNewWbUrl() {
+		 connection.ConnectDataBase();
+		 PreparedStatement pst = null;
+		 ResultSet rs = null;
+			String SEARCH_SQL = "SELECT  weiboUrl,weiboID,tag"
+			 		+ " FROM weibo_url"
+			 		+ " WHERE isNew = 1 ORDER BY weiboID LIMIT 1";
+		try {
+			WeiboUrl wb = new WeiboUrl();
+			pst = connection.connect.prepareStatement(SEARCH_SQL);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				wb.setWeiboUrl(rs.getString("weiboUrl"));
+				wb.setWeiboID(rs.getInt("weiboID"));
+			}
+			pst.close();
+			return wb;
+		    } 
+		    catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		    }
+	}
+	 
 	@Override
-	public ArrayList<weiboUrl> getNewWeiboUrl() {
-		ArrayList<weiboUrl> wbList = new ArrayList<weiboUrl>();
+	public ArrayList<WeiboUrl> getNewWeiboUrl() {
+		ArrayList<WeiboUrl> wbList = new ArrayList<WeiboUrl>();
 		connection.ConnectDataBase();
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -25,7 +49,7 @@ public class DownloadSQL implements Download {
 			pst = connection.connect.prepareStatement(SEARCH_SQL);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				weiboUrl wb = new weiboUrl();
+				WeiboUrl wb = new WeiboUrl();
 				wb.setWeiboID(rs.getInt("weiboID"));
 				wb.setWeiboUrl(rs.getString("weiboUrl"));
 				wb.setTag(rs.getInt("tag"));

@@ -5,9 +5,24 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import com.sina.spider.model.WeiboUrl;
+import com.sina.spider.utils.DownloadSQL;
 
 public class test {
-    public static void main(String[] args) throws IOException {
+	
+	 public static void main(String[] args) throws Exception{
+		 DownloadSQL down = new DownloadSQL();
+			WeiboUrl wburl= down.getOneNewWbUrl();
+			
+			System.out.println(wburl.getWeiboID());
+		  
+		 
+	 }
+	
+    public static void tmain(String[] args) throws IOException {
         if (args.length < 1 || !(args[0].equals("xml") 
                                 || args[0].equals("json") 
                                 || args[0].equals("conll"))) {

@@ -2,12 +2,18 @@ package com.sina.spider.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class Utils {
 	private static SimpleDateFormat simpleDateTimeFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 	//public static Connection conn = DBConn.getConnection();
 	
+	 public Date strToDate(String str) throws Exception{
+		 SimpleDateFormat sdf =   new SimpleDateFormat("yyyyMMddHHmmss");
+		 Date date = sdf.parse(str);
+		 return date;
+	 }
 	/**
 	 * 检测字符串是否为null，或空字符串
 	 * @param str

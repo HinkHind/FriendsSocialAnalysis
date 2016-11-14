@@ -11,7 +11,7 @@ import com.geccocrawler.gecco.request.HttpGetRequest;
 import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spider.HtmlBean;
 
-@Gecco(matchUrl="http://weibo.cn/{userID}", pipelines = "SaveArticlePipeline")
+@Gecco(matchUrl="http://weibo.cn/{userID}", pipelines = {"consolePipeline","SaveArticlePipeline"})
 public class articleList implements HtmlBean{
 
 	private static final long serialVersionUID = -8062180093723754955L;
@@ -74,17 +74,17 @@ public class articleList implements HtmlBean{
 		this.content = content;
 	}
 
-	public void Spidermain(String args[]) {
-		HttpGetRequest start = new HttpGetRequest("http://weibo.cn/fbb0916");
+	public void Start(String startUrl) {
+		HttpGetRequest start = new HttpGetRequest(startUrl);
 		//start.addCookie("SUV", "1460541527037365");
-		start.addCookie("SCF", "Ap_YjAYZCLPj9tUybsLDEICX2T8pgKDzgowDX1aQQW20lCUUA6BCX645WHRwC_CQ5OMKwbqLq96QT-t5baFa8WY.");
-		start.addCookie("ALF", "1510486488");
-		start.addCookie("tgc", "TGT-NjA0MDg4OTMxMw==-1478950488-xd-5294D78EC92CDD43A63A2AFD9C28B7A5");
-		start.addCookie("LT", "1478950488");
+		start.addCookie("SCF", "AseYve14k4wnJGKX6-2kRh5LecxeS8dImCRbVqnUocsE3oJPq2y-q9S4tub8wjiGCi8qTV6FqGfBej3IuqyrPJU.");
+		start.addCookie("ALF", "1510655558");
+		start.addCookie("tgc", "TGT-NjA0MDg4OTMxMw==-1479119558-ja-5B73765D482338E188A001C1D3AD7785");
+		start.addCookie("LT", "1479119558");
 		start.addCookie("SUBP", "0033WrSXqPxfM725Ws9jqgMF55529P9D9WFycG19Fy2-Mz1mOyGnZfKY5NHD95QcehB71hn4e020Ws4Dqcjs9rD4qJSr");
-		start.addCookie("ALC", "ac%3D2%26bt%3D1478950488%26cv%3D5.0%26et%3D1510486488%26scf%3D%26uid%3D6040889313%26vf%3D0%26vs%3D0%26vt%3D0%26es%3Ddd83299ca8ececa149836be31a88eeb9");
+		start.addCookie("ALC", "ac%3D2%26bt%3D1479119558%26cv%3D5.0%26et%3D1510655558%26scf%3D%26uid%3D6040889313%26vf%3D0%26vs%3D0%26vt%3D0%26es%3D6b92e7931f519bce81f397bb646fa571");
 		start.addCookie("sso_info", "v02m6alo5qztaaep6WimLacpp2WpaSPk5iwjYOAuI6DpLOMk4zA");
-		start.addCookie("SUB", "_2A251Io4IDeTxGeBO71IZ-CfPyj-IHXVWWfjArDV_PUNbm9AKLVKikW92Br9FFupH1gmOhJjkJvan6yAlvQ..");		
+		start.addCookie("SUB", "_2A251LeKWDeTxGeBO71IZ-CfPyj-IHXVWW1NerDV_PUNbm9ANLW-jkW8lyqm2pV3ykzrtzidMEsJLXNT9bA..");		
 		start.addHeader("Host", "weibo.cn");
 		start.addHeader("Upgrade-Insecure-Requests", "1");
 		start.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");

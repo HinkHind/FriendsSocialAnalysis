@@ -1,6 +1,6 @@
 package com.sina.spider.model;
 
-public class weiboUrl {
+public class WeiboUrl {
 
 		private int weiboID;
 		private String weiboUrl;
