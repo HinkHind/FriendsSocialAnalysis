@@ -4,11 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>content</title>
+    <title>添加</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/zsq.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/h.ico" type="image/x-icon" />
+    <style type="text/css">
+        .form-horizontal{
+            margin: 20%;
+            margin-top: 5%;
+        }
+    </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -17,22 +24,18 @@
     <![endif]-->
 </head>
 <body>
-<h1>最新更新</h1>
-<div class="panel-body"  id="card1">
-    <div style="margin-top: -15px"> <h3><img src="img/csdn.png" class="smallpic"><img src="img/转发大.png" class="smallpic">韩寒</h3></div>
-    <div style="margin-left: 10px">
-        <h6>今天 11:11</h6>
-        <h5>##华为Mate9#革命性安卓体验，一张图带你看懂！你最喜欢哪个突破？转发并评论本微博说一说，我将抽送HUAWEI Mate 9一台，周四由@花粉助手小E 公布！</h5>
+<form class="form-horizontal" role="form">
+    <div class="form-group form-group-lg">
+        <label class="col-sm-2 control-label" for="formGroupInputLarge">知乎</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" id="formGroupInputLarge" placeholder="此处显示知乎网址">
+        </div>
+        <div class="col-sm-offset-4 col-sm-9" id="button1" style="margin-top: 20px">
+            <button type="submit"  class="btn btn-default" onclick="fun2()">保存</button>
+            <input type="button" class="btn btn-default col-sm-offset-5" onclick="history.go(-1)" value ="返回"/>
+        </div>
     </div>
-    <div class="col-sm-offset-8 row" style="margin-top: 5px;">
-        <div class="col-md-3"><img src="img/转发.png" class="smallpic1">32122</div>
-        <div class="col-md-3"><img src="img/回复.png" class="smallpic1 col-sm-offset-1">622</div>
-        <div class="col-md-3"><img src="img/赞.png" class="smallpic1">1974</div>
-        <div class="col-md-3"><a href="http://zhaoshiqi.top"  target="_blank" >阅读原文</a></div>
-    </div>
-</div>
-
-
+</form>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>

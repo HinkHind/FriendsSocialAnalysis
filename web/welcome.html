@@ -15,6 +15,16 @@
     <!--[if lt IE 9]>
     <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script type="text/javascript">
+        function fun1()
+        {
+            var mymessage=confirm("确定退出？");
+            if(mymessage==true)
+            {
+                window.location.href='signin.html';
+            }
+        }
+    </script>
     <![endif]-->
 </head>
 <body>
@@ -36,12 +46,12 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="index.html">个人主页<span class="sr-only">(current)</span></a></li>
-                <li><a href="control.html">控制面板</a></li>
+                <li><a href="control1.html">控制面板</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其它功能 </a>
                     <ul class="dropdown-menu">
                         <li><a href="new.html">新增关注</a></li>
-                        <li><a href="#">备用功能1</a></li>
+                        <li><a href="control.html">备用控制面板</a></li>
                         <li><a href="#">备用功能2</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">网站介绍</a></li>

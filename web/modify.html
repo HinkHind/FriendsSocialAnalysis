@@ -71,97 +71,56 @@
             if(d1 == "") {
                 alert("姓名不能为空");
                 return;
-                }
-                if(d2=="" && d3==""){
-                    alert("至少填写一个网址");
-                    return;
-                }
+            }
+            if(d2=="" && d3==""){
+                alert("至少填写一个网址");
+                return;
+            }
 
         }
     </script>
 </head>
 <body>
-<!--顶部边栏-->
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" style="color: #FFFFFF" href="welcome.html">社交好友分析</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <!--<li class="active"><a href="index.html">个人主页<span class="sr-only">(current)</span></a></li>-->
-                <li><a href="index.html">个人主页</a></li>
-                <li><a href="control1.html">控制面板</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其它功能<span class="sr-only">(current)</span> <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="new.html">新增关注</a></li>
-                        <li><a href="control.html">备用控制面板</a></li>
-                        <li><a href="#">备用功能2</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">网站介绍</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">这个按钮不能点</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <input type="button" class="btn btn-link navbar-btn" style="color: #FFFFFF" onclick="fun1()" value="退出"/>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
-<!--新增-->
 <div class="panel panel-default box">
     <div class="panel-heading" style="color: #FFFFFF; background-color: #3399ff">
-        <h1 class="panel-title text-center" >偷偷的关注TA！</h1>
+        <h1 class="panel-title text-center" >修改密码</h1>
     </div>
     <div class="panel-body" >
 
         <form class="form-horizontal inline-input" id="form1" role="form" >
 
             <div class="form-group field-box">
-                <label for="inputText1" class="col-sm-2  control-label">Name</label>
+                <label for="inputText1" class="col-sm-2  control-label">原密码</label>
                 <div class="col-sm-8 col-lg-8">
-                    <input type="text" class="form-control" id="inputText1" placeholder="关注的用户名称">
+                    <input type="password" class="form-control" id="inputText1" >
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="inputText2" class="col-sm-2 control-label">Weibo</label>
+                <label for="inputText2" class="col-sm-2 control-label">新密码</label>
                 <div class="col-sm-8 col-lg-8">
-                    <input type="text" class="form-control" id="inputText2" placeholder="请输入微博主页地址">
+                    <input type="password" class="form-control" id="inputText2" >
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="inputText3" class="col-sm-2 control-label">CSDN</label>
+                <label for="inputText3" class="col-sm-2 control-label">重复新密码</label>
                 <div class="col-sm-8 col-lg-8">
-                    <input type="text" class="form-control" id="inputText3" placeholder="请输入CSDN主页地址">
+                    <input type="password" class="form-control" id="inputText3" >
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9" id="button1">
-                    <button type="submit"  class="btn btn-default" onclick="fun2()">保存</button>
+                    <button type="submit"  class="btn btn-default" onclick="fun2()">提交</button>
                     <input type="button" class="btn btn-default col-sm-offset-5" onclick="history.go(-1)" value ="返回"/>
                 </div>
             </div>
         </form>
     </div>
 </div>
-<div class="col-sm-12 text-center">
-    <span>Copyright © 2016  <a href="zhaoshiqi.top">ShiQI </a> , All Rights Reserved&nbsp;</span>
-</div>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

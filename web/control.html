@@ -29,11 +29,14 @@
        .suojin{
            text-indent: 1em;
         }
-        .card{
+        .card {
             float: right;
-            width:70%;
-            margin:5px;
+            width: 70%;
+            margin: 5px;
+            border: 2px;
+            border-color: silver;
             margin-right: 5%;
+        }
         .inline-input input[type="text"],
         .inline-input input[type="password"],
         input[type="text"].inline-input,
@@ -59,7 +62,13 @@
         input[type="text"].inline-input:hover,
         input[type="password"].inline-input:hover {
             border-color: #959fb0;
-        }　
+        }
+        .panel-body{padding:15px;
+            border-top:1px solid #ddd;
+            border-bottom:1px solid #ddd;
+            border-left:1px solid #ddd;
+            border-right:1px solid #ddd;
+        }
     </style>
     <script type="text/javascript">
         function fun1()
@@ -91,12 +100,12 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="index.html">个人主页</a></li>
-                <li><a href="#">控制面板<span class="sr-only">(current)</span></a></li>
+                <li><a href="control1.html">控制面板<span class="sr-only">(current)</span></a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其它功能 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="new.html">新增关注</a></li>
-                        <li><a href="#">备用功能1</a></li>
+                        <li><a href="control.html">备用控制面板</a></li>
                         <li><a href="#">备用功能2</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">网站介绍</a></li>
@@ -256,10 +265,12 @@
         </div>
   </div>
 </div>
-
-<div class="col-sm-12 text-center copy-right">
-    <span>Copyright © 2016  <a href="zhaoshiqi.top">ShiQI </a> , All Rights Reserved&nbsp;</span>
+<footer>
+    <div class="col-sm-12 text-center copy-right">
+    <span>Copyright © 2016  <a href="http://zhaoshiqi.top">ShiQI </a> , All Rights Reserved&nbsp;</span>
 </div>
+</footer>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
