@@ -62,8 +62,8 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  		for(Element el: weiboItems){				
 			Weibo weibo = parse(el);
 			weibo.setEntryUrl(getWeiboUrl(userID,weibo.getId()));
-//			Upload upload =  new Upload(); 数据存储到数据库
-//			upload.setWeibo(weibo);
+			UploadSQL upload =  new UploadSQL(); //数据存储到数据库
+			upload.setWeibo(weibo);
 			System.out.println(weibo.toString());
  		}
 

@@ -2,6 +2,8 @@ package com.sina.spider.utils;
 
 import java.util.ArrayList;
 
+import com.sina.spider.model.weiboUrl;
+
 
 public interface Download {
 	
@@ -9,7 +11,7 @@ public interface Download {
 	 * 得到所有未爬过的微博url
 	 * @return
 	 */
-	public ArrayList<String> getNewWeiboUrl();
+	public ArrayList<weiboUrl> getNewWeiboUrl();
 	
 	/**
 	 * 得到所有未爬过的知乎url

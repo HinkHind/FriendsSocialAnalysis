@@ -32,4 +32,46 @@ public class UploadSQL implements Upload {
 		}
 		return flag;
 	}
+
+	@Override
+	public boolean updateTag(String url) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateWeiNum() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateZhihuNum() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateCSDNNum() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean insertWeibo() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean insertZhihu() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean insertCSDN() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
