@@ -187,7 +187,7 @@
                         <h4 class="modal-title" id="myModalLabel">新浪微博</h4>
                     </div>
                     <div class="modal-body">
-                        <input type="text" class="form-control"  placeholder='<s:property value = "urlForControl"/>'>
+                        <input type="text" class="form-control"  placeholder='<s:property value = "weiboUrl"/>'>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
