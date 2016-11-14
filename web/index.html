@@ -7,6 +7,8 @@
     <title>好友社交分析系统</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/zsq.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/h.ico" type="image/x-icon" />
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -19,13 +21,9 @@
             height:60%;
             margin:5px;
         }
-        .list-group{
-            background-color: silver;
-            float:left;
-            width:15%;
-            height:60%;
-            margin:10px;
-        }
+
+
+
     </style>
     <script type="text/javascript">
         function fun1()
@@ -39,7 +37,7 @@
     </script>
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default ">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -49,19 +47,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">社交好友分析</a>
+            <a class="navbar-brand" style="color: #FFFFFF" href="welcome.html">社交好友分析</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">个人主页<span class="sr-only">(current)</span></a></li>
-                <li><a href="control.html">控制面板</a></li>
+                <li><a href="#">个人主页<span class="sr-only">(current)</span></a></li>
+                <li><a href="control1.html">控制面板</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其它功能 <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其它功能 </a>
                     <ul class="dropdown-menu">
                         <li><a href="new.html">新增关注</a></li>
-                        <li><a href="#">备用功能1</a></li>
+                        <li><a href="control.html">备用控制面板</a></li>
                         <li><a href="#">备用功能2</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">网站介绍</a></li>
@@ -71,14 +69,14 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <input type="button" class="btn btn-default navbar-btn" onclick="fun1()" value="退出"/>
+                <input type="button" class="btn btn-link navbar-btn" style="color: #FFFFFF" onclick="fun1()" value="退出"/>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 <!--左侧菜单-->
-<div class="list-group">
-    <a href="#" class="list-group-item disabled">
+<div class="list-group" >
+    <a href="#" class="list-group-item disabled text-center" style="color: #FFFFFF; background-color: #3399ff">
         全部动态
     </a>
     <a href="content1.html" class="list-group-item" target="right"><span class="badge">1</span>韩 寒</a>
@@ -103,7 +101,9 @@
     <li role="presentation"><a href="#">Messages</a></li>
 </ul>
 -->
-
+<div class="col-sm-12 text-center copy-right">
+<span>Copyright © 2016  <a href="zhaoshiqi.top">ShiQI </a> , All Rights Reserved&nbsp;</span>
+</div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
