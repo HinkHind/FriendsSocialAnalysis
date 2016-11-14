@@ -1,1 +1,8 @@
 /controller/
+/dataFetcher/
+/hibernateDao/
+/hibernateMapping/
+/hibernateUtil/
+/interceptor/
+/struts.xml
+/utils/

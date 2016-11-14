@@ -48,7 +48,9 @@
 		<div class="panel panel-default">
 	    	<div class="panel-body">
 	    		<s:if test = "#session.selectedPlatform == \"weibo\"">
-	    			<s:property value="text" />
+	    		<p>
+	    			<s:property value="text" escape= "false"/>
+	    			</p>
 	    		</s:if>
 	    		<s:else>
 				<s:property value="contentHolder" />
