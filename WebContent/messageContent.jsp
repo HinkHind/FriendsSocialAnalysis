@@ -29,7 +29,7 @@
 
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#">最新动态</a></li>
-    <li role="presentation"><a href="analysisContent.jsp">兴趣分析</a></li>
+    <li role="presentation"><a href="displayAnalysis.action">兴趣分析</a></li>
 </ul>
 <div class="bianju">
 
