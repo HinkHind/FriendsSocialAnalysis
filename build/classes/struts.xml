@@ -79,12 +79,18 @@
         </action>
         
         
-        <action name = "enterControl" class = "controller.ManageFriend" method = "loadControlData">
+        <action name = "enterControl" class = "controller.ManageFriend" method = "enterControl">
         	<result>
         		control.jsp
         	</result>
-        
         </action>
+        
+        <action name = "displayFriends" class = "controller.ManageFriend" method = "displayFriends">
+        	<result>
+        		manageFriends.jsp
+        	</result>
+        </action>
+        
         <!--  <action name = "enterControlModal" class = "controller.ManageFriend" method = "enterControlModal">
         	<result>
             	control.jsp

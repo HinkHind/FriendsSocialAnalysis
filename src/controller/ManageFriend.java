@@ -151,7 +151,7 @@ public class ManageFriend extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	public String loadControlData() {
+	public String loadFriendsData() {
 		ActionContext context = ActionContext.getContext();
 		int userId = (int) context.getSession().get("userId");
 		Session session = HibernateUtil.currentSession();
@@ -455,6 +455,15 @@ public class ManageFriend extends ActionSupport{
 		transaction2.commit();
 		HibernateUtil.closeSession();
 		
+		return SUCCESS;
+	}
+	
+	public String enterControl() {
+		return SUCCESS;
+	}
+	
+	public String displayFriends() {
+		loadFriendsData();
 		return SUCCESS;
 	}
 	
