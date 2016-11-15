@@ -36,8 +36,9 @@ public class UploadSQL implements Upload {
 		boolean flag = false;
         try {
 			pst = connection.connect.prepareStatement(INSERT_SQL);
-			//pst.setLong(1, weiboID.getWeiboID());
-			pst.setLong(1, 1);
+			pst.setLong(1, weiboID.getWeiboID());
+//			System.out.println("得到的微博ID"+weiboID.getWeiboID());
+//			pst.setLong(1, 1);
 			pst.setString(2, weibo.getEntryUrl());
 			pst.setString(3, weibo.getText());
 			pst.setLong(4,weibo.getLikeNum());

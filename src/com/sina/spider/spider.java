@@ -15,7 +15,7 @@ import com.sina.spider.utils.UploadSQL;
 
 
 public class spider {
-	public static void umain(String args[]) {
+	public static void main(String args[]) {
 		ArrayList<WeiboUrl> wblist = new ArrayList<>();
 		DownloadSQL down = new DownloadSQL();
 		while(true) {
@@ -40,8 +40,8 @@ public class spider {
 					Spidermain.Start(startWeiUrl);
 					
 					
-//					UploadSQL up = new UploadSQL();
-//					up.updateWeiboNew(wblist.get(i).getWeiboID());
+					UploadSQL up = new UploadSQL();
+					up.updateWeiboNew(wblist.get(i).getWeiboID());
 				}
 				
 			}
@@ -50,11 +50,11 @@ public class spider {
 		
 		
 	}
-	public static void main(String args[]) {
+	public static void umain(String args[]) {
 		articleList Spidermain = new articleList();
-		Spidermain.Start("http://weibo.cn/fbb0916");
+		Spidermain.Start("http://weibo.cn/leijun");
 	}
-	
+	 
 	
 	
 }

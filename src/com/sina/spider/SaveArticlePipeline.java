@@ -29,7 +29,6 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
 		HttpRequest currRequest = articlelist.getRequest();	
 		Document contentDoc = Jsoup.parseBodyFragment(articlelist.getContent());
 		List<Element> weiboItems = getGoalContent(contentDoc); //得到没篇微博的结点
-		
 		// 微博数量超过限制，过滤掉，使其拿不到后续链接自动结束
 		if(weiboItems == null){
 			//contentDoc = new Document("");
@@ -48,7 +47,8 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
 			
 			List<Element> hrefEls = pageEl.getElementsByTag("a");
 			for(Element el: hrefEls){
-				if(el.toString().contains("下页")){
+				System.out.println("下页格式:"+el.toString());
+				if(el.toString().contains("下页") && !el.toString().contains("page=6\">下页")){
 					String nextPageUrl = "http://weibo.cn" + el.attr("href");
 					SchedulerContext.into(currRequest.subRequest(nextPageUrl));
 					//WeiboUrlQueue.addElement("http://weibo.cn" + el.attr("href").split("&gsid=")[0]); 
@@ -70,7 +70,7 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
 			weibo.setEntryUrl(getWeiboUrl(userID,weibo.getId()));
 			UploadSQL upload =  new UploadSQL(); //数据存储到数据库
 			upload.setWeibo(weibo, wbUrl);
-			System.out.println(weibo.toString());
+//			System.out.println(weibo.toString());
  		}
 
 	}

@@ -98,7 +98,7 @@ CREATE TABLE `friend` (
   CONSTRAINT `fk_friends_users` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_friends_weibo_urls1` FOREIGN KEY (`weiboID`) REFERENCES `weibo_url` (`weiboID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_friends_zhihu_urls1` FOREIGN KEY (`zhihuID`) REFERENCES `zhihu_url` (`zhihuID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,6 +107,7 @@ CREATE TABLE `friend` (
 
 LOCK TABLES `friend` WRITE;
 /*!40000 ALTER TABLE `friend` DISABLE KEYS */;
+INSERT INTO `friend` VALUES (61,'LJ',1,0,1,0,NULL,34,NULL),(62,'HQ',1,0,1,0,NULL,35,NULL);
 /*!40000 ALTER TABLE `friend` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,7 +124,7 @@ CREATE TABLE `user` (
   `password` varchar(30) NOT NULL,
   PRIMARY KEY (`userID`),
   UNIQUE KEY `userName_UNIQUE` (`userName`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,7 +133,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'tt','123456789ttt'),(3,'ff','123456789fff'),(4,'eee','123456789eee'),(5,'ttt','123456789ttt'),(6,'tttt','123456789ttt'),(7,'eeew','123456789eee'),(8,'eeaa','123456789eee'),(9,'eaaa','123456789eee'),(10,'fwwd','123456789fff'),(11,'hrh','123456789hhh'),(12,'eegg','123456789eee'),(13,'eeffefe','123456789eee'),(14,'ee','123456789ttt'),(15,'ttttt','123456789ttt'),(16,'fege','123456789fff'),(17,'feg','123456789fff'),(18,'jioj','123456789jjj'),(19,'feage','123456789fff');
+INSERT INTO `user` VALUES (1,'tt','123456789ttt');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,12 +160,21 @@ CREATE TABLE `weibo_entry` (
   `originCommentNumber` int(11) DEFAULT NULL,
   `publishedTime` datetime NOT NULL,
   `hasRead` tinyint(1) NOT NULL DEFAULT '0',
-  `classHolder` varchar(45) DEFAULT NULL,
+  `art` int(11) DEFAULT NULL,
+  `cultural` int(11) DEFAULT NULL,
+  `engineering` int(11) DEFAULT NULL,
+  `entertainment` int(11) DEFAULT NULL,
+  `game` int(11) DEFAULT NULL,
+  `living` int(11) DEFAULT NULL,
+  `medicine` int(11) DEFAULT NULL,
+  `science` int(11) DEFAULT NULL,
+  `social` int(11) DEFAULT NULL,
+  `sports` int(11) DEFAULT NULL,
   PRIMARY KEY (`entryID`),
   UNIQUE KEY `entryID_UNIQUE` (`entryID`),
   KEY `fk_weibo_entries_weibo_urls1` (`weiboID`),
   CONSTRAINT `fk_weibo_entries_weibo_urls1` FOREIGN KEY (`weiboID`) REFERENCES `weibo_url` (`weiboID`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1055 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,7 +200,7 @@ CREATE TABLE `weibo_url` (
   `isNew` tinyint(4) NOT NULL DEFAULT '1',
   `tag` int(11) DEFAULT NULL,
   PRIMARY KEY (`weiboID`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,6 +209,7 @@ CREATE TABLE `weibo_url` (
 
 LOCK TABLES `weibo_url` WRITE;
 /*!40000 ALTER TABLE `weibo_url` DISABLE KEYS */;
+INSERT INTO `weibo_url` VALUES (34,'http://weibo.cn/leijun',1,1,NULL),(35,'fe',1,1,NULL);
 /*!40000 ALTER TABLE `weibo_url` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,7 +231,7 @@ CREATE TABLE `zhihu_entry` (
   UNIQUE KEY `entryID_UNIQUE` (`entryID`),
   KEY `fk_weibo_entry_copy2_zhihu_url1_idx` (`zhihuID`),
   CONSTRAINT `fk_weibo_entry_copy2_zhihu_url1` FOREIGN KEY (`zhihuID`) REFERENCES `zhihu_url` (`zhihuID`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,7 +240,7 @@ CREATE TABLE `zhihu_entry` (
 
 LOCK TABLES `zhihu_entry` WRITE;
 /*!40000 ALTER TABLE `zhihu_entry` DISABLE KEYS */;
-INSERT INTO `zhihu_entry` VALUES (3,2,'zhihu2——1','1999-09-09 00:00:00',0,NULL),(4,2,'zhihu2——2','1999-09-09 00:00:00',0,NULL),(5,9,'zhihu9----1>^<','1999-08-09 00:00:00',0,NULL),(6,2,'fefe','2016-11-13 13:47:42',0,'f'),(7,2,'fefe','2016-11-13 13:47:44',0,'f');
+INSERT INTO `zhihu_entry` VALUES (3,2,'zhihu2——1','1999-09-09 00:00:00',0,NULL),(4,2,'zhihu2——2','1999-09-09 00:00:00',0,NULL),(5,9,'zhihu9----1>^<','1999-08-09 00:00:00',0,NULL),(6,2,'fefe','2016-11-13 13:47:42',0,'f'),(7,2,'fefe','2016-11-13 13:47:44',0,'f'),(8,2,'ffefegerhjyku','2016-11-14 13:57:11',0,'tt');
 /*!40000 ALTER TABLE `zhihu_entry` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,4 +278,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-13 22:43:08
+-- Dump completed on 2016-11-14 23:24:33
