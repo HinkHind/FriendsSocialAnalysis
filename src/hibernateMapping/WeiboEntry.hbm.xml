@@ -50,8 +50,35 @@
         <property name="hasRead" type="boolean">
             <column name="hasRead" not-null="true" />
         </property>
-        <property name="classHolder" type="string">
-            <column name="classHolder" length="45" />
+        <property name="art" type="java.lang.Integer">
+            <column name="art" />
+        </property>
+        <property name="cultural" type="java.lang.Integer">
+            <column name="cultural" />
+        </property>
+        <property name="engineering" type="java.lang.Integer">
+            <column name="engineering" />
+        </property>
+        <property name="entertainment" type="java.lang.Integer">
+            <column name="entertainment" />
+        </property>
+        <property name="game" type="java.lang.Integer">
+            <column name="game" />
+        </property>
+        <property name="living" type="java.lang.Integer">
+            <column name="living" />
+        </property>
+        <property name="medicine" type="java.lang.Integer">
+            <column name="medicine" />
+        </property>
+        <property name="science" type="java.lang.Integer">
+            <column name="science" />
+        </property>
+        <property name="social" type="java.lang.Integer">
+            <column name="social" />
+        </property>
+        <property name="sports" type="java.lang.Integer">
+            <column name="sports" />
         </property>
     </class>
 </hibernate-mapping>

@@ -73,9 +73,11 @@ public class Test  extends ActionSupport{
 		
 		Friend friend = (Friend) session.get(Friend.class, friendId);
 		WeiboUrl weiboUrl = friend.getWeiboUrl();
-		WeiboEntry weiboEntry = new WeiboEntry(weiboUrl, "ttt", getEntryStr(), 5, 3, 9, "7", false, 1,1, "tt",1, new Date(), false, "t");
+//		WeiboEntry weiboEntry = new WeiboEntry(weiboUrl, "ttt", getEntryStr(), 5, 3, 9, "7", false, 1,1, "tt",1, new Date(), false, "t");
+//		session.save(weiboEntry);
+//		
+		WeiboEntry weiboEntry = new WeiboEntry(weiboUrl, "ttt", getEntryStr(), 2, 3, 2, false, new Date(), false);
 		session.save(weiboEntry);
-		
 		transaction.commit();
 		HibernateUtil.closeSession();
 		return SUCCESS;

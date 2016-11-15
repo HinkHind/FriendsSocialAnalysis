@@ -14,6 +14,12 @@
         <property name="count" type="int">
             <column name="count" not-null="true" />
         </property>
+        <property name="isNew" type="byte">
+            <column name="isNew" not-null="true" />
+        </property>
+        <property name="tag" type="java.lang.Integer">
+            <column name="tag" />
+        </property>
         <set name="weiboEntries" table="weibo_entry" order-by = "entryID desc" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="weiboID" not-null="true" />
