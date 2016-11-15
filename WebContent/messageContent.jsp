@@ -45,7 +45,7 @@
 
 		</s:else> 
 		
-           <s:if test="#session.selectedPlatform == \"zhihu\"">
+        <s:if test="#session.selectedPlatform == \"zhihu\"">
 			<img src="img\zhihuColor.svg"  class="img-circle btn-default"  onclick="location='<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'zhihu'" /></s:url>'">
 			
 		</s:if>
@@ -62,7 +62,29 @@
 	<s:iterator value="selectedEntries">
 		
 	    	<div class="panel-body" id="card1">
-				<div style="margin-top: -15px"> <h3><img src="img/weibo.png" class="smallpic"><img src="img/original.png" class="smallpic">韩寒</h3></div>
+				<div style="margin-top: -15px"> <h3>
+				<s:if test="#session.selectedPlatform == \"weibo\"">
+					<img src="img/weiboColor.svg" class="smallpic">
+				</s:if>
+				<s:if test="#session.selectedPlatform == \"zhihu\"">
+					<img src="img/zhihuColor.svg" class="smallpic">
+				</s:if>
+				<s:if test="#session.selectedPlatform == \"csdn\"">
+					<img src="img/csdnColor.svg" class="smallpic">
+				</s:if>
+				
+				<s:if test="#session.selectedPlatform == \"weibo\"">
+					<s:if test="isShared">
+						<img src="img/sharedToken.png" class="smallpic">
+					</s:if>
+					<s:else>
+						<img src="img/originalToken.png" class="smallpic">
+					</s:else>
+				</s:if>	
+				
+				
+				</h3>
+				</div>
 				<div style="margin-left: 10px">
 					<h6><s:property value = "publishedTime" /></h6>
 					<h5>
@@ -75,10 +97,10 @@
 					</h5>
 				</div>
 				<div class="col-sm-offset-8 row">
-					<div class="col-md-3"><img src="img/share.png" class="smallpic1">32122</div>
-					<div class="col-md-3"><img src="img/reply.png" class="smallpic1 col-sm-offset-1">622</div>
-					<div class="col-md-3"><img src="img/like.png" class="smallpic1">1974</div>
-					<div class="col-md-3"><a href="http://zhaoshiqi.top"  target="_blank" >阅读原文</a></div>
+					<div class="col-md-3"><img src="img/share.png" class="smallpic1"><s:property value = "shareNumber"/></div>
+					<div class="col-md-3"><img src="img/reply.png" class="smallpic1 col-sm-offset-1"><s:property value = "commentNumber"/></div>
+					<div class="col-md-3"><img src="img/like.png" class="smallpic1"><s:property value = "likeNumber"/></div>
+					<div class="col-md-3"><a href='<s:property value = "entryUrl"/>'  target="_blank" >阅读原文</a></div>
 				</div>
 	    	</div>
 		
