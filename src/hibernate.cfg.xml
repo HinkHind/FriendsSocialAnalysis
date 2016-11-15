@@ -4,7 +4,7 @@
 <hibernate-configuration>
  <session-factory name="">
   
-  <!-- <property name="hibernate.show_sql">true</property> -->
+  <property name="hibernate.show_sql">true</property>
   
   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>

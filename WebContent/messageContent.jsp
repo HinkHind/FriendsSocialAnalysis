@@ -13,11 +13,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .bianju{
-            margin: 20px;
-        }
-    </style>
+    <link href="css/zsq.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -29,9 +25,8 @@
 
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#">最新动态</a></li>
-    <li role="presentation"><a href="displayAnalysis.action">兴趣分析</a></li>
+    <li role="presentation"><a href="displayAnalysis.action" style="color: #000">兴趣分析</a></li>
 </ul>
-<div class="bianju">
 
 <a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'zhihu'" /></s:url>'>
     	zhihu
@@ -45,7 +40,7 @@
     	<br/>
     	<s:debug></s:debug>
 	<s:iterator value="selectedEntries">
-		<div class="panel panel-default">
+		
 	    	<div class="panel-body">
 	    		<s:if test = "#session.selectedPlatform == \"weibo\"">
 	    		<p>
@@ -56,7 +51,7 @@
 				<s:property value="contentHolder" />
 	    		</s:else>
 	    	</div>
-		</div>
+		
 	</s:iterator>
 	
 	<h3>下面的表单是为了测试用来加条目的，只支持微博，zhihu,注意一定再Control页面加入了对应的微博url，zhihuurl之后再来这里加条目看显示效果。。不然会出错</h3>
@@ -65,7 +60,7 @@
 		<input type="hidden" name="selectedPlat" value='<s:property value="#session.selectedPlatform" />'> 
 		<input type = "submit">
 	</form>
-</div>
+
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
