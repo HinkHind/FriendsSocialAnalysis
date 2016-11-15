@@ -1,5 +1,5 @@
 package hibernateMapping;
-// Generated 2016-11-10 23:45:35 by Hibernate Tools 5.2.0.Beta1
+// Generated 2016-11-15 16:09:53 by Hibernate Tools 5.2.0.Beta1
 
 import java.util.Date;
 
@@ -23,7 +23,16 @@ public class WeiboEntry implements java.io.Serializable {
 	private Integer originCommentNumber;
 	private Date publishedTime;
 	private boolean hasRead;
-	private String classHolder;
+	private Integer art;
+	private Integer cultural;
+	private Integer engineering;
+	private Integer entertainment;
+	private Integer game;
+	private Integer living;
+	private Integer medicine;
+	private Integer science;
+	private Integer social;
+	private Integer sports;
 
 	public WeiboEntry() {
 	}
@@ -44,7 +53,8 @@ public class WeiboEntry implements java.io.Serializable {
 	public WeiboEntry(WeiboUrl weiboUrl, String entryUrl, String text, int likeNumber, int shareNumber,
 			int commentNumber, String sourceDevice, boolean isShared, Integer originLikeNumber,
 			Integer originShareNumber, String originText, Integer originCommentNumber, Date publishedTime,
-			boolean hasRead, String classHolder) {
+			boolean hasRead, Integer art, Integer cultural, Integer engineering, Integer entertainment, Integer game,
+			Integer living, Integer medicine, Integer science, Integer social, Integer sports) {
 		this.weiboUrl = weiboUrl;
 		this.entryUrl = entryUrl;
 		this.text = text;
@@ -59,7 +69,16 @@ public class WeiboEntry implements java.io.Serializable {
 		this.originCommentNumber = originCommentNumber;
 		this.publishedTime = publishedTime;
 		this.hasRead = hasRead;
-		this.classHolder = classHolder;
+		this.art = art;
+		this.cultural = cultural;
+		this.engineering = engineering;
+		this.entertainment = entertainment;
+		this.game = game;
+		this.living = living;
+		this.medicine = medicine;
+		this.science = science;
+		this.social = social;
+		this.sports = sports;
 	}
 
 	public Integer getEntryId() {
@@ -182,12 +201,84 @@ public class WeiboEntry implements java.io.Serializable {
 		this.hasRead = hasRead;
 	}
 
-	public String getClassHolder() {
-		return this.classHolder;
+	public Integer getArt() {
+		return this.art;
 	}
 
-	public void setClassHolder(String classHolder) {
-		this.classHolder = classHolder;
+	public void setArt(Integer art) {
+		this.art = art;
+	}
+
+	public Integer getCultural() {
+		return this.cultural;
+	}
+
+	public void setCultural(Integer cultural) {
+		this.cultural = cultural;
+	}
+
+	public Integer getEngineering() {
+		return this.engineering;
+	}
+
+	public void setEngineering(Integer engineering) {
+		this.engineering = engineering;
+	}
+
+	public Integer getEntertainment() {
+		return this.entertainment;
+	}
+
+	public void setEntertainment(Integer entertainment) {
+		this.entertainment = entertainment;
+	}
+
+	public Integer getGame() {
+		return this.game;
+	}
+
+	public void setGame(Integer game) {
+		this.game = game;
+	}
+
+	public Integer getLiving() {
+		return this.living;
+	}
+
+	public void setLiving(Integer living) {
+		this.living = living;
+	}
+
+	public Integer getMedicine() {
+		return this.medicine;
+	}
+
+	public void setMedicine(Integer medicine) {
+		this.medicine = medicine;
+	}
+
+	public Integer getScience() {
+		return this.science;
+	}
+
+	public void setScience(Integer science) {
+		this.science = science;
+	}
+
+	public Integer getSocial() {
+		return this.social;
+	}
+
+	public void setSocial(Integer social) {
+		this.social = social;
+	}
+
+	public Integer getSports() {
+		return this.sports;
+	}
+
+	public void setSports(Integer sports) {
+		this.sports = sports;
 	}
 
 }
