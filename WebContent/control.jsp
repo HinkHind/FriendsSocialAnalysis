@@ -85,7 +85,7 @@
                  控制面板
             </a>
             <li class="list-group-item"><h4 style="font-family: '宋体';font-weight: 900">当前用户：马一丰</h4></li>
-            <a href="control2.html" class="list-group-item text-center" target="right">用户管理</a>
+            <a href="displayFriends.action" class="list-group-item text-center" target="right">用户管理</a>
             <a href="new1.html" class="list-group-item text-center" target="right">新增关注</a>
             <a href="modify.html" class="list-group-item text-center" target="right">修改密码</a>
 </div>

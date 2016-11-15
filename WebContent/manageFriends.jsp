@@ -106,21 +106,28 @@
             <img src="img\c.png"  class="img-circle btn-default"  onclick="location='csdn.html'">
 			
 			<s:if test="friend.hasZhihu == true">
-				<img src="img\hasZhihuToken.png"  class="img-circle btn-default"  onclick="location='zhihu.html'">
+				<img src="img\hasZhihuToken.png"  class="img-circle btn-default"  
+				onclick="location='<s:url action="editZhihuUrl"><s:param name="friendId" value="friend.friendId" /><s:param name="selectedUrl" value="zhihuUrl" /></s:url>'">
 
 			</s:if>
 			<s:else>
-				<img src="img\z.png"  class="img-circle btn-default"  onclick="location='zhihu.html'">
-
+				<img src="img\z.png"  class="img-circle btn-default"  
+				onclick="location='<s:url action="editZhihuUrl"><s:param name="friendId" value="friend.friendId" /><s:param name="selectedUrl" value="zhihuUrl" /></s:url>'">
 			</s:else>
             
         </div>
     </div>
 </div>
 </s:iterator>
+
 <div  class="col-sm-offset-2">
+
     <img src="img\add.svg"  id="addicon" class="img-circle btn-default"  onclick="location='addNewFriend.jsp'">
+	<s:if test="friends.isEmpty()">
+				点击+按钮添加新朋友~
+	</s:if>
 </div>
+
 <!--
 ☆如果是本页显示可以直接用location,方法如下：
 ①onclick="javascript:window.location.href='URL'"

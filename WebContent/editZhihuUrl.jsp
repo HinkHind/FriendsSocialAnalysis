@@ -30,17 +30,17 @@
 </head>
 <body>
 <s:debug></s:debug>
-<form class="form-horizontal" role="form" action = "updateWeiboUrl">
+<form class="form-horizontal" role="form" action = "updateZhihuUrl">
     <div class="form-group form-group-lg">
-        <label class="col-sm-2 control-label" for="formGroupInputLarge">微博</label>
+        <label class="col-sm-2 control-label" for="formGroupInputLarge">知乎</label>
         <div class="col-sm-10">
-            <input class="form-control" type="text" name = "weiboUrlStr" id="formGroupInputLarge" value ='<s:property value = "selectedUrl"/>'>
+            <input class="form-control" type="text" name = "zhihuUrlStr" id="formGroupInputLarge" value ='<s:property value = "selectedUrl"/>'>
             <input type="hidden" name="friendId" value='<s:property value = "friendId"/>'> 
         </div>
         <div class="col-sm-offset-4 col-sm-9" id="button1" style="margin-top: 20px">
             <button type="submit"  class="btn btn-default" onclick="fun2()">保存</button>
             <!--<button   class="btn btn-default" onclick="location='<s:url action="removeWeiboUrl"> <s:param name="friendId" value="friendId" /></s:url>'">保存</button>  -->
-            <input type="button" class="btn btn-default col-sm-offset-5" onclick="location='<s:url action="removeWeiboUrl"> <s:param name="friendId" value="friendId" /></s:url>'" value ="删除"/>
+            <input type="button" class="btn btn-default col-sm-offset-5" onclick="location='<s:url action="removeZhihuUrl"> <s:param name="friendId" value="friendId" /></s:url>'" value ="删除"/>
             <input type="button" class="btn btn-default col-sm-offset-5" onclick="history.go(-1)" value ="返回"/>
         </div>
         
