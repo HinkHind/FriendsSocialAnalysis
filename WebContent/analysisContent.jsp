@@ -239,7 +239,8 @@
     <li role="presentation" class="active"><a href="#">兴趣分析</a></li>
 </ul>
 <div class="row">
-<div id='canvasDiv' class="col-md-6"></div><div id='canvasDiv1'></div>
+<div id='canvasDiv' class="col-md-6"></div>
+<div id='canvasDiv1'></div>
 </div>
 <div id='canvasDiv2'></div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
