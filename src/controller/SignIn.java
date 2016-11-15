@@ -48,10 +48,11 @@ public class SignIn extends ActionSupport{
 		if (signInUser == null){
 			return ERROR;
 		} else {
-			ActionContext context = ActionContext.getContext();
-			Map sess = context.getSession();
-			sess.put("userId", signInUser.getUserId().intValue());
-			sess.put("userName", signInUser.getUserName());
+			Util.saveUserDateIntoSession(signInUser);
+//			ActionContext context = ActionContext.getContext();
+//			Map sess = context.getSession();
+//			sess.put("userId", signInUser.getUserId().intValue());
+//			sess.put("userName", signInUser.getUserName());
 			EnterIndex.enterIndexInitially();
 			return LOGIN;
 		}

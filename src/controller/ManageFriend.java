@@ -282,6 +282,8 @@ public class ManageFriend extends ActionSupport{
 			weiboUrl = new WeiboUrl();
 			weiboUrl.setCount(1);
 			weiboUrl.setWeiboUrl(getWeiboUrlStr());
+			//TODO: unc;
+			weiboUrl.setIsNew(true);
 			session.save(weiboUrl);
 		} else {
 			weiboUrl = (WeiboUrl) qList.get(0);

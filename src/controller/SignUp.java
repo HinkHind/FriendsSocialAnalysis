@@ -51,9 +51,11 @@ public class SignUp extends ActionSupport{
 		User user = new User(userName, password);
 		System.out.println(userName+" "+password);
 		Dao.saveUser(user);
-		ActionContext context = ActionContext.getContext();
-		Map sess = context.getSession();
-		sess.put("userId", user.getUserId().intValue());
+//		ActionContext context = ActionContext.getContext();
+//		Map sess = context.getSession();
+//		sess.put("userId", user.getUserId().intValue());
+//		sess.put("userName", user.getUserName());
+		Util.saveUserDateIntoSession(user);
 		EnterIndex.enterIndexInitially();
 		
 		return SUCCESS;

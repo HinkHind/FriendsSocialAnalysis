@@ -1,5 +1,5 @@
 package hibernateMapping;
-// Generated 2016-11-15 16:09:53 by Hibernate Tools 5.2.0.Beta1
+// Generated 2016-11-15 22:22:08 by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,24 +12,24 @@ public class WeiboUrl implements java.io.Serializable {
 	private Integer weiboId;
 	private String weiboUrl;
 	private int count;
-	private byte isNew;
 	private Integer tag;
+	private boolean isNew;
 	private Set weiboEntries = new HashSet(0);
 	private Set friends = new HashSet(0);
 
 	public WeiboUrl() {
 	}
 
-	public WeiboUrl(int count, byte isNew) {
+	public WeiboUrl(int count, boolean isNew) {
 		this.count = count;
 		this.isNew = isNew;
 	}
 
-	public WeiboUrl(String weiboUrl, int count, byte isNew, Integer tag, Set weiboEntries, Set friends) {
+	public WeiboUrl(String weiboUrl, int count, Integer tag, boolean isNew, Set weiboEntries, Set friends) {
 		this.weiboUrl = weiboUrl;
 		this.count = count;
-		this.isNew = isNew;
 		this.tag = tag;
+		this.isNew = isNew;
 		this.weiboEntries = weiboEntries;
 		this.friends = friends;
 	}
@@ -58,20 +58,20 @@ public class WeiboUrl implements java.io.Serializable {
 		this.count = count;
 	}
 
-	public byte getIsNew() {
-		return this.isNew;
-	}
-
-	public void setIsNew(byte isNew) {
-		this.isNew = isNew;
-	}
-
 	public Integer getTag() {
 		return this.tag;
 	}
 
 	public void setTag(Integer tag) {
 		this.tag = tag;
+	}
+
+	public boolean isIsNew() {
+		return this.isNew;
+	}
+
+	public void setIsNew(boolean isNew) {
+		this.isNew = isNew;
 	}
 
 	public Set getWeiboEntries() {
