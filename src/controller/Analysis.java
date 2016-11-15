@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -49,10 +51,20 @@ public class Analysis extends ActionSupport{
 		
 		//TODO: 目前基于微博分析
 		Set analysisEntries = friend.getWeiboUrl().getWeiboEntries();
-		
+		activityDegree = new ArrayList<>();
+		for (int i = 0; i < 24; i++) {
+			activityDegree.add(0);
+		}
 		WeiboEntry weiboEntry = null;
 		for (Object object : analysisEntries) {
 			weiboEntry = (WeiboEntry)object;
+			
+			//Time analyze;
+			@SuppressWarnings("deprecation")
+			int hour = weiboEntry.getPublishedTime().getHours();
+			activityDegree.set(hour, 
+					activityDegree.get(hour).intValue() + 1);
+			
 			
 			
 			
