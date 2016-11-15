@@ -17,17 +17,12 @@ public class test {
 	
 	
 	
-    public static void tmain(String[] args) throws IOException {
-        if (args.length < 1 || !(args[0].equals("xml") 
-                                || args[0].equals("json") 
-                                || args[0].equals("conll"))) {
-            System.out.println("Usage: java SimpleAPI [xml/json/conll]");
-            return;
-        }
+    public static void main(String[] args) throws IOException {
+  
 
-        String api_key = "YourApiKey";
-        String pattern = "all";
-        String format  = args[0];
+        String api_key = "V8Y6h4B8jaFcFIMy5hfqxKuxaHsoPAvYXq6Eguou";
+        String pattern = "ws";
+        String format  = "json";
         String text    = "我爱北京天安门。";
         text = URLEncoder.encode(text, "utf-8");
 
