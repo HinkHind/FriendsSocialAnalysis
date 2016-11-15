@@ -127,7 +127,7 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
                 <footer class="text-center">
-                    <a href="signin.html"><i class="fa fa-external-link"></i> 已经有账号了，立即登录！</a>
+                    <a href="signIn.action"><i class="fa fa-external-link"></i> 已经有账号了，立即登录！</a>
                 </footer>
             </div>
             <div class="col-md-1"></div>

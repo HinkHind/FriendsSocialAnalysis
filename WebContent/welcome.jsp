@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <%@taglib prefix="s" uri="/struts-tags" %>
-
-<html lang="en">
+    
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>控制面板</title>
+    <title>欢迎</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,26 +20,20 @@
     <!--[if lt IE 9]>
     <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <script type="text/javascript">
         function fun1()
         {
             var mymessage=confirm("确定退出？");
             if(mymessage==true)
             {
-                window.location.href='logOut.action';
+                window.location.href='signin.html';
             }
         }
-        function removeFriend()
-        {
-			alert("fff");
-        	document.f.action='<s:url action="removeFriend"><s:param name="friendId" value="friend.friendId" /></s:url>';
-        	document.f.submit();
-        }
     </script>
+    <![endif]-->
 </head>
 <body>
-<!--顶部边栏-->
+<!--顶部-->
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -78,29 +72,65 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<!--左侧菜单-->
-<div class="list-group" >
-            <a href="#" class="list-group-item disabled text-center" style="color: #FFFFFF; background-color: #3399ff">
-                 控制面板
-            </a>
-            <li class="list-group-item"><h4 style="font-family: '宋体';font-weight: 900"><s:property value = "#session.userName"/></h4></li>
-            <a href="displayFriends.action" class="list-group-item text-center" target="right">用户管理</a>
-            <a href="new1.html" class="list-group-item text-center" target="right">新增关注</a>
-            <a href="modify.html" class="list-group-item text-center" target="right">修改密码</a>
-</div>
+<!--滚动广告-->
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="margin-top: -21px;margin-left: 1px;margin-right: 1px;">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <!--<li data-target="#carousel-example-generic" data-slide-to="2"></li>-->
+    </ol>
 
-<div class="embed-responsive embed-responsive-4by3">
-    <iframe class="embed-responsive-item" name="right" src="displayFriends.action"></iframe>
-</div>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="img/2.png" alt="欢迎">
+        </div>
+        <div class="item">
+            <img src="img/1.png" alt="快去体验下吧">
+       </div>
 
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<div class="container" style="margin-left: 12%;margin-top: 5%;">
+    <div class="row">
+        <div class="col-md-3 text-center" >
+            <img src="img/f1.svg" height="200" width="200">
+
+            <p style="margin: 10px">互联网关注</p>
+            <h6>我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明</h6>
+        </div>
+        <div class="col-md-3 text-center" >
+            <img src="img/f2.svg"height="200" width="200">
+            <p style="margin: 10px">图形化显示</p>
+            <h6>我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明</h6>
+        </div>
+        <div class="col-md-3 text-center" >
+            <img src="img/f3.svg"height="200" width="200">
+            <p style="margin: 10px">精确地算法</p>
+            <h6>我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，但是没写说明</h6>
+        </div>
+        <div class="col-md-3 text-center" >
+            <img src="img/f4.svg"height="200" width="200">
+            <p style="margin: 10px">提升友谊</p>
+            <h6>我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，我就假装这里有很多说明，但是没写说明，总感觉第一轮迭代要炸</h6>
+        </div>
+    </div>
+</div>
 <div class="col-sm-12 text-center copy-right">
     <span>Copyright © 2016  <a href="zhaoshiqi.top">ShiQI </a> , All Rights Reserved&nbsp;</span>
 </div>
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
-
 </body>
 </html>

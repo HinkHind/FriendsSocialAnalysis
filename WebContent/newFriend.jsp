@@ -59,7 +59,7 @@
             var mymessage=confirm("确定退出？");
             if(mymessage==true)
             {
-                window.location.href='signin.html';
+                window.location.href='logOut.action';
             }
         }
         <!--判断空提交-->

@@ -12,7 +12,7 @@ public class LogOut extends ActionSupport{
 		session.remove("userId");
 		session.remove("friendId");
 		session.remove("selectedPlatform");
-		
+		session.remove("userName");
 		
 		return SUCCESS;
 	}

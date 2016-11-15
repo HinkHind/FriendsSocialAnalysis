@@ -27,16 +27,36 @@
     <li role="presentation" class="active"><a href="#">最新动态</a></li>
     <li role="presentation"><a href="displayAnalysis.action" style="color: #000">兴趣分析</a></li>
 </ul>
+   	 <s:if test="#session.selectedPlatform == \"weibo\"">
+			<img src="img\weiboColor.svg"  class="img-circle btn-default"  onclick="location='<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'weibo'" /></s:url>'">
+			
+		</s:if>
+		<s:else>
+			<img src="img\weiboGrey.svg"  class="img-circle btn-default"  onclick="location='<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'weibo'" /></s:url>'">
 
-<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'zhihu'" /></s:url>'>
-    	zhihu
-    	</a>
-	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'weibo'" /></s:url>'>
-    	weibo
-    	</a>
-    	<a href = '<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'csdn'" /></s:url>'>
-    	csdn
-    	</a>
+		</s:else> 
+           
+           <s:if test="#session.selectedPlatform == \"csdn\"">
+			<img src="img\csdnColor.svg"  class="img-circle btn-default"  onclick="location='<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'csdn'" /></s:url>'">
+			
+		</s:if>
+		<s:else>
+			<img src="img\csdnGrey.svg"  class="img-circle btn-default"  onclick="location='<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'csdn'" /></s:url>'">
+
+		</s:else> 
+		
+           <s:if test="#session.selectedPlatform == \"zhihu\"">
+			<img src="img\zhihuColor.svg"  class="img-circle btn-default"  onclick="location='<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'zhihu'" /></s:url>'">
+			
+		</s:if>
+		<s:else>
+			<img src="img\zhihuGrey.svg"  class="img-circle btn-default"  onclick="location='<s:url action="enterIndexWithSelectedPlatform"><s:param name="selectedPlatform" value="'zhihu'" /></s:url>'">
+
+		</s:else> 
+		
+           
+    	
+    	
     	<br/>
     	<s:debug></s:debug>
 	<s:iterator value="selectedEntries">

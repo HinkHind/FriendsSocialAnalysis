@@ -95,23 +95,23 @@
             <!-- Button trigger modal -->
             
             <s:if test="friend.hasWeibo == true">
-				<img src="img\hasWeiboToken.png"  class="img-circle btn-default"  onclick="location='<s:url action="editWeiboUrl"><s:param name="friendId" value="friend.friendId" /><s:param name="selectedUrl" value="weiboUrl" /></s:url>'">
+				<img src="img\weiboColor.svg"  class="img-circle btn-default"  onclick="location='<s:url action="editWeiboUrl"><s:param name="friendId" value="friend.friendId" /><s:param name="selectedUrl" value="weiboUrl" /></s:url>'">
 				
 			</s:if>
 			<s:else>
-				<img src="img\sgrey.png"  class="img-circle btn-default"  onclick="location='<s:url action="editWeiboUrl"><s:param name="friendId" value="friend.friendId" /><s:param name="selectedUrl" value="weiboUrl" /></s:url>'">
+				<img src="img\weiboGrey.svg"  class="img-circle btn-default"  onclick="location='<s:url action="editWeiboUrl"><s:param name="friendId" value="friend.friendId" /><s:param name="selectedUrl" value="weiboUrl" /></s:url>'">
 
 			</s:else> 
             
-            <img src="img\c.png"  class="img-circle btn-default"  onclick="location='csdn.html'">
+            <img src="img\csdnGrey.svg"  class="img-circle btn-default"  onclick="location='csdn.html'">
 			
 			<s:if test="friend.hasZhihu == true">
-				<img src="img\hasZhihuToken.png"  class="img-circle btn-default"  
+				<img src="img\zhihuColor.svg"  class="img-circle btn-default"  
 				onclick="location='<s:url action="editZhihuUrl"><s:param name="friendId" value="friend.friendId" /><s:param name="selectedUrl" value="zhihuUrl" /></s:url>'">
 
 			</s:if>
 			<s:else>
-				<img src="img\z.png"  class="img-circle btn-default"  
+				<img src="img\zhihuGrey.svg"  class="img-circle btn-default"  
 				onclick="location='<s:url action="editZhihuUrl"><s:param name="friendId" value="friend.friendId" /><s:param name="selectedUrl" value="zhihuUrl" /></s:url>'">
 			</s:else>
             
