@@ -11,7 +11,7 @@ public class DataBaseConnector {
 	static String url = "jdbc:mysql://localhost:3306/db?characterEncoding=utf-8";
 	static String user = "root";
 	static String password = "123456789";
-
+	
 	public Connection connect;
 	public Statement sta;
 	public PreparedStatement pst;

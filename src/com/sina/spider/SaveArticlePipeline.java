@@ -13,7 +13,6 @@ import com.geccocrawler.gecco.annotation.PipelineName;
 import com.geccocrawler.gecco.pipeline.Pipeline;
 import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.scheduler.SchedulerContext;
-import com.geccocrawler.gecco.spider.render.RequestFieldRender;
 import com.sina.spider.model.Weibo;
 import com.sina.spider.model.WeiboUrl;
 import com.sina.spider.utils.DownloadSQL;
@@ -67,6 +66,8 @@ public class SaveArticlePipeline implements Pipeline<articleList>{
  		
  		for(Element el: weiboItems){				
 			Weibo weibo = parse(el);
+			weibo.setText(Utils.deleteNum(weibo.getText()));
+			//weibo = setInterestNum(weibo,);
 			weibo.setEntryUrl(getWeiboUrl(userID,weibo.getId()));
 			UploadSQL upload =  new UploadSQL(); //数据存储到数据库
 			upload.setWeibo(weibo, wbUrl);

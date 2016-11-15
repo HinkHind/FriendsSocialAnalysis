@@ -1,8 +1,14 @@
 package com.sina.spider.utils;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import com.huaban.analysis.jieba.JiebaSegmenter;
+import com.sina.spider.model.Weibo;
 
 
 public class Utils {
@@ -99,8 +105,63 @@ public class Utils {
 	}
 */
 
+	   /**
+	    * 去掉转发理由几个字以及部分html标签
+	    * @param text
+	    * @return
+	    */
+	   public static String deleteReason(String text) {
+		   
+		   int index1  = text.indexOf("转发理由");
+		   if(index1 != -1) text = text.substring(30);
+			return text;
+	   }
+	   
+	   /**
+	    * 去掉 赞、转发数及其标签
+	    * @param text
+	    * @return
+	    */
+	   public static String deleteNum(String text) {
+		   int index2 = text.indexOf("<a href=\"http://weibo.cn/attitude");
+		   if(index2 != -1)  text = text.substring(0,index2 - 13);
+		   return text;
+	   }
+	    
+
+	    /**
+	     * 添加微博兴趣词数
+	     * @param weibo
+	     * @param interestMap
+	     * @return
+	     */
+	    public static Weibo setInterestNum(Weibo weibo, Map<String, Integer> interestMap) {
+			
+	    	weibo.setArt(interestMap.get("art"));
+	    	weibo.setCultural(interestMap.get("cultural"));
+	    	weibo.setEngineering(interestMap.get("engineering"));
+	    	weibo.setEntertainment(interestMap.get("entertainment"));
+	    	weibo.setGame(interestMap.get("game"));
+	    	weibo.setLiving(interestMap.get("living"));
+	    	weibo.setMedicine(interestMap.get("medicine"));
+	    	weibo.setScience(interestMap.get("science"));
+	    	weibo.setSocial(interestMap.get("social"));
+	    	weibo.setSports(interestMap.get("sports"));
+	    	return weibo;	
+		}
 	
-	
+	    
+		/**
+		 * 得到分词结果，返回时["word1", "word2", "word3"]
+		 * @param text
+		 * @return
+		 * @throws IOException
+		 */
+	   public static List<String> SplitText(String text) throws IOException {
+	        JiebaSegmenter segmenter = new JiebaSegmenter();
+			return segmenter.sentenceProcess(text);
+	   }
+	   
 }
 	
 

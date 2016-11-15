@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.sina.spider.model.Weibo;
 import com.sina.spider.model.WeiboUrl;
 
 
@@ -65,6 +66,36 @@ public class DownloadSQL implements Download {
 	}
 
 
+	/**
+	 * 根据是否分析的标签获取为更新分析的微博text,第一轮暂时以originLikeNumber作为tag
+	 * @param WeiboID
+	 * @return
+	 */
+	public ArrayList<Weibo> getWeiboText() {
+		ArrayList<Weibo> wbList = new ArrayList<Weibo>();
+		connection.ConnectDataBase();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String SEARCH_SQL = "SELECT entryID,text"
+		 		+ " FROM weibo_entry"
+		 		+ " WHERE originLikeNumber = ?";
+		try {
+			pst = connection.connect.prepareStatement(SEARCH_SQL);
+			pst.setInt(1, 0);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				Weibo wb = new Weibo();
+				wb.setEntryID(rs.getInt("entryID"));
+				wb.setText(rs.getString("text"));
+				wbList.add(wb);				
+			}
+			pst.close();
+			return wbList;
+		  } catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		    }
+	}
 	@Override
 	public ArrayList<String> getNewZhihuUrl() {
 		// TODO Auto-generated method stub
