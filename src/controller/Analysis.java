@@ -19,10 +19,16 @@ public class Analysis extends ActionSupport{
 
 	private List<Integer> activityDegree;
 	private List<HabitRatio> habitRatios;
+	private String test;
 	
-	
-	
-	
+	public String getTest() {
+		return test;
+	}
+
+	public void setTest(String test) {
+		this.test = test;
+	}
+
 	public List<Integer> getActivityDegree() {
 		return activityDegree;
 	}
@@ -41,9 +47,14 @@ public class Analysis extends ActionSupport{
 
 
 	public String displayAnalysis() {
+		
+		
 		ActionContext context = ActionContext.getContext();
 		
-		int friendId = (int)context.get("friendId");
+		
+		
+		
+		int friendId = (int)context.getSession().get("friendId");
 		//String selectedPlat = (String)context.get("selectedPlatform");
 		Session session = HibernateUtil.currentSession();
 		Transaction transaction = session.beginTransaction();
@@ -64,7 +75,6 @@ public class Analysis extends ActionSupport{
 			int hour = weiboEntry.getPublishedTime().getHours();
 			activityDegree.set(hour, 
 					activityDegree.get(hour).intValue() + 1);
-			
 			
 			
 			
@@ -89,6 +99,7 @@ public class Analysis extends ActionSupport{
 		HibernateUtil.closeSession();
 		
 		
+		setTest("Test Java Pro");
 		return SUCCESS;
 	}
 }

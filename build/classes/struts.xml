@@ -78,6 +78,12 @@
             </result>
         </action>
         
+        <action name = "displayAnalysis" class = "controller.Analysis" method = "displayAnalysis">
+        	<result>
+            	analysisContent.jsp
+            </result>
+        </action>
+        
         
         <action name = "enterControl" class = "controller.ManageFriend" method = "enterControl">
         	<result>

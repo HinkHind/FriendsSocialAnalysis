@@ -1,3 +1,4 @@
+<%@page import="com.opensymphony.xwork2.util.ValueStack"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -21,7 +22,10 @@
     <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <script type="text/javascript" src="js/ichart.1.2.min.js"></script>
-
+		<%
+			ValueStack vs = (ValueStack) request.getAttribute("struts.valueStack");
+			String t = (String) vs.findValue("test");
+            %>
     <script type="text/javascript">
         var data = [
             {name : 'H',value : 7,color:'#a5c2d5'},
@@ -33,10 +37,11 @@
             {name : 'D',value : 4,color:'#6f83a5'}
         ];
         $(function(){
+			
             var chart = new iChart.Column2D({
                 render : 'canvasDiv',//渲染的Dom目标,canvasDiv为Dom的ID
                 data: data,//绑定数据
-                title : 'Hello World\'s Height In Alphabet',//设置标题
+                title : '<%=t%>',//设置标题
                 width : 700,//设置宽度，默认单位为px
                 height : 400,//设置高度，默认单位为px
                 shadow:true,//激活阴影
@@ -238,6 +243,7 @@
     <li role="presentation" ><a href="analysisContent.jsp">最新动态</a></li>
     <li role="presentation" class="active"><a href="#">兴趣分析</a></li>
 </ul>
+<s:debug></s:debug>
 <div class="row">
 <div id='canvasDiv' class="col-md-6"></div>
 <div id='canvasDiv1'></div>
