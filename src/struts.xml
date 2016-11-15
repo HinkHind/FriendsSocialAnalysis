@@ -113,19 +113,19 @@
         
         <action name = "remove*Url" class = "controller.ManageFriend" method = "remove{1}Url">
         	<result type = "redirectAction">
-            	<param name="actionName">enterControl</param>
+            	<param name="actionName">displayFriends</param>
             </result>
         </action>
         
         <action name="addFriend" class = "controller.ManageFriend" method = "addFriend">
             <result type = "redirectAction">
-            	<param name="actionName">enterControl</param>
+            	<param name="actionName">displayFriends</param>
             </result>
         </action>
         
         <action name="removeFriend" class = "controller.ManageFriend" method = "removeFriend">
             <result type = "redirectAction">
-            	<param name="actionName">enterControl</param>
+            	<param name="actionName">displayFriends</param>
             </result>
         </action>
         <!-- <action name = "displayUrl" class = "controller.ManageFriend" method = "displayUrl">

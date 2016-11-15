@@ -82,27 +82,44 @@
     <div class="panel-body">
          <button type="button" class="close" onclick ="location='<s:url action="removeFriend"><s:param name="friendId" value="friend.friendId" /></s:url>'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h3 class="suojin"><s:property value="friend.friendName" /></h3>
-        <p class="col-sm-offset-1"><s:if test="friend.hasWeibo == true">
-					假装这里有被关注对象的微博签名或者验证信息~ has weiboUrl
-					<s:property value = "weiboUrl"/>
-				</s:if>
-				<s:else>
-					点击右侧按钮更改网址,点击右上角删除该关注！ not have weiboUrl
-				</s:else> </p>
+        <p class="col-sm-offset-1">
+        	<s:if test="friend.hasWeibo == true">
+				假装这里有被关注对象的微博签名或者验证信息~ has weiboUrl
+				<s:property value = "weiboUrl"/>
+			</s:if>
+			<s:else>
+				点击右侧按钮更改网址,点击右上角删除该关注！ not have weiboUrl
+			</s:else> 
+		</p>
         <div class="col-sm-offset-9">
             <!-- Button trigger modal -->
-            <img src="img\s.png"  class="img-circle btn-default"  onclick="location='<s:url action="editWeiboUrl"><s:param name="friendId" value="friend.friendId" /><s:param name="selectedUrl" value="weiboUrl" /></s:url>'">
+            
+            <s:if test="friend.hasWeibo == true">
+				<img src="img\hasWeiboToken.png"  class="img-circle btn-default"  onclick="location='<s:url action="editWeiboUrl"><s:param name="friendId" value="friend.friendId" /><s:param name="selectedUrl" value="weiboUrl" /></s:url>'">
+				
+			</s:if>
+			<s:else>
+				<img src="img\sgrey.png"  class="img-circle btn-default"  onclick="location='<s:url action="editWeiboUrl"><s:param name="friendId" value="friend.friendId" /><s:param name="selectedUrl" value="weiboUrl" /></s:url>'">
 
+			</s:else> 
+            
             <img src="img\c.png"  class="img-circle btn-default"  onclick="location='csdn.html'">
+			
+			<s:if test="friend.hasZhihu == true">
+				<img src="img\hasZhihuToken.png"  class="img-circle btn-default"  onclick="location='zhihu.html'">
 
-            <img src="img\z.png"  class="img-circle btn-default"  onclick="location='zhihu.html'">
+			</s:if>
+			<s:else>
+				<img src="img\z.png"  class="img-circle btn-default"  onclick="location='zhihu.html'">
 
+			</s:else>
+            
         </div>
     </div>
 </div>
 </s:iterator>
 <div  class="col-sm-offset-2">
-    <img src="img\add.svg"  id="addicon" class="img-circle btn-default"  onclick="location='new1.html'">
+    <img src="img\add.svg"  id="addicon" class="img-circle btn-default"  onclick="location='addNewFriend.jsp'">
 </div>
 <!--
 ☆如果是本页显示可以直接用location,方法如下：
