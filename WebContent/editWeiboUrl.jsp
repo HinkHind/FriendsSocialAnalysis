@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   
+<%@taglib prefix="s" uri="/struts-tags" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-cn">
 <head>
@@ -26,11 +29,13 @@
     <![endif]-->
 </head>
 <body>
-<form class="form-horizontal" role="form">
+<s:debug></s:debug>
+<form class="form-horizontal" role="form" action = "updateWeiboUrl">
     <div class="form-group form-group-lg">
         <label class="col-sm-2 control-label" for="formGroupInputLarge">微博</label>
         <div class="col-sm-10">
-            <input class="form-control" type="text" id="formGroupInputLarge" placeholder="此处显示微博网址">
+            <input class="form-control" type="text" name = "weiboUrlStr" id="formGroupInputLarge" value ='<s:property value = "selectedUrl"/>'>
+            <input type="hidden" name="friendId" value='<s:property value = "friendId"/>'> 
         </div>
         <div class="col-sm-offset-4 col-sm-9" id="button1" style="margin-top: 20px">
             <button type="submit"  class="btn btn-default" onclick="fun2()">保存</button>

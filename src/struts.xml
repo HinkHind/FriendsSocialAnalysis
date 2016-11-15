@@ -98,10 +98,16 @@
         
         </action> -->
         
+        <action name = "edit*Url" class = "controller.ManageFriend" method = "edit{1}Url">
+        	<result>
+            	edit{1}Url.jsp
+            </result>
+        </action>
+        
         
         <action name = "update*Url" class = "controller.ManageFriend" method = "add{1}Url">
         	<result type = "redirectAction">
-            	<param name="actionName">enterControl</param>
+            	<param name="actionName">displayFriends</param>
             </result>
         </action>
         

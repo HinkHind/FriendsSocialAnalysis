@@ -82,16 +82,16 @@
     <div class="panel-body">
          <button type="button" class="close" onclick ="location='<s:url action="removeFriend"><s:param name="friendId" value="friend.friendId" /></s:url>'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h3 class="suojin"><s:property value="friend.friendName" /></h3>
-        <p class="col-sm-offset-1">点击右侧按钮更改网址,点击右上角删除该关注！<s:if test="friend.hasWeibo == true">
-					has weiboUrl
+        <p class="col-sm-offset-1"><s:if test="friend.hasWeibo == true">
+					假装这里有被关注对象的微博签名或者验证信息~ has weiboUrl
 					<s:property value = "weiboUrl"/>
 				</s:if>
 				<s:else>
-					not have weiboUrl
+					点击右侧按钮更改网址,点击右上角删除该关注！ not have weiboUrl
 				</s:else> </p>
         <div class="col-sm-offset-9">
             <!-- Button trigger modal -->
-            <img src="img\s.png"  class="img-circle btn-default"  onclick="location='editWeiboUrl.jsp'">
+            <img src="img\s.png"  class="img-circle btn-default"  onclick="location='<s:url action="editWeiboUrl"><s:param name="friendId" value="friend.friendId" /><s:param name="selectedUrl" value="weiboUrl" /></s:url>'">
 
             <img src="img\c.png"  class="img-circle btn-default"  onclick="location='csdn.html'">
 
