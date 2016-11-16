@@ -28,4 +28,12 @@ public class DataBaseConnector {
 			e.printStackTrace();
 		}
 	}
+	
+	public void Close() {
+		try {
+			this.connect.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

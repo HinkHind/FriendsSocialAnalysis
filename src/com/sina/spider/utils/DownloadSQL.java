@@ -28,7 +28,9 @@ public class DownloadSQL implements Download {
 				wb.setWeiboUrl(rs.getString("weiboUrl"));
 				wb.setWeiboID(rs.getInt("weiboID"));
 			}
+			rs.close();
 			pst.close();
+			connection.Close();
 			return wb;
 		    } 
 		    catch (SQLException e) {
@@ -57,7 +59,9 @@ public class DownloadSQL implements Download {
 			   
 				wbList.add(wb);				
 			}
+			rs.close();
 			pst.close();
+			connection.Close();
 			return wbList;
 		  } catch (SQLException e) {
 			e.printStackTrace();
@@ -89,7 +93,9 @@ public class DownloadSQL implements Download {
 				wb.setText(rs.getString("text"));
 				wbList.add(wb);				
 			}
+			rs.close();
 			pst.close();
+			connection.Close();
 			return wbList;
 		  } catch (SQLException e) {
 			e.printStackTrace();

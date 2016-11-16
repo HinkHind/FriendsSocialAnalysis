@@ -46,6 +46,7 @@ public class UploadSQL implements Upload {
 				flag = true;
 			}
 			pst.close();
+			connection.Close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -68,7 +69,9 @@ public class UploadSQL implements Upload {
 				if (i == 1) {
 					flag = true;
 				}
+				
 				pst.close();
+				connection.Close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -100,6 +103,7 @@ public class UploadSQL implements Upload {
 					flag = true;
 				}
 				pst.close();
+				connection.Close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
