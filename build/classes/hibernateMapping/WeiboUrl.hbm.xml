@@ -20,7 +20,7 @@
         <property name="isNew" type="boolean">
             <column name="isNew" not-null="true" />
         </property>
-        <set name="weiboEntries" table="weibo_entry" order-by = "entryID desc" inverse="true" lazy="false" fetch="select">
+        <set name="weiboEntries" table="weibo_entry" order-by = "entryID asc" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="weiboID" not-null="true" />
             </key>
