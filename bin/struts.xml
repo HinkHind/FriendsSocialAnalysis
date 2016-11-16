@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	 <!-- <interceptors>  
+            <interceptor name="loginInteceptor" class="inteceptor.LoginInteceptor" />  
+            <interceptor-stack name="loginStack">  
+                   <interceptor-ref name="loginInteceptor">  
+                       <param name="excludeMethods">signIn,isValidLogin</param>  
+                   </interceptor-ref>  
+                   <interceptor-ref name="defaultStack"></interceptor-ref>  
+            </interceptor-stack>  
+	</interceptors>  
+      
+	<default-interceptor-ref name="loginStack" />   -->
+	
+
+    <package name="controller" namespace="/" extends="struts-default">
+        
+        <action name="signUp" class = "controller.SignUp" method = "signUp">
+            <result type = "redirectAction">
+            	<param name="actionName">enterControl</param>
+            </result>
+        </action>
+        
+        <action name="signIn" class = "controller.SignIn" method = "signIn">
+            <result name = "login" type = "redirectAction">
+            	<param name="actionName">enterIndex</param>
+            </result>
+            <result name = "error">
+            	signIn.jsp
+            </result>
+        </action>
+        
+        <action name="logOut" class = "controller.LogOut" method = "logOut">
+            <result>
+            	signIn.jsp
+            </result>
+        </action>
+        
+        <action name = "enterIndex" class = "controller.EnterIndex" method = "loadIndexData">
+        	<result>
+        		index.jsp
+        	</result>
+        </action>
+        
+        <action name = "displayMessage" class = "controller.EnterIndex" method = "loadMessageData">
+        	<result>
+        		messageContent.jsp
+        	</result>
+        </action>
+        
+        <!-- reload MessageContentData -->
+        <action name = "enterMessageContent" class = "controller.EnterIndex" method = "loadMessageData">
+        	<result>
+        		messageContent.jsp
+        	</result>
+        </action>
+        
+        <action name = "enterIndexInitially" class = "controller.EnterIndex" method = "enterIndexInitially">
+        	<result type = "redirectAction">
+            	<param name="actionName">enterIndex</param>
+            </result>
+        </action>
+        
+        <action name = "enterIndexWithSelectedFriend" class = "controller.EnterIndex" method = "enterIndexWithSelectedFriend">
+        	<result type = "redirectAction">
+            	<param name="actionName">enterIndex</param>
+            </result>
+        </action>
+        
+        <action name = "enterIndexWithSelectedPlatform" class = "controller.EnterIndex" method = "enterIndexWithSelectedPlatform">
+        	<result type = "redirectAction">
+            	<param name="actionName">enterMessageContent</param>
+            </result>
+        </action>
+        
+        
+        <action name = "enterControl" class = "controller.ManageFriend" method = "loadControlData">
+        	<result>
+        		control.jsp
+        	</result>
+        
+        </action>
+        <!--  <action name = "enterControlModal" class = "controller.ManageFriend" method = "enterControlModal">
+        	<result>
+            	control.jsp
+            </result>
+        
+        </action> -->
+        
+        
+        <action name = "update*Url" class = "controller.ManageFriend" method = "add{1}Url">
+        	<result type = "redirectAction">
+            	<param name="actionName">enterControl</param>
+            </result>
+        </action>
+        
+        <action name = "remove*Url" class = "controller.ManageFriend" method = "remove{1}Url">
+        	<result type = "redirectAction">
+            	<param name="actionName">enterControl</param>
+            </result>
+        </action>
+        
+        <action name="addFriend" class = "controller.ManageFriend" method = "addFriend">
+            <result type = "redirectAction">
+            	<param name="actionName">enterControl</param>
+            </result>
+        </action>
+        
+        <action name="removeFriend" class = "controller.ManageFriend" method = "removeFriend">
+            <result type = "redirectAction">
+            	<param name="actionName">enterControl</param>
+            </result>
+        </action>
+        <!-- <action name = "displayUrl" class = "controller.ManageFriend" method = "displayUrl">
+        	<result>
+        		displayUrl.jsp
+        	</result>
+        </action> -->
+        
+        <action name="addEntry" class = "controller.Test" method = "addEntry">
+            <result type = "redirectAction">
+            	<param name="actionName">enterMessageContent</param>
+            </result>
+        </action>
+        
+        
+    </package>
+
+</struts>
