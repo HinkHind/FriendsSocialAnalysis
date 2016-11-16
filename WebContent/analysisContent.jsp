@@ -1,7 +1,7 @@
 <%@page import="com.opensymphony.xwork2.util.ValueStack"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@page import="java.util.*"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,10 +24,14 @@
     <script type="text/javascript" src="js/ichart.1.2.min.js"></script>
 		<%
 			ValueStack vs = (ValueStack) request.getAttribute("struts.valueStack");
-			String t = (String) vs.findValue("test");
+			//if (vs != null){
+				String t = (String) vs.findValue("test");
+			//}
+			
             %>
     <script type="text/javascript">
         var data = [
+                    
             {name : 'H',value : 7,color:'#a5c2d5'},
             {name : 'E',value : 5,color:'#cbab4f'},
             {name : 'L',value : 12,color:'#76a871'},
@@ -41,7 +45,7 @@
             var chart = new iChart.Column2D({
                 render : 'canvasDiv',//渲染的Dom目标,canvasDiv为Dom的ID
                 data: data,//绑定数据
-                title : '<%=t%>',//设置标题
+                title : '<%= t %>',//设置标题
                 width : 700,//设置宽度，默认单位为px
                 height : 400,//设置高度，默认单位为px
                 shadow:true,//激活阴影
@@ -148,14 +152,26 @@
     <script type="text/javascript">
         $(function(){
             var pv=[],ip=[],t;
-            for(var i=0;i<61;i++){
+            for(var i=0;i<24;i++){
                 t = Math.floor(Math.random()*(30+((i%12)*5)))+10;
-                pv.push(t);
+                //pv.push(t);
                 t = Math.floor(t*0.5);
                 t = t-Math.floor((Math.random()*t)/2);
                 ip.push(t);
             }
-
+			<%
+				if (vs != null){
+					List<Integer> aD = (ArrayList<Integer>)vs.findValue("activityDegree");
+					for (Integer i : aD){
+						%>
+						pv.push(<%=i.intValue()%>);
+					
+						<%
+					}
+				}
+			%>
+			
+			
             var data = [
                 {
                     name : 'PV',
@@ -240,7 +256,7 @@
 </head>
 <body>
 <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" ><a href="analysisContent.jsp">最新动态</a></li>
+    <li role="presentation" ><a href="displayMessage.action">最新动态</a></li>
     <li role="presentation" class="active"><a href="#">兴趣分析</a></li>
 </ul>
 <s:debug></s:debug>

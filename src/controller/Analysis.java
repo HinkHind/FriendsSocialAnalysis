@@ -61,24 +61,26 @@ public class Analysis extends ActionSupport{
 		Friend friend = (Friend) session.get(Friend.class, friendId);
 		
 		//TODO: 目前基于微博分析
-		Set analysisEntries = friend.getWeiboUrl().getWeiboEntries();
-		activityDegree = new ArrayList<>();
-		for (int i = 0; i < 24; i++) {
-			activityDegree.add(0);
+		
+		
+		if (friend.isHasWeibo()) {
+			Set analysisEntries = friend.getWeiboUrl().getWeiboEntries();
+			activityDegree = new ArrayList<>();
+			for (int i = 0; i < 24; i++) {
+				activityDegree.add(0);
+			}
+			WeiboEntry weiboEntry = null;
+			for (Object object : analysisEntries) {
+				weiboEntry = (WeiboEntry) object;
+
+				//Time analyze;
+				@SuppressWarnings("deprecation")
+				int hour = weiboEntry.getPublishedTime().getHours();
+				activityDegree.set(hour, activityDegree.get(hour).intValue() + 1);
+
+			} 
 		}
-		WeiboEntry weiboEntry = null;
-		for (Object object : analysisEntries) {
-			weiboEntry = (WeiboEntry)object;
-			
-			//Time analyze;
-			@SuppressWarnings("deprecation")
-			int hour = weiboEntry.getPublishedTime().getHours();
-			activityDegree.set(hour, 
-					activityDegree.get(hour).intValue() + 1);
-			
-			
-			
-		}
+		
 		
 		
 //		switch (selectedPlat) {
@@ -98,7 +100,9 @@ public class Analysis extends ActionSupport{
 		transaction.commit();
 		HibernateUtil.closeSession();
 		
-		
+//		for (int i = 0; i < activityDegree.size(); i++) {
+//			activityDegree.set(i, new Integer(i * 3));
+//		}
 		setTest("Test Java Pro");
 		return SUCCESS;
 	}
