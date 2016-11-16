@@ -1,1 +1,7 @@
 /controller/
+/utils/
+/dataFetcher/
+/hibernateDao/
+/hibernateMapping/
+/hibernateUtil/
+/interceptor/

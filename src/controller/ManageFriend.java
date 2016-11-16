@@ -347,7 +347,7 @@ public class ManageFriend extends ActionSupport{
 		HibernateUtil.closeSession();
 		
 		
-		if (getWeiboUrlStr() == friend.getWeiboUrl().getWeiboUrl()) {
+		if (friend.isHasWeibo() && getWeiboUrlStr() == friend.getWeiboUrl().getWeiboUrl()) {
 			return SUCCESS;
 		} else {
 			if (friend.isHasWeibo()) {
@@ -369,7 +369,7 @@ public class ManageFriend extends ActionSupport{
 		HibernateUtil.closeSession();
 		
 		
-		if (getZhihuUrlStr() == friend.getZhihuUrl().getZhihuUrl()) {
+		if (friend.isHasZhihu() && getZhihuUrlStr() == friend.getZhihuUrl().getZhihuUrl()) {
 			return SUCCESS;
 		} else {
 			if (friend.isHasWeibo()) {
