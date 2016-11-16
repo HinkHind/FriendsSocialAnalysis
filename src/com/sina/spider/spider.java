@@ -28,7 +28,7 @@ public class spider {
 			if(wblist.size()==0) {
 				try {
 					System.out.println("sleeping....");
-					Thread.sleep(1*30*1000);
+					Thread.sleep(1*15*1000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
