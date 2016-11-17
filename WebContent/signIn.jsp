@@ -116,7 +116,7 @@
                     <a href="signUp.jsp"><i class="fa fa-external-link"></i> 没有账号？立即注册一个！</a>
                 </footer>
             </div>
-            <s:debug></s:debug>
+
             <div class="col-md-1"></div>
         </div>
     </div>

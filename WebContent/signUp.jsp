@@ -110,7 +110,7 @@
 <body>
 
 <div class="container box">
-    <s:debug></s:debug>
+
     <form class="form-signin" role="form" id = "signUpForm" onsubmit = "return validate();" action = "signUp" method = "POST">
         <h2 class="form-signin-heading text-center">欢迎注册</h2>
         <div class="form-group"><input class="form-control" name = "userName" id="zh" type="text" placeholder="请输入账号" /></div>

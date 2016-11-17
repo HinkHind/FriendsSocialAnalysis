@@ -232,7 +232,7 @@
     <li role="presentation" ><a href="displayMessage.action">最新动态</a></li>
     <li role="presentation" class="active"><a href="#">兴趣分析</a></li>
 </ul>
-<s:debug></s:debug>
+
 <div class="row">
 </div>
 <div id='canvasDiv1'></div>

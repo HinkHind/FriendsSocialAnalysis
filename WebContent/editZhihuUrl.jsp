@@ -29,7 +29,7 @@
     <![endif]-->
 </head>
 <body>
-<s:debug></s:debug>
+
 <form class="form-horizontal" role="form" action = "updateZhihuUrl">
     <div class="form-group form-group-lg">
         <label class="col-sm-2 control-label" for="formGroupInputLarge">知乎</label>

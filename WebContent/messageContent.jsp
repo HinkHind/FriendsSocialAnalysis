@@ -58,7 +58,7 @@
     	
     	
     	<br/>
-    	<s:debug></s:debug>
+
 	<s:iterator value="selectedEntries">
 		
 	    	<div class="panel-body" id="card1">
@@ -105,13 +105,6 @@
 	    	</div>
 		
 	</s:iterator>
-	
-	<h3>下面的表单是为了测试用来加条目的，只支持微博，zhihu,注意一定再Control页面加入了对应的微博url，zhihuurl之后再来这里加条目看显示效果。。不然会出错</h3>
-    <form action = "addEntry">
-		<input type = "text" name = "entryStr" >
-		<input type="hidden" name="selectedPlat" value='<s:property value="#session.selectedPlatform" />'> 
-		<input type = "submit">
-	</form>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
