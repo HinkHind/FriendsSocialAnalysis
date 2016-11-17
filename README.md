@@ -13,4 +13,6 @@
 - 网站可感知与该好友具有密切社交互动的其他人，并分析他/她们之间互动的规律(活跃度、主题)等;
 - 当好友发布某些特定主题的内容时，网站可主动推送给当前用户。
 
-
+##关于第一轮迭代的提交
+本应用有两个Java程序：负责Web端的dynamic Web Project FriendsSocialAnalysis和负责爬取数据的爬虫程序Java project
+SEspider，后者以压缩包的形式存在于web项目中。使用时，应先运行SEspider，再运行FriendSocialAnalysis

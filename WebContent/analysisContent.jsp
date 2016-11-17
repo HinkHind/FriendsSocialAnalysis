@@ -1,7 +1,7 @@
 <%@page import="com.opensymphony.xwork2.util.ValueStack"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@page import="java.util.*"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,63 +24,42 @@
     <script type="text/javascript" src="js/ichart.1.2.min.js"></script>
 		<%
 			ValueStack vs = (ValueStack) request.getAttribute("struts.valueStack");
-			String t = (String) vs.findValue("test");
-            %>
-    <script type="text/javascript">
-        var data = [
-            {name : 'H',value : 7,color:'#a5c2d5'},
-            {name : 'E',value : 5,color:'#cbab4f'},
-            {name : 'L',value : 12,color:'#76a871'},
-            {name : 'L',value : 12,color:'#76a871'},
-            {name : 'O',value : 15,color:'#a56f8f'},
-            {name : 'W',value : 13,color:'#c12c44'},
-            {name : 'D',value : 4,color:'#6f83a5'}
-        ];
-        $(function(){
+			//if (vs != null){
+				String t = (String) vs.findValue("test");
+			//}
 			
-            var chart = new iChart.Column2D({
-                render : 'canvasDiv',//渲染的Dom目标,canvasDiv为Dom的ID
-                data: data,//绑定数据
-                title : '<%=t%>',//设置标题
-                width : 700,//设置宽度，默认单位为px
-                height : 400,//设置高度，默认单位为px
-                shadow:true,//激活阴影
-                border: false,
-                shadow_color:'#c7c7c7',//设置阴影颜色
-                coordinate:{//配置自定义坐标轴
-                    width: 450,
-
-                    scale:[{//配置自定义值轴
-                        position:'left',//配置左值轴
-                        start_scale:0,//设置开始刻度为0
-                        end_scale:24,//设置结束刻度为26
-                        scale_space:3,//设置刻度间距
-                        listeners:{//配置事件
-                            parseText:function(t,x,y){//设置解析值轴文本
-                                return {text:t+" cm"}
-                            }
-                        }
-                    }]
-                }
-            });
-            //调用绘图方法开始绘图
-            chart.draw();
-        });
-    </script>
+            %>
+    
     <script type="text/javascript">
         $(function(){
             var data = [
-                {name : 'HTML5&CSS3',value : 30,color:'#fedd74'},
-                {name : 'JavaScript',value : 25,color:'#82d8ef'},
-                {name : 'Java',value : 15,color:'#f76864'},
-                {name : 'XML',value : 20,color:'#80bd91'},
-                {name : 'PhotoShop',value : 10,color:'#fd9fc1'}
+				<%
+				Map<String, Integer> hC = (Map<String, Integer>)vs.findValue("habitCounts");
+				String[] colorList = (String[]) vs.findValue("colorList");
+				System.out.println(hC);
+				int colorIt = 0;
+				for (Map.Entry<String, Integer> entry : hC.entrySet()){
+					%>
+					{name : '<%=entry.getKey()%>' ,value : <%=entry.getValue().intValue()%>,color:'<%=colorList[colorIt]%>'},
+					
+					<%
+					++colorIt;
+				}
+				%>
+
+
+                        
+                //{name : 'HTML5&CSS3',value : 30,color:'#fedd74'},
+               // {name : 'JavaScript',value : 25,color:'#82d8ef'},
+                //{name : 'Java',value : 15,color:'#f76864'},
+               // {name : 'XML',value : 20,color:'#80bd91'},
+               // {name : 'PhotoShop',value : 10,color:'#fd9fc1'}
             ];
 
             var chart = new iChart.Donut2D({
                 render : 'canvasDiv1',
                 center:{
-                    text:'CORE\nSKILLS',
+                    text:'Hobby',
                     shadow:true,
                     shadow_offsetx:0,
                     shadow_offsety:2,
@@ -136,7 +115,7 @@
                     chart.target.textAlign('center')
                             .textBaseline('middle')
                             .textFont('600 24px 微软雅黑')
-                            .fillText('攻城师需要掌握的核心技能',100,y,false,'#6d869f', 'tb',26,false,0,'middle');
+                            .fillText('兴趣分析',100,y,false,'#6d869f', 'tb',26,false,0,'middle');
 
                 }
             }));
@@ -148,37 +127,47 @@
     <script type="text/javascript">
         $(function(){
             var pv=[],ip=[],t;
-            for(var i=0;i<61;i++){
-                t = Math.floor(Math.random()*(30+((i%12)*5)))+10;
-                pv.push(t);
-                t = Math.floor(t*0.5);
-                t = t-Math.floor((Math.random()*t)/2);
-                ip.push(t);
-            }
-
+           // for(var i=0;i<24;i++){
+          //      t = Math.floor(Math.random()*(30+((i%12)*5)))+10;
+          //      //pv.push(t);
+         //       t = Math.floor(t*0.5);
+          //      t = t-Math.floor((Math.random()*t)/2);
+          //      ip.push(t);
+         //   }
+			<%
+				if (vs != null){
+					List<Integer> aD = (ArrayList<Integer>)vs.findValue("activityDegree");
+					for (Integer i : aD){
+						%>
+						pv.push(<%=i.intValue()%>);
+					
+						<%
+					}
+				}
+			%>
+			
+			
             var data = [
                 {
-                    name : 'PV',
+                    name : '微博活跃度',
                     value:pv,
                     color:'#0d8ecf',
                     line_width:2
-                },
-                {
-                    name : 'IP',
-                    value:ip,
-                    color:'#ef7707',
-                    line_width:2
                 }
+
             ];
 
-            var labels = ["2012-08-01","2012-08-02","2012-08-03","2012-08-04","2012-08-05","2012-08-06"];
+            //var labels = ["0:00-1:00","1:00-2:00","2:00-3:00","3:00-4:00","4:00-5:00","5:00-6:00","6:00-7:00","7:00-8:00","8:00-9:00","9:00-10:00",
+           //               "10:00-11:00","11:00-12:00","12:00-13:00","13:00-14:00","14:00-15:00","15:00-16:00","16:00-17:00","17:00-18:00","18:00-19:00","19:00-20:00",
+            //              "20:00-21:00","21:00-22:00","22:00-23:00","23:00-24:00"];
+            var labels = ["0:00","4:00","8:00","12:00","16:00","20:00","24:00"];
             var line = new iChart.LineBasic2D({
                 render : 'canvasDiv2',
                 data: data,
                 align:'center',
-                title : 'ichartjs官方网站最近5天流量趋势',
-                subtitle : '平均每个人访问2-3个页面(访问量单位：万)',
-                footnote : '数据来源：模拟数据',
+                title : '活跃度分析',
+                subtitle : '各时段发微博情况',
+                footnote : '',
                 width : 1000,
                 border: false,
                 height : 400,
@@ -214,14 +203,14 @@
                     grids:{
                         vertical:{
                             way:'share_alike',
-                            value:5
+                            value:1
                         }
                     },
                     scale:[{
                         position:'left',
                         start_scale:0,
-                        end_scale:100,
-                        scale_space:10,
+                        end_scale:10,
+                        scale_space:1,
                         scale_size:2,
                         scale_color:'#9f9f9f'
                     },{
@@ -240,14 +229,17 @@
 </head>
 <body>
 <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" ><a href="analysisContent.jsp">最新动态</a></li>
+    <li role="presentation" ><a href="displayMessage.action">最新动态</a></li>
     <li role="presentation" class="active"><a href="#">兴趣分析</a></li>
 </ul>
 <s:debug></s:debug>
 <div class="row">
-<div id='canvasDiv' class="col-md-6"></div>
-<div id='canvasDiv1'></div>
 </div>
+<div id='canvasDiv1'></div>
+
+</div>
+<br/>
+<br/>
 <div id='canvasDiv2'></div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>

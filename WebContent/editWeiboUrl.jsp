@@ -41,7 +41,7 @@
             <button type="submit"  class="btn btn-default" onclick="fun2()">保存</button>
             <!--<button   class="btn btn-default" onclick="location='<s:url action="removeWeiboUrl"> <s:param name="friendId" value="friendId" /></s:url>'">保存</button>  -->
             <input type="button" class="btn btn-default col-sm-offset-5" onclick="location='<s:url action="removeWeiboUrl"> <s:param name="friendId" value="friendId" /></s:url>'" value ="删除"/>
-            <input type="button" class="btn btn-default col-sm-offset-5" onclick="history.go(-1)" value ="返回"/>
+            <!-- <input type="button" class="btn btn-default col-sm-offset-5" onclick="history.go(-1)" value ="返回"/> -->
         </div>
         
     </div>
