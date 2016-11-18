@@ -1,4 +1,4 @@
 ##Spider Project
 
 
-- 兴趣分析分支
+- 抓取QQ空间说说的分支
