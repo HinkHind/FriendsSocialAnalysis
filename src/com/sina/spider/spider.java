@@ -17,7 +17,7 @@ import com.sina.spider.utils.Utils;
 public class spider {
 	private static HabitAnalyzer  habitAnalyzer = new HabitAnalyzer();
 	
-	public static void main(String args[]) throws IOException {
+	public static void umain(String args[]) throws IOException {
 		ArrayList<WeiboUrl> wblist = new ArrayList<>();
 		DownloadSQL down = new DownloadSQL();
 
@@ -63,7 +63,7 @@ public class spider {
 		
 		
 	}
-	public static void umain(String args[]) {
+	public static void main(String args[]) {
 		articleList Spidermain = new articleList();
 		Spidermain.Start("http://weibo.cn/leijun");
 	}

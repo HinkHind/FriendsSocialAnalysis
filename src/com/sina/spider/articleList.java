@@ -76,15 +76,11 @@ public class articleList implements HtmlBean{
 
 	public void Start(String startUrl) {
 		HttpGetRequest start = new HttpGetRequest(startUrl);
-		//start.addCookie("SUV", "1460541527037365");
-		start.addCookie("SCF", "AgVo8M3RqRxfLJPMEnPFBWaX-hInd-Oc17LeZJil5DVyNwOUF-vsN8U6xpIOsQwyTZwNSlw9AzqkOQZOcSLqNkE.");
-		start.addCookie("ALF", "1510820581");
-		start.addCookie("tgc", "TGT-NjA0MDg4OTMxMw==-1479284581-xd-EB83BFC778A70C236BE2C2AE06EC1B69");
-		start.addCookie("LT", "1479284581");
-		start.addCookie("SUBP", "0033WrSXqPxfM725Ws9jqgMF55529P9D9WFycG19Fy2-Mz1mOyGnZfKY5NHD95QcehB71hn4e020Ws4Dqcjs9rD4qJSr");
-		start.addCookie("ALC", "ac%3D2%26bt%3D1479284581%26cv%3D5.0%26et%3D1510820581%26scf%3D%26uid%3D6040889313%26vf%3D0%26vs%3D0%26vt%3D0%26es%3D6b956dd381287cee682e49d0266c50c0");
-		start.addCookie("sso_info", "v02m6alo5qztaaep6WimLacpp2WpaSPk5iwjYOAuI6DpLOMk4zA");
-		start.addCookie("SUB", "_2A251KGc1DeTxGeBO71IZ-CfPyj-IHXVWXN_9rDV_PUNbm9AKLU3ZkW8jowwEXNIg2YCB-3CS0HFEYjTLhw..");		
+		start.addCookie("SCF", "Aiz7B_dfVk9D3BiMgBbIj07Xcwszz2tU-ROzsW2yOxK1sou9NNl-mdu_K9-FYFHig6fbMtSf9PfbEWtrs8FHdAI.");
+		start.addCookie("ALF", "1511260357");
+		start.addCookie("SUBP", "0033WrSXqPxfM725Ws9jqgMF55529P9D9WFhomYZzEzSQcHc5QwsHnHV5JpX5K2hUgL.Fo-0SK.Xeo50Sh52dJLoIEBLxKnLB.qLB.BLxK-L1hMLBK5LxKBLB.BL1K-LxK-LB-qLB.zt");
+		start.addCookie("SUB", "_2A251Nr0VDeTxGeNN7lsV8i7PzzyIHXVWRandrDV8PUNbmtANLUjAkW8crQKcleaTrsexqHmTKNAmj3R3dw..");		
+		
 		start.addHeader("Host", "weibo.cn");
 		start.addHeader("Upgrade-Insecure-Requests", "1");
 		start.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
