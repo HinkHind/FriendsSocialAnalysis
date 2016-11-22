@@ -28,7 +28,7 @@ public class Iterm implements HtmlBean{
 	
 	@Text
 	@HtmlField(cssPath="div.zm-item-vote a")
-	private int like; //回答赞数
+	private int likeNum; //回答赞数
 
 	@Text
 	@HtmlField(cssPath="div > div > div.zm-item-rich-text.expandable.js-collapse-body > p > a")
@@ -46,17 +46,21 @@ public class Iterm implements HtmlBean{
 		return answer;
 	}
 
-	public int getLike() {
-		return like;
-	}
+
 
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
 
-	public void setLike(int like) {
-		this.like = like;
+
+	public int getLikeNum() {
+		return likeNum;
 	}
+
+	public void setLikeNum(int likeNum) {
+		this.likeNum = likeNum;
+	}
+
 	public String getQuestion() {
 		return question;
 	}

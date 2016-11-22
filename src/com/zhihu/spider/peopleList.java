@@ -15,18 +15,19 @@ import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spider.HtmlBean;
 
 @Gecco(matchUrl="https://www.zhihu.com/people/{userName}/answers", pipelines = "consolePipeline")
+//@Gecco(matchUrl="https://www.zhihu.com/people/{userName}/answers", pipelines = {"consolePipeline", "SavePeoplePipeline"})
 public class peopleList implements HtmlBean {
 
 	private static final long serialVersionUID = -1667122202814191660L;
-//	@Request
-//	private HttpRequest request;
+	@Request
+	private HttpRequest request;
 	
 	@RequestParameter
 	private String userName;
 	
-	@Text
-	@HtmlField(cssPath="body > div.zg-wrap.zu-main.clearfix > div.zu-main-content > div > div.zm-profile-header.ProfileCard > div.zm-profile-header-main > div > div.top > div.title-section > span")
-	private String name;
+//	@Text
+//	@HtmlField(cssPath="body > div.zg-wrap.zu-main.clearfix > div.zu-main-content > div > div.zm-profile-header.ProfileCard > div.zm-profile-header-main > div > div.top > div.title-section > span")
+//	private String name;
 	
 	@Text
 	@HtmlField(cssPath="body > div.zg-wrap.zu-main.clearfix > div.zu-main-content > div > div.zm-profile-header.ProfileCard > div.zm-profile-header-main > div > div.top > div.title-section > div")
@@ -35,6 +36,26 @@ public class peopleList implements HtmlBean {
 	@HtmlField(cssPath="#zh-profile-answer-list > div")
 	private ArrayList<Iterm> iterms;
 	
+	
+//	@HtmlField(cssPath="#zh-profile-answer-list-outer > div.border-pager > div")
+//	private String PageInfo;
+//	
+//	@Text
+//	@HtmlField(cssPath="#zh-profile-answer-list-outer > div.border-pager > div > span.zg-gray-normal")
+//	private int CurrPage;
+	
+//	public int getCurrPage() {
+//		return CurrPage;
+//	}
+//	public void setCurrPage(int currPage) {
+//		CurrPage = currPage;
+//	}
+//	public String getPageInfo() {
+//		return PageInfo;
+//	}
+//	public void setPageInfo(String pageInfo) {
+//		PageInfo = pageInfo;
+//	}
 	public String getDescription() {
 		return description;
 	}
@@ -47,24 +68,19 @@ public class peopleList implements HtmlBean {
 	public void setIterms(ArrayList<Iterm> iterms) {
 		this.iterms = iterms;
 	}
-//	public HttpRequest getRequest() {
-//		return request;
-//	}
+	public HttpRequest getRequest() {
+		return request;
+	}
 	public String getUserName() {
 		return userName;
 	}
-	public String getName() {
-		return name;
+	public void setRequest(HttpRequest request) {
+		this.request = request;
 	}
-//	public void setRequest(HttpRequest request) {
-//		this.request = request;
-//	}
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public void Start(String startUrl) {
 		HttpGetRequest start = new HttpGetRequest(startUrl);
 		start.addCookie("a_t", "2.0AGBAZ2SR0AoXAAAA6HJaWABgQGdkkdAKAGCAYDeqmQoXAAAAYQJVTehyWlgA66Cz5KyF8bsx4AAEQa1M-Zk9h3QZX9Fjep1Q-pLce2ZTBRDzZEukJw==");
