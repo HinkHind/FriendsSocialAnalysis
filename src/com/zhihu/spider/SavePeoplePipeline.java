@@ -24,8 +24,7 @@ public class SavePeoplePipeline  implements Pipeline<peopleList>{
 //		if(currPage < totalPage) {
 //			int nextPage = currPage + 1;
 //			String nextPageUrl = "https://www.zhihu.com/people/"+peopleList.getUserName()+"/answers?page="+ nextPage;
-//			SchedulerContext.into(currRequest.subRequest(nextPageUrl));
-//		}
+
 		
 		
 	}
