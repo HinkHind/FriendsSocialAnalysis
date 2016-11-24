@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import com.geccocrawler.gecco.GeccoEngine;
 import com.geccocrawler.gecco.annotation.Gecco;
-import com.geccocrawler.gecco.annotation.Href;
-import com.geccocrawler.gecco.annotation.Html;
 import com.geccocrawler.gecco.annotation.HtmlField;
 import com.geccocrawler.gecco.annotation.Request;
 import com.geccocrawler.gecco.annotation.RequestParameter;
@@ -14,8 +12,8 @@ import com.geccocrawler.gecco.request.HttpGetRequest;
 import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spider.HtmlBean;
 
-@Gecco(matchUrl="https://www.zhihu.com/people/{userName}/answers", pipelines = "consolePipeline")
-//@Gecco(matchUrl="https://www.zhihu.com/people/{userName}/answers", pipelines = {"consolePipeline", "SavePeoplePipeline"})
+//@Gecco(matchUrl="https://www.zhihu.com/people/{userName}/answers?page={currPage}", pipelines = "consolePipeline")
+@Gecco(matchUrl="https://www.zhihu.com/people/{userName}/answers?page={currPage}", pipelines =  "SavePeoplePipeline")
 public class peopleList implements HtmlBean {
 
 	private static final long serialVersionUID = -1667122202814191660L;
@@ -25,9 +23,8 @@ public class peopleList implements HtmlBean {
 	@RequestParameter
 	private String userName;
 	
-//	@Text
-//	@HtmlField(cssPath="body > div.zg-wrap.zu-main.clearfix > div.zu-main-content > div > div.zm-profile-header.ProfileCard > div.zm-profile-header-main > div > div.top > div.title-section > span")
-//	private String name;
+	@RequestParameter
+	private int currPage;
 	
 	@Text
 	@HtmlField(cssPath="body > div.zg-wrap.zu-main.clearfix > div.zu-main-content > div > div.zm-profile-header.ProfileCard > div.zm-profile-header-main > div > div.top > div.title-section > div")
@@ -36,26 +33,23 @@ public class peopleList implements HtmlBean {
 	@HtmlField(cssPath="#zh-profile-answer-list > div")
 	private ArrayList<Iterm> iterms;
 	
+	@Text
+	@HtmlField(cssPath="body > div.zg-wrap.zu-main.clearfix > div.zu-main-content > div > div.zm-profile-header.ProfileCard > div.profile-navbar.clearfix > a.item.active > span")
+	private int totalAnswerNum;
 	
-//	@HtmlField(cssPath="#zh-profile-answer-list-outer > div.border-pager > div")
-//	private String PageInfo;
-//	
-//	@Text
-//	@HtmlField(cssPath="#zh-profile-answer-list-outer > div.border-pager > div > span.zg-gray-normal")
-//	private int CurrPage;
 	
-//	public int getCurrPage() {
-//		return CurrPage;
-//	}
-//	public void setCurrPage(int currPage) {
-//		CurrPage = currPage;
-//	}
-//	public String getPageInfo() {
-//		return PageInfo;
-//	}
-//	public void setPageInfo(String pageInfo) {
-//		PageInfo = pageInfo;
-//	}
+	public int getTotalAnswerNum() {
+		return totalAnswerNum;
+	}
+	public int getCurrPage() {
+		return currPage;
+	}
+	public void setCurrPage(int currPage) {
+		this.currPage = currPage;
+	}
+	public void setTotalAnswerNum(int totalAnswerNum) {
+		this.totalAnswerNum = totalAnswerNum;
+	}
 	public String getDescription() {
 		return description;
 	}
@@ -102,7 +96,9 @@ public class peopleList implements HtmlBean {
 	}
 	public static void  main(String args[]) {
 		peopleList ppList  = new peopleList();
-		ppList.Start("https://www.zhihu.com/people/qibaowonder/answers");
+//		ppList.Start("https://www.zhihu.com/people/xiaolunzi/answers?page=1");
+//		ppList.Start("https://www.zhihu.com/people/leng-qian-17-51/answers?page=1");
+		ppList.Start("https://www.zhihu.com/people/rafter/answers?page=1");
 		
 	}
 
