@@ -1,12 +1,24 @@
 package com.zhihu.spider;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class Utils {
 	
-	
+	public static void StringBufferDemo(String str) throws IOException{
+        File file=new File("E:\\Spider\\zhihu.txt");
+        if(!file.exists())
+            file.createNewFile();
+        FileOutputStream out=new FileOutputStream(file,true);        
+        StringBuffer sb=new StringBuffer();
+        sb.append(str);
+        out.write(sb.toString().getBytes("utf-8"));       
+        out.close();
+    }
 
 	public static String getDate(String str) {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式

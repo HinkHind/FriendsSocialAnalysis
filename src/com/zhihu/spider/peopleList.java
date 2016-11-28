@@ -77,14 +77,15 @@ public class peopleList implements HtmlBean {
 
 	public void Start(String startUrl) {
 		HttpGetRequest start = new HttpGetRequest(startUrl);
-		start.addCookie("a_t", "2.0AGBAZ2SR0AoXAAAA6HJaWABgQGdkkdAKAGCAYDeqmQoXAAAAYQJVTehyWlgA66Cz5KyF8bsx4AAEQa1M-Zk9h3QZX9Fjep1Q-pLce2ZTBRDzZEukJw==");
-		start.addCookie("z_c0", "Mi4wQUdCQVoyU1IwQW9BWUlCZ042cVpDaGNBQUFCaEFsVk42SEphV0FEcm9MUGtySVh4dXpIZ0FBUkJyVXo1bVQySGRB|1479730664|470042b435d6d5c3f14f8a83d3b0987791259c77");
-		
+		start.addCookie("a_t", "2.0AGBAZ2SR0AoXAAAAZodfWABgQGdkkdAKAGCAYDeqmQoXAAAAYQJVTWSHX1gAYxzdtFJtnqDyYirqYf5Oy3KMeYP9R4Z7YFIICbHw7Mc5ULRuLWNxCg==");
+		start.addCookie("z_c0", "Mi4wQUdCQVoyU1IwQW9BWUlCZ042cVpDaGNBQUFCaEFsVk5aSWRmV0FCakhOMjBVbTJlb1BKaUt1cGhfazdMY294NWd3|1480063590|021aba2c21f8cc751e4c2cac9966c4074fb2a0a0");
+		start.addCookie( "_xsrf", "25c460258fcaedc5643ea0d601224cf1");
+		start.addCookie( "login", "N2M5NWU1NDU4MDJhNDE5OGE3NGRhNjQwNTAxNDY5Nzk=|1480063588|8559b5755029481f1e062789ac37357f2cd339e0");
 		start.addHeader("Host", "www.zhihu.com");
 		start.addHeader("Upgrade-Insecure-Requests", "1");
 		start.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
 		start.addHeader("Accept-Encoding", "gzip, deflate, sdch, br");
-		//start.addHeader("Cache-Control", "no-cache, must-revalidate");
+		start.addHeader("Cache-Control", "max-age=0");
 		start.addHeader("Accept-Language", "zh-CN,zh;q=0.8");
 		start.addHeader("Connection", "keep-alive");
 		start.addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36");

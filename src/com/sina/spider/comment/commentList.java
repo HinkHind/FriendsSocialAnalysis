@@ -1,5 +1,7 @@
-package com.sina.spider;
+package com.sina.spider.comment;
 
+import java.io.StringReader;
+import java.util.ArrayList;
 
 import com.geccocrawler.gecco.GeccoEngine;
 import com.geccocrawler.gecco.annotation.Gecco;
@@ -10,68 +12,59 @@ import com.geccocrawler.gecco.annotation.RequestParameter;
 import com.geccocrawler.gecco.request.HttpGetRequest;
 import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spider.HtmlBean;
+import com.sina.spider.articleList;
 
-@Gecco(matchUrl="http://weibo.cn/{userID}", pipelines = "SaveArticlePipeline")
-public class articleList implements HtmlBean{
+@Gecco(matchUrl="http://weibo.cn/comment/{weiboID}?uid={uID}", pipelines="consolePipeline")
+public class commentList implements HtmlBean{
 
-	private static final long serialVersionUID = -8062180093723754955L;
+	private static final long serialVersionUID = 1918214094413947446L;
+	
+	@RequestParameter
+	private String weiboID;
+	
+	@RequestParameter
+	private String uID;
 	
 	@Request
 	private HttpRequest request;
 	
-	@RequestParameter
-	private String userID;
-	
-	@HtmlField(cssPath="body")
-	private String content;
-	
-	@HtmlField(cssPath="span.tc")
-	private String weiboNum;
-	
-	@Href
-	@HtmlField(cssPath="div.tip2:nth-child(2) > a:nth-child(2)")
-	private String following;
-	
 
+	@HtmlField(cssPath="div.c[id^=C_]")
+	private ArrayList<Commentor> coms;
 
-	public String getFollowing() {
-		return following;
+	public String getWeiboID() {
+		return weiboID;
 	}
 
-	public void setFollowing(String following) {
-		this.following = following;
-	}
-
-	public String getWeiboNum() {
-		return weiboNum;
-	}
-
-	public void setWeiboNum(String weiboNum) {
-		this.weiboNum = weiboNum;
+	public String getuID() {
+		return uID;
 	}
 
 	public HttpRequest getRequest() {
 		return request;
 	}
 
+
+
+	public void setWeiboID(String weiboID) {
+		this.weiboID = weiboID;
+	}
+
+	public void setuID(String uID) {
+		this.uID = uID;
+	}
+
 	public void setRequest(HttpRequest request) {
 		this.request = request;
 	}
 
-	public String getUserID() {
-		return userID;
+
+	public ArrayList<Commentor> getComs() {
+		return coms;
 	}
 
-	public void setUserID(String userID) {
-		this.userID = userID;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
+	public void setComs(ArrayList<Commentor> coms) {
+		this.coms = coms;
 	}
 
 	public void Start(String startUrl) {
@@ -90,10 +83,14 @@ public class articleList implements HtmlBean{
 		start.addHeader("Connection", "keep-alive");
 		start.addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36");
 		GeccoEngine.create()
-		.classpath("com.sina.spider")
+		.classpath("com.sina.spider.comment")
 		.start(start)
 		.interval(5000)
 		.run();
 	}
-	
+	public static void main(String args[]) {
+		articleList Spidermain = new articleList();
+		Spidermain.Start("http://weibo.cn/comment/EiC0nCymq?uid=1749127163");
+	}
+
 }
