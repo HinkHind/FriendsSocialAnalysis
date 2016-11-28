@@ -9,12 +9,13 @@ import com.geccocrawler.gecco.annotation.Href;
 import com.geccocrawler.gecco.annotation.HtmlField;
 import com.geccocrawler.gecco.annotation.Request;
 import com.geccocrawler.gecco.annotation.RequestParameter;
+import com.geccocrawler.gecco.annotation.Text;
 import com.geccocrawler.gecco.request.HttpGetRequest;
 import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spider.HtmlBean;
 import com.sina.spider.articleList;
 
-@Gecco(matchUrl="http://weibo.cn/comment/{weiboID}?uid={uID}", pipelines="consolePipeline")
+@Gecco(matchUrl="http://weibo.cn/comment/{weiboID}?uid={uID}&rl=0&page={pageNume}", pipelines="consolePipeline")
 public class commentList implements HtmlBean{
 
 	private static final long serialVersionUID = 1918214094413947446L;
@@ -28,9 +29,31 @@ public class commentList implements HtmlBean{
 	@Request
 	private HttpRequest request;
 	
+	@RequestParameter
+	private int pageNume;
+	
 
+	public int getPageNume() {
+		return pageNume;
+	}
+
+	public String getPageInfo() {
+		return pageInfo;
+	}
+
+	public void setPageNume(int pageNume) {
+		this.pageNume = pageNume;
+	}
+
+	public void setPageInfo(String pageInfo) {
+		this.pageInfo = pageInfo;
+	}
 	@HtmlField(cssPath="div.c[id^=C_]")
 	private ArrayList<Commentor> coms;
+	
+	@Text
+	@HtmlField(cssPath="#pagelist > form > div ")
+	private String pageInfo;
 
 	public String getWeiboID() {
 		return weiboID;
@@ -90,7 +113,7 @@ public class commentList implements HtmlBean{
 	}
 	public static void main(String args[]) {
 		articleList Spidermain = new articleList();
-		Spidermain.Start("http://weibo.cn/comment/EiC0nCymq?uid=1749127163");
+		Spidermain.Start("http://weibo.cn/comment/EiC0nCymq?uid=1749127163&rl=0&page=1");
 	}
 
 }
